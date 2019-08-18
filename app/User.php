@@ -6,25 +6,31 @@ use Caffeinated\Shinobi\Traits\ShinobiTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable{
+
     use Notifiable, ShinobiTrait;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = 'users';
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'last_name', 'cedula', 'tlf_emergencia', 'extension', 'email', 'biography',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = [ 'password', 'remember_token', ];
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
+
+    public function events(){
+        return $this->hasMany(Event::class);
+    }
+
+    public function services(){
+        return $this->hasMany(Service::class);
+    }
 }
