@@ -1,37 +1,46 @@
 {{ Form::hidden('user_id', auth()->user()->id) }}
 @csrf
 
-<div class="form-group">
-	{{ Form::label('title', 'Titulo:') }}
-	{{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title', 'placeholder' => 'Titulo del Evento']) }}
+<div class="form-row">
+	<div class="col">
+		<div class="form-group">
+			{{ Form::label('title', 'Titulo:') }}
+			{{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title']) }}
+		</div>
+	</div>
+	<div class="col">
+		<div class="form-group">
+			{{ Form::label('slug', 'Url:') }}
+			{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'readonly']) }}
+		</div>
+	</div>
 </div>
-
+	
 <div class="form-group">
-	{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'placeholder' => 'URL amigable...', 'readonly']) }}
-</div>
-
-<div class="form-group">
-	{{ Form::label('color', 'Color') }}
+	{{ Form::label('color', 'Color:') }}
 	{{ Form::color('color', null, ['class' => 'form-control', 'id' => 'color']) }}
 </div>
 
 
-<div class="form-group">
-	{{ Form::label('date_start', 'Fecha de inicio:') }}
-	{{ Form::date('date_start', null, ['class' => 'form-control date']) }}
+<div class="form-row">
+	<div class="col">
+		<div class="form-group">
+			{{ Form::label('date_start', 'Fecha de inicio:') }}
+			{{ Form::date('date_start', null, ['class' => 'form-control date']) }}
+		</div>
+	</div>
+	<div class="col">
+		<div class="form-group">
+			{{ Form::label('date_end', 'Fecha de fin:') }}
+			{{ Form::date('date_end', null, ['class' => 'form-control date']) }}
+		</div>
+	</div>
 </div>
 
 <div class="form-group">
-	{{ Form::label('date_end', 'Fecha de fin') }}
-	{{ Form::date('date_end', null, ['class' => 'form-control date']) }}
-</div> 
-
-
-
-<div class="form-group">
-	{{ Form::label('slug', 'Estado') }}
+	{{ Form::label('slug', 'Estado:') }}
 	<label>
-		{{ Form::radio('state', 'PUBLISHED') }} Publicado
+		{{ Form::radio('state', 'PUBLISHED') }} Publicado |
 	</label>
 	<label>
 		{{ Form::radio('state', 'DRAFT') }} Borrador
@@ -45,8 +54,7 @@
 
 
 <div class="form-group">
-	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-success']) }}
-</div>
+	{{ Form::submit('Guardar evento', ['class' => 'btn btn-color btn-lg btn-block']) }}
 
 @section('scripts')
 

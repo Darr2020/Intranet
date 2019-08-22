@@ -17,8 +17,7 @@ class EventController extends Controller{
     public function index(){
         $titulo = "Eventos";
         $events = Event::orderBy('id', 'DESC')
-            //Error provoxado aproposito -descomentar
-            //->where('user_id', auth()->id())
+            ->where('user_id', auth()->id())
             ->paginate();
  
         return view('admin.events.index', compact('events', 'titulo'));

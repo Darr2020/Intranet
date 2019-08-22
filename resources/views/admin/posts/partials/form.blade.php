@@ -1,49 +1,65 @@
 {{ Form::hidden('user_id', auth()->user()->id) }}
 
-
-<div class="form-group">
-	{{ Form::label('title', 'titulo') }}
-	{{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title']) }}
-</div>
-
-<div class="form-group">
-	{{ Form::label('slug', 'URL') }}
-	{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug']) }}
-</div>
-<div class="form-group">
-    {{ Form::label('image', 'Imagen') }}
-    {{ Form::file('image') }}
-</div>
-<div class="form-group">
-	{{ Form::label('slug', 'Estado') }}
-	<label>
-		{{ Form::radio('state', 'PUBLISHED') }} Publicado
-	</label>
-	<label>
-		{{ Form::radio('state', 'DRAFT') }} Borrador
-	</label>
-</div>
-<div class="form-group">
-	{{ Form::label('tags', 'Etiquetas') }}
-	<div>
-		@foreach($tags as $tag)
-			<label>
-				{{ Form::checkbox('tags[]', $tag->id) }} {{ $tag->name }}
-			</label>
-		@endforeach
+<div class="form-row">
+	<div class="col">
+		<div class="form-group">
+			{{ Form::label('title', 'Titulo:') }}
+			{{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title']) }}
+		</div>
+	</div>
+	<div class="col">
+		<div class="form-group">
+			{{ Form::label('slug', 'URL:') }}
+			{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'readonly' ]) }}
+		</div>
 	</div>
 </div>
+<div class="custom-file">
+	<div class="form-group">
+		{{ Form::label('image', 'Archivo...', ['class' => 'custom-file-label']) }}
+		{{ Form::file('image', ['class' => 'custom-file-input', 'lang' => 'es']) }}
+	</div>
+</div>
+
+<div class="row mt-4">
+	<div class="col-md-8">
+		<div class="form-group">
+			{{ Form::label('slug', 'Estado:') }}
+			<label>
+				{{ Form::radio('state', 'PUBLISHED') }} Publicado  
+			</label>
+			<label>
+				{{ Form::radio('state', 'DRAFT') }} Borrador.
+			</label>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="btn-group">
+			<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+   			Etiquetas:
+ 			</button>
+		   	<div class="dropdown-menu dropdown-menu-right">
+				@foreach($tags as $tag)
+					<a class="dropdown-item">{{ Form::checkbox('tags[]', $tag->id) }} {{ $tag->name }}</a>
+				@endforeach	
+		   	</div>
+		</div>
+	</div>
+</div>
+	
 <div class="form-group">
-    {{ Form::label('summary', 'Resumen') }}
+    {{ Form::label('summary', 'Resumen:') }}
     {{ Form::textarea('summary', null, ['class' => 'form-control', 'rows' => '2']) }}
 </div>
+	
+
 <div class="form-group">
-    {{ Form::label('content', 'Contenido') }}
+    {{ Form::label('content', 'Contenido:') }}
     {{ Form::textarea('content', null, ['class' => 'form-control']) }}
 </div>
 
 <div class="form-group">
-	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-success']) }}
+	{{ Form::submit('Guardar noticia', ['class' => 'btn btn-color btn-lg btn-block']) }}
 </div>
 
 @section('scripts')
@@ -82,8 +98,4 @@
 
 		CKEDITOR.replace('content')
 	</script>
-
 @endsection
-
-
-

@@ -52,7 +52,7 @@
 									   <img src="{{ asset('icons/edit.svg') }}" title="Editar evento">
 									</a>
 								</td>
-								@role('SuperAdmin')
+								
 									<td>
 										{!! Form::open([
 											'route' => ['events.destroy', $event->id],
@@ -62,7 +62,7 @@
 											</button>
 										{!! Form::close() !!}
 									</td>
-								@endrole						
+													
 							</tr>
 						@endforeach
 					</tbody>

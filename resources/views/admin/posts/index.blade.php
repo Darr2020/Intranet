@@ -58,7 +58,7 @@
 									   <img src="{{ asset('icons/edit.svg') }}" title="Editar noticia">
 									</a>
 								</td>
-								@role('SuperAdmin')
+								
 									<td width="10px">
 										{!! Form::open([
 											'route' => ['posts.destroy', $post->id],
@@ -68,7 +68,7 @@
 											</button>
 										{!! Form::close() !!}
 									</td>
-								@endrole						
+												
 							</tr>
 						@endforeach
 					</tbody>

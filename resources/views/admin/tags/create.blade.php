@@ -2,11 +2,12 @@
 
 @section('content')
 	<div class="container">
-		<div class="row">
-			<div class="col-md-8 offset-md-2">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<br>
 				<div class="card">
 					<div class="card-header">
-						<h3>Crear Etiqueta</h3>
+						<h4 class="text-center">Crear Etiqueta</h4>
 					</div>
 					<div class="card-body">
 						{!! Form::open(['route' => 'tags.store']) !!}

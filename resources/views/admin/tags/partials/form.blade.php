@@ -1,15 +1,20 @@
-<div class="form-group">
-	{{ Form::label('name', 'Nombre') }}
-	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
+<div class="form-row">
+	<div class="col">
+		<div class="form-group">
+			{{ Form::label('name', 'Nombre:') }}
+			{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
+		</div>
+	</div>
+	<div class="col">
+		<div class="form-group">
+			{{ Form::label('slug', 'URL:') }}
+			{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'readonly']) }}
+		</div>
+	</div>
 </div>
 
 <div class="form-group">
-	{{ Form::label('slug', 'URL') }}
-	{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug']) }}
-</div>
-
-<div class="form-group">
-	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-success']) }}
+	{{ Form::submit('Guardar etiqueta', ['class' => 'btn btn-color btn-lg btn-block']) }}
 </div>
 
 @section('scripts')

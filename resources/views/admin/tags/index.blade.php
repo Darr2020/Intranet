@@ -27,9 +27,8 @@
 										<td>{{ $tag->id }}</td>
 										<td>{{ $tag->name }}</td>
 										<td width="10px">
-											<a href="{{ route('tags.edit', $tag->id) }}"
-											   class="btn btn-warning"	role="button" aria-pressed="true">
-												Editar
+											<a href="{{ route('tags.edit', $tag->id) }}">
+												<img src="{{ asset('icons/edit.svg') }}" title="Editar etiqueta">
 											</a>
 										</td>
 										<td width="10px">

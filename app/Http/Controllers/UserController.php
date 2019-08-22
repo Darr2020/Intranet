@@ -6,56 +6,39 @@ use Illuminate\Http\Request;
 use Caffeinated\Shinobi\Models\Role;
 use App\User;
 
-class UserController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $users = User::paginate();
+class UserController extends Controller{
+    
+    public function index(){
+  
+        $titulo = "Directorio";
 
-        return view('users.index', compact('users'));
+        $users = User::orderBy('name','ASC')->paginate();
+     
+        return view('users.directory', compact('users', 'titulo', 'str'));
+    }
+   
+
+    public function show($slug){
+
+        $titulo = "Perfil";
+
+        $user = User::where('slug', $slug)->first();
+
+
+        return view('users.profile', compact('user', 'titulo'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $user = User::find($id);
-
-        return view('users.show', compact('user'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
+    
+    public function edit($id){
+        $titulo = "Editar";
+        
         $user = User::find($id);
         $roles = Role::get();
 
-        return view('users.edit', compact('user', 'roles'));
+        return view('admin.directory.edit', compact('user', 'roles', 'titulo'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
+   
+    public function update(Request $request, $id){
         $user = User::find($id);
         $user->update($request->all());
 
@@ -63,18 +46,5 @@ class UserController extends Controller
 
         return redirect()->route('users.edit', $user->id)
             ->with('info', 'Usuario guardado con éxito');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $user = User::find($id)->delete();
-
-        return back()->with('info', 'Eliminado correctamente');
     }
 }

@@ -17,15 +17,13 @@ class PostController extends Controller{
 
     public function __construct(){        
         $this->middleware('auth');
-        $this->middleware(['role_or_permission:SuperAdmin|Ver noticia|Crea noticias|Navega noticias']);
     }
 
-     public function index(){
+    public function index(){
         $titulo = "Posts";
        
         $posts = Post::orderBy('id', 'DESC')
-            //Error provoxado aproposito -descomentar
-            //->where('user_id', auth()->id())
+            ->where('user_id', auth()->id())
             ->paginate();
         return view('admin.posts.index', compact('posts', 'titulo'));
     }
@@ -37,14 +35,18 @@ class PostController extends Controller{
         return view('admin.posts.create', compact('tags', 'titulo'));
     }
 
+
     public function store(PostStoreRequest $request){
         $post = Post::create($request->all());
+        $title = $request->title;
 
         if($request->file('image')){
-            $path = Storage::disk('public')->put('image',  $request->file('image'));
-            $post->fill(['image' => asset($path)])->save();
-        }
+            $path = $request->file('image');
+            $file = $path->storeAs('image', $request->user()->id  .' '. $title);
 
+            $post->fill(['image' => asset($file)])->save();
+        }
+       
         $post->tags()->attach($request->get('tags'));
 
         return redirect()
