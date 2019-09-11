@@ -34,9 +34,11 @@ class EventController extends Controller{
     public function store(EventStoreRequest $request){
 
         $event = Event::create($request->all());
+
+            alert()->success('El evento ha sido creado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+
        
-        return redirect()->route('events.index', $event->id)
-            ->with('info', 'Evento creado con éxito');
+        return redirect()->route('events.index', $event->id);
     }
 
     public function edit($id){
@@ -52,13 +54,18 @@ class EventController extends Controller{
       
         $event->fill($request->all())->save();
 
-        return redirect()->route('events.index', $event->id)->with('info', 'Evento actualizado con éxito');
+            alert()->success('El evento ha sido editado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+
+
+        return redirect()->route('events.index', $event->id);
     }
 
     public function destroy($id){
         $event = Event::find($id);
        // $this->authorize('pass', $event);
         $event->delete();
-        return back()->with('info', 'Evento eliminado correctamente');
+        alert()->info('El evento ha sido eliminado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+
+        return back();
     }
 }

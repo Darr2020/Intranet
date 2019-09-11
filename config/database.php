@@ -65,7 +65,14 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
+            'dump_command_path' => '/usr/bin',
+            'dump_command_timeout' => 60 * 5, // 5 minute timeout
+            'dump_using_single_transaction' => true, 
+        
         ],
+
+         
+    
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

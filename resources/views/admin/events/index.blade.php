@@ -26,7 +26,7 @@
 				</a>
 				
 
-				<table id="events" class="table table-striped table-bordered">
+				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th>Nro</th>
@@ -70,32 +70,4 @@
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('data-table')
-	<script>
-		$(document).ready(function() {
-	    	$('#events').DataTable({
-	    		"language": {
-	    			"info": "_TOTAL_ eventos",
-	    			"search": "Buscar evento:",
-	    			"paginate": {
-	    				"next": "siguiente",
-	    				"previous": "Anterior",
-	    			},
-	    			"lengthMenu": 'Mostrar <select>' + 
-	    				'<option value="10">10</option>'+
-	    				'<option value="20">20</option>'+
-	    				'<option value="40">40</option>'+
-	    				'<option value="60">60</option>'+
-	    				'<option value="-1">Todos</option>'+
-	    				'</select> eventos',
-	    			"loadingRecords": "Cargando...",
-	    			"processing": "Procesando...",
-	    			"emptyTable": "No hay eventos creadas",
-	    			"zeroRecords": "Ese evento no existe",	    			
-	    		}
-	    	});
-		});
-	</script>
 @endsection

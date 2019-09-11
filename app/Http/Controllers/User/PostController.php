@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Http\Request;
 use App\Post;
+use Carbon\Carbon;
 
 class PostController extends Controller{
 
@@ -14,15 +15,21 @@ class PostController extends Controller{
 	}
 
 
-	public function posts(){
+	public function posts(Request $request){
 
 		$titulo = "Noticias";
 
+		$title = $request->get('title');
+
 		$posts = Post::orderBy('id', 'DESC')
+			->title($title)
 			->where('state', 'PUBLISHED')
 			->paginate(12);
+
 		return view('inicio', compact('posts', 'titulo'));				
 	}
+
+
 
 	public function tag($slug){
 

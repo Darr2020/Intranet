@@ -11,6 +11,8 @@ use Spatie\Permission\Models\Role;
 use App\Post;
 use App\Tag;
 use App\User;
+use Alert;
+
 
 class PostController extends Controller{
 
@@ -25,7 +27,10 @@ class PostController extends Controller{
         $posts = Post::orderBy('id', 'DESC')
             ->where('user_id', auth()->id())
             ->paginate();
+
         return view('admin.posts.index', compact('posts', 'titulo'));
+
+       
     }
 
     public function create(){
@@ -48,11 +53,13 @@ class PostController extends Controller{
         }
        
         $post->tags()->attach($request->get('tags'));
+        
+        alert()->success('La noticia ha sido creada correctamente',
+            '' . auth()->user()->name)->autoclose(4000);
 
         return redirect()
-            ->route('posts.index', $post->id)
-            ->with('info', 'Post creada con éxito');
-    }
+            ->route('posts.index', $post->id);
+       }
 
     public function show($id){
         $titulo = "Post";
@@ -82,13 +89,19 @@ class PostController extends Controller{
 
         $post->tags()->sync($request->get('tags'));
 
-        return redirect()->route('posts.index', $post->id)->with('info', 'Post actualizada con éxito');
+        alert()->success('La noticia ha sido editada correctamente',
+         '' . auth()->user()->name)->autoclose(4000);
+
+
+        return redirect()->route('posts.index', $post->id);
     }
 
     public function destroy($id){
         $post = Post::find($id);
         $this->authorize('pass', $post);
         $post->delete();
-        return back()->with('info', 'Eliminado correctamente');
+        
+        alert()->info('La noticia ha sido eliminada correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+        return back();
     }
 }

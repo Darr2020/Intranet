@@ -8,11 +8,15 @@ use App\User;
 
 class UserController extends Controller{
     
-    public function index(){
+    public function index(Request$request){
   
         $titulo = "Directorio";
 
-        $users = User::orderBy('name','ASC')->paginate();
+        $name = $request->get('name');
+
+        $users = User::orderBy('name','ASC')
+            ->name($name)
+            ->paginate();
      
         return view('users.directory', compact('users', 'titulo', 'str'));
     }

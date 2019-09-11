@@ -404,7 +404,6 @@ header{
 .fm-card {
   position: relative;
   width: 420px;
-  height: 450px;
   margin: auto;
   background: #fff;
   box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
@@ -436,21 +435,16 @@ header{
   border-left: 15px solid #fff;
   transform: rotate(-90deg);
 }
-.fm-card-content {
-  position: relative;
-  max-width: 100%;
-  height: 50%;
-  padding: 20px;
-}
-.fm-card-content .title a {
+
+.card-body .title a {
   text-decoration: none;
   color: #232323;
   font-weight: bold;
 }
-.fm-card-content .title a:hover {
+.card-body .title a:hover {
   color: dodgerblue;
 }
-.fm-card-content .resumen p {
+.card-body .resumen p {
   color: #555;
   margin-top: 20px;
   font-size: 15px;
@@ -458,20 +452,21 @@ header{
   text-align: left;
   max-width: 100ch;
 }
-.fm-card-content .continue a {
+.card-body .continue a {
   text-decoration: none;
   color: dodgerblue;
   font-size: 15px;
 }
-.fm-card-content .continue a:hover {
+.card-body .continue a:hover {
   text-decoration: underline;
 }
 .fm-card-footer {
   position: absolute;
   bottom: 0;
   left: 0;
+  padding: 10px;
   width: 100%;
-  height: 30px;
+  height: 40px;
   background-color: #f9f9f9;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -658,9 +653,8 @@ header{
   border-radius: 50%;
   background: none;
   color: #000;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  font-family: Nunito;
   outline: 0;
   -webkit-transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out,
     padding 0.2s;
@@ -753,8 +747,7 @@ header{
   border-radius: 0;
   background: none;
   color: #000;
-  font-family: Roboto;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   outline: 0;
   -webkit-transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out,
@@ -768,3 +761,63 @@ header{
   transform: translate(-100%, -50%);
 }
 
+.section-padding{
+	padding: 100px 0;
+}
+
+.single-service{
+	background: linear-gradient(90deg, #1CB3C8, #2572D9, #51E1FF);
+    background-size: 600% 50%;
+    animation: bggradient 10s linear infinite;
+    animation-direction: alternate;
+	padding: 15px;
+	transition: all .5s ease 0s;
+	height: 300px;
+	margin: 20px 0;
+	 box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
+  border-radius: 8px;
+}
+
+.single-service h3{
+	color: #fff;
+	margin: 0;
+	position: relative;
+	text-transform: uppercase;
+	top: 90px;
+	transition: all 700ms cubic-bezier(0.65, -0.50, 0.255, 1.50) 0s;
+}
+.single-service:hover h3{
+	color: #fff;
+	top: 0;
+	margin-bottom: 15px;
+}
+
+.single-service p{
+	opacity: 0;
+	transition: all 700ms cubic-bezier(0.65, -0.50, 0.255, 1.50) 0s;
+}
+
+.single-service:hover p{
+	color: #fff;
+	opacity: 1;
+	transform: scale(1);
+}
+
+.icon{
+	position: relative;
+	text-align: center;
+	top: 50px;
+	transition: all .4s ease 0s;
+	width: 60px;
+	background: #fff;
+	border-radius: 50px;
+	display: inline-block;
+	font-size: 24px;
+	height: 60px;
+	line-height: 60px;
+	margin-bottom: 0;
+}
+
+.single-service:hover .icon{
+	top: -10px;
+}

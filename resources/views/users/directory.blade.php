@@ -7,8 +7,8 @@
                 <h2>Directorio</h2>
             </div>
             <div class="col-4">
-                <form id="content2">
-                    <input type="text" name="input" class="input" id="search-input">
+                <form action=" {{ route('users.index') }} " method="GET" id="content2">
+                    <input type="text" name="name" class="input" id="search-input">
                     <button type="reset" class="search" id="search-btn"></button>
                 </form>
             </div>

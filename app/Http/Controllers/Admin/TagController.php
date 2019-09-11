@@ -27,7 +27,10 @@ class TagController extends Controller{
 
     public function store(TagStoreRequest $request){
         $tag = Tag::create($request->all());
-        return redirect()->route('tags.index', $tag->id)->with('info', 'Etiqueta creada con éxito');
+
+        alert()->info('La etiqueta ha sido creada correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+
+        return redirect()->route('tags.index', $tag->id);
     }
 
     public function edit($id){
@@ -39,11 +42,14 @@ class TagController extends Controller{
     public function update(TagUpdateRequest $request, $id){
         $tag = Tag::find($id);
         $tag->fill($request->all())->save();
-        return redirect()->route('tags.index', $tag->id)->with('info', 'Tag actualizada con éxito');
+
+        alert()->info('La etiqueta ha sido editada correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+        return redirect()->route('tags.index', $tag->id);
     }
 
     public function destroy($id){
         $tag = Tag::find($id)->delete();
-        return back()->with('info', 'Eliminado correctamente');
+        alert()->info('La etiqueta ha sido eliminada correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+        return back()->with('info');
     }
 }

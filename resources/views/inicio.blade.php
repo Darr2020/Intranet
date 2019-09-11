@@ -27,7 +27,7 @@
                             <img src="{{ asset('img/9.jpg') }}" class="img-fluid">
                         </a>
                     </div>
-                    <a href="services.html" class="btn btn-color btn-block"
+                    <a href="{{route('services') }}" class="btn btn-color btn-block"
                         role="button" aria-pressed="true">
                         Más servicios...
                     </a>
@@ -35,10 +35,19 @@
             </div>
                 
             <div class="col-md-6">
-                <form id="content">
-                  <input type="text" name="input" class="input" id="search-input">
+
+                {{-- Form::open(['route' => 'noticias', 'method' => 'GET', 'id' => 'content'])}}
+                    <input type="text" name="title" class="input" id="search-input">
+                    <button type="submit" class="search" id="search-btn"></button>
+                {{ Form::close() --}}
+
+                <form action=" {{route('noticias')}} " 
+                    method="GET" id="content">
+                    
+                    <input type="text" name="title" class="input" id="search-input">
                     <button type="reset" class="search" id="search-btn"></button>
-                </form>
+
+                </form>  
                 <section>
                     @foreach($posts as $post)
                         <div class="fm-card">
@@ -47,7 +56,7 @@
                                     <img src="{{ $post->image }}" class="img-responsive">
                                 @endif
                             </div>
-                            <div class="fm-card-content">
+                            <div class="card-body">
                                 <div class="title">
                                     <a href="{{ route('noticia', $post->slug) }}">
                                         {{ $post->title }}
@@ -61,13 +70,16 @@
                                 </div>
                             </div>
                             <div class="fm-card-footer">
-                                <div class="by">
-                                    <a href="#">made with <span style="color: crimson; font-size: 20px;">&hearts;</span> by darr</a>
-                                </div>
+                                <small class="float-right"> 
+                                    publicado {{ $post->created_at->diffForHumans() }} 
+                                </small>
                             </div>
                         </div>
                         <br>
                     @endforeach
+                    <div class="float-right">
+                        {!! $posts->render() !!}
+                    </div>
                 </section>
             </div>
 

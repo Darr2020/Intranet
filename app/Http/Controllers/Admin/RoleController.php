@@ -29,8 +29,9 @@ class RoleController extends Controller{
 
         $role->permissions()->sync($request->get('permissions'));
 
-        return redirect()->route('roles.index', $role->id)
-            ->with('info', 'Rol creado con éxito');
+        alert()->success('El rol ha sido creado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+
+        return redirect()->route('roles.index', $role->id);
     }
 
     public function edit($id){
@@ -48,13 +49,17 @@ class RoleController extends Controller{
 
         $role->permissions()->sync($request->get('permissions'));
 
-        return redirect()->route('roles.index', $role->id)
-            ->with('info', 'Rol guardado con éxito');
+        alert()->info('El rol ha sido editado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+
+
+        return redirect()->route('roles.index', $role->id);
     }
 
     public function destroy($id){
         $role = Role::find($id)->delete();
 
-        return back()->with('info', 'Rol eliminado correctamente');
+        alert()->info('El rol ha sido eliminado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+
+        return back();
     }
 }

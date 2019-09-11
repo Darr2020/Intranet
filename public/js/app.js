@@ -62,7 +62,10 @@ const expand = () => {
   input.classList.toggle("square");
 };
 
-searchBtn.addEventListener("click", expand);
+if (searchBtn) {
+	searchBtn.addEventListener("click", expand);	
+}
+
 
 /*=====  RELOJ  =====*/
 
@@ -85,4 +88,5 @@ $(document).ready(function() {
 		$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
 	}, 1000);  
 });
+
 

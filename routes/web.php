@@ -9,7 +9,32 @@ Route::middleware(['auth'])->group(function () {
 		Route::get('noticia/{slug}',  'PostController@post')->name('noticia');
 		Route::get('etiqueta/{slug}', 'PostController@tag')->name('etiqueta');
 		Route::get('eventos', 		  'EventController@index')->name('eventos');
+
+
+
+		Route::prefix('taks')->group( function(){
+
+			Route::get('', 'TaksController@index')->name('taks.index')
+				->middleware('permission:taks.index');
+
+			Route::get('create', 'TaksController@create')->name('taks.create')
+				->middleware('permission:taks.create');
+
+			Route::post('store', 'TaksController@store')->name('taks.store')
+				->middleware('permission:taks.create');
+
+			Route::get('{tarea}/edit', 'TaksController@edit')->name('taks.edit')
+				->middleware('permission:taks.edit');		
+
+			Route::put('{tarea}', 'TaksController@update')->name('taks.update')
+				->middleware('permission:taks.edit');
+
+			Route::delete('{tarea}', 'TaksController@destroy')->name('taks.destroy')
+				->middleware('permission:taks.destroy');
+		});	
 	});
+			Route::get('servicios', 'HomeController@services')->name('services');
+
 
 	Route::group(['namespace' => 'Admin'], function (){
 
@@ -36,6 +61,8 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::delete('posts/{id}','PostController@destroy')->name('posts.destroy')
 				->middleware('permission:posts.index');
+
+
 		});
 
 		/*=====  TAGS  =====*/

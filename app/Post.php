@@ -2,9 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model; 
+
 
 class Post extends Model{
+    
 
     const PUBLISHED = 1;
     const PENDING   = 2;
@@ -25,4 +27,11 @@ class Post extends Model{
     public function archives(){
 		return $this->belongsToMany(Archive::class);
 	}
+
+    //SCOPE
+    public function scopeTitle($query, $title){
+        if($title){
+            return $query->where('title', 'LIKE', "%$title%");
+        }
+    }
 }

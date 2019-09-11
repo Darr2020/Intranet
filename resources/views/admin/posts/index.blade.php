@@ -20,13 +20,16 @@
         	@endif
 
 			<div class="col-md-10 offset-md-1">
+				<h4 class="text-center">Listado de noticias</h4>
+				<hr>
+				<br>
+				<small>{{$posts->total()}} Noticias | página {{$posts->currentPage()}} de {{$posts->lastPage()}} </small>
 				<a href="{{ route('posts.create') }}"
 					class="float-right"
 					role="button" aria-pressed="true"><img src=" {{ asset('icons/create.svg') }}" style="width: 30px;" title="Crear Noticia">
 				</a>
-				
-
-				<table id="posts" class="table table-striped table-bordered">
+		 	
+				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th width="10px">Nro</th>
@@ -59,50 +62,21 @@
 									</a>
 								</td>
 								
-									<td width="10px">
-										{!! Form::open([
-											'route' => ['posts.destroy', $post->id],
-											'method' => 'DELETE']) !!}
-											<button style="background: transparent; border: none;">
-												<img src=" {{ asset('icons/delete.svg') }}" title="Eliminar noticia">
-											</button>
-										{!! Form::close() !!}
-									</td>
-												
+								<td width="10px">
+									{!! Form::open([
+										'route' => ['posts.destroy', $post->id],
+										'method' => 'DELETE']) !!}
+										<button style="background: transparent; border: none;">
+											<img src=" {{ asset('icons/delete.svg') }}" title="Eliminar noticia">
+										</button>
+									{!! Form::close() !!}
+								</td>												
 							</tr>
 						@endforeach
 					</tbody>
 				</table>
+				{!! $posts->render() !!}
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('data-table')
-	<script>
-		$(document).ready(function() {
-	    	$('#posts').DataTable({
-	    		"language": {
-	    			"info": "_TOTAL_ Noticias",
-	    			"search": "Buscar noticia:",
-	    			"paginate": {
-	    				"next": "siguiente",
-	    				"previous": "Anterior",
-	    			},
-	    			"lengthMenu": 'Mostrar <select>' + 
-	    				'<option value="10">10</option>'+
-	    				'<option value="20">20</option>'+
-	    				'<option value="40">40</option>'+
-	    				'<option value="60">60</option>'+
-	    				'<option value="-1">Todos</option>'+
-	    				'</select> Noticias',
-	    			"loadingRecords": "Cargando...",
-	    			"processing": "Procesando...",
-	    			"emptyTable": "No hay noticias creadas",
-	    			"zeroRecords": "Esa noticia no existe",
-	    			
-	    		}
-	    	});
-		});
-	</script>
 @endsection

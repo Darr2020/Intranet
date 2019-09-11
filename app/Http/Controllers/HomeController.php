@@ -21,8 +21,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         return view('home');
+    }
+
+    public function services(){
+        $titulo = 'Servicios';
+        return view('users.services', compact('titulo'));
     }
 }
