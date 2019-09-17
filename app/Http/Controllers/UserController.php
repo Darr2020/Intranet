@@ -3,22 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use Caffeinated\Shinobi\Models\Role;
 use App\User;
+use Carbon\Carbon;
+
 
 class UserController extends Controller{
     
-    public function index(Request$request){
+    public function index(Request $request){
   
         $titulo = "Directorio";
 
         $name = $request->get('name');
 
+     
+
         $users = User::orderBy('name','ASC')
+            //->where('last_login', '!=', null)
             ->name($name)
             ->paginate();
      
-        return view('users.directory', compact('users', 'titulo', 'str'));
+        return view('users.directory', compact('users', 'titulo'));
     }
    
 

@@ -8,6 +8,7 @@ use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
+use App\Notifications\newPost;
 use App\Post;
 use App\Tag;
 use App\User;
@@ -53,6 +54,8 @@ class PostController extends Controller{
         }
        
         $post->tags()->attach($request->get('tags'));
+
+        notify(new newPost($post));
         
         alert()->success('La noticia ha sido creada correctamente',
             '' . auth()->user()->name)->autoclose(4000);

@@ -35,12 +35,6 @@
             </div>
                 
             <div class="col-md-6">
-
-                {{-- Form::open(['route' => 'noticias', 'method' => 'GET', 'id' => 'content'])}}
-                    <input type="text" name="title" class="input" id="search-input">
-                    <button type="submit" class="search" id="search-btn"></button>
-                {{ Form::close() --}}
-
                 <form action=" {{route('noticias')}} " 
                     method="GET" id="content">
                     
