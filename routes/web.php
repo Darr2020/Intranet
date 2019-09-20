@@ -9,8 +9,7 @@ Route::middleware(['auth'])->group(function () {
 		Route::get('noticia/{slug}',  'PostController@post')->name('noticia');
 		Route::get('etiqueta/{slug}', 'PostController@tag')->name('etiqueta');
 		Route::get('eventos', 		  'EventController@index')->name('eventos');
-
-
+		Route::get('servicios', 	  'ServiceController@services')->name('services');
 
 		Route::prefix('taks')->group( function(){
 
@@ -33,10 +32,22 @@ Route::middleware(['auth'])->group(function () {
 				->middleware('permission:taks.destroy');
 		});	
 	});
-			Route::get('servicios', 'HomeController@services')->name('services');
-
+			
 
 	Route::group(['namespace' => 'Admin'], function (){
+
+		Route::get('PanelAdmin', 'PanelController@view')->name('panel.view')
+			->middleware('permission:panel.view');
+			route::get('dataEstadistica', 'PanelController@dataEstadistica');
+
+		Route::prefix('Graficas')->group(function (){
+			Route::get('', 'ChartsController@view')->name('charts.views');
+			Route::get('Lineal', 'ChartsController@line')->name('charts.line');
+			Route::get('Barra', 'ChartsController@Bar')->name('charts.bar');
+			Route::get('Torta', 'ChartsController@pie')->name('charts.pie');
+		});
+	
+
 
 		/*=====  POSTS  =====*/	
 		Route::prefix('posts')->group( function(){	

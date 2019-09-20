@@ -11,7 +11,6 @@ class CreatePostsTable extends Migration{
             $table->increments('id');
 
             $table->integer('user_id')->unsigned();
-            //$table->integer('archivo_id')->unsigned();
 
             $table->string('title', 150);
             $table->string('slug', 150)->unique();
@@ -27,10 +26,6 @@ class CreatePostsTable extends Migration{
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
-          /*  $table->foreign('archivo_id')->references('id')->on('archivos')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');*/
         });
     }
 

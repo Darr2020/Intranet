@@ -505,7 +505,7 @@ header{
   background: linear-gradient(90deg, #1CB3C8, #2572D9, #51E1FF);
   background-size: 600% 50%;
   animation: bggradient 10s linear infinite;
-  animation-direction: alternate;   border-radius-top-left: 2px;
+  animation-direction: alternate; border-radius-top-left: 2px;
   border-radius-top-right: 2px;
   height: 150px;
   text-align: center;

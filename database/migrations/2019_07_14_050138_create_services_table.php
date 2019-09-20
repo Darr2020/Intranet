@@ -10,8 +10,6 @@ class CreateServicesTable extends Migration{
          Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('archive_id')->unsigned();
-
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('description', 250)->nullable();
@@ -19,10 +17,6 @@ class CreateServicesTable extends Migration{
             $table->enum('state', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->timestamps();
             $table->softDeletes();
-
-           $table->foreign('archive_id')->references('id')->on('archives')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
        });
     }
 

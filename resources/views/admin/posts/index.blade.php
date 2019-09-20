@@ -17,8 +17,8 @@
 	                    </div>
 	                </div>
 	            </div>
-        	@endif
-
+			@endif
+			
 			<div class="col-md-10 offset-md-1">
 				<h4 class="text-center">Listado de noticias</h4>
 				<hr>

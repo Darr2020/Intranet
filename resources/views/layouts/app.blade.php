@@ -18,8 +18,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 </head>
 <body>
     <div id="app">
@@ -50,20 +49,6 @@
                                 <a class="nav-link" href="{{ route('login') }}">Bienvenido</a>
                             </li>
                         @else
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Notifications <span class="badge">{{count(Auth::user()->unreadNotifications)}}</span>
-                            </a>
-                         
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    @foreach (Auth::user()->unreadNotifications as $notification)
-                                        <a href="{{ route('posts.show', $notification->data['post']['id']) }}"><i>{{ $notification->data["user"]["name"] }}</i> has commented in <b>{{ $notification->data["post"]["title"] }}</b></a>
-                                    @endforeach
-                                </li>
-                            </ul>
-                        </li>
                             <!--Usuarios-->
                             <li class="nav-item {{ active('noticias') }}">
                                 <a class="nav-link" href="{{ url('/') }}">Inicio</a>
@@ -75,23 +60,13 @@
                             <li class="nav-item {{ active('eventos') }}">
                                 <a class="nav-link" href="{{ url('eventos') }}">Eventos</a>
                             </li>
-                                                        
-                            @can('roles.index')
-                                <li class="nav-item">                            
-                                    <a class="nav-link" href="{{ route('roles.index') }}">Roles</a>
-                                </li>
-                            @endcan
 
-                            @can('posts.index')                               
-                                <li class="nav-item {{ active('posts') }}">
-                                    <a class="nav-link" href="{{ url('posts') }}">Noticias</a>
+                                
+                            @can('panelAdmin')
+                                <li class="nav-item">                            
+                                    <a class="nav-link" href="{{ route('panel.view') }}">Panel Administrador</a>
                                 </li>
                             @endcan  
-                            @can('tags.index')                               
-                                <li class="nav-item {{ active('tags') }} ">
-                                    <a class="nav-link" href="{{ url('tags') }}">Etiquetas</a>
-                                </li>
-                            @endcan     
 
                             <div class="wrapper-drop">
                                 <label>
@@ -144,9 +119,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/highcharts.js') }}"></script>
-    <script src="{{ asset('js/graficas.js') }}"></script>
-    <script src="{{ asset('js/temalaravel.js') }}"></script>
         
     @include('sweet::alert')
     @yield('scripts')

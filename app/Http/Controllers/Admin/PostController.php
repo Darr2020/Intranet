@@ -15,6 +15,7 @@ use App\User;
 use Alert;
 
 
+
 class PostController extends Controller{
 
 
@@ -29,9 +30,7 @@ class PostController extends Controller{
             ->where('user_id', auth()->id())
             ->paginate();
 
-        return view('admin.posts.index', compact('posts', 'titulo'));
-
-       
+        return view('admin.posts.index', compact('posts', 'titulo'));       
     }
 
     public function create(){
@@ -55,7 +54,7 @@ class PostController extends Controller{
        
         $post->tags()->attach($request->get('tags'));
 
-        notify(new newPost($post));
+       // notify(new newPost($post));
         
         alert()->success('La noticia ha sido creada correctamente',
             '' . auth()->user()->name)->autoclose(4000);
@@ -94,7 +93,6 @@ class PostController extends Controller{
 
         alert()->success('La noticia ha sido editada correctamente',
          '' . auth()->user()->name)->autoclose(4000);
-
 
         return redirect()->route('posts.index', $post->id);
     }

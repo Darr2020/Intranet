@@ -10,6 +10,5 @@ $factory->define(App\Service::class, function (Faker $faker) {
         'description' => $faker->sentence,
         'route' => $faker->url,
         'state'    => $faker->randomElement(['DRAFT', 'PUBLISHED']),
-        'archive_id' =>  rand(1,10 )
     ];
 });
