@@ -5,12 +5,21 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\User;
 use Carbon;
 
 class PanelController extends Controller{
   
     public function view(){
 
+        //Primera Letra del nombre
+        $getName = User::select('name')->where('name', auth()->user()->name)->value('name');
+        $letterName = $getName[0];
+        
+        //Perfil de usuario
+        $profile = user::select('slug')->where('slug', auth()->user()->slug)->value('slug');              
+                
+        /*Cuenta Roles, Etiquetas, Noticias y Eventos que hay enla base de Datos*/
         $countRol = DB::table('roles')->count();
         $countTag = DB::table('tags')->count();
 
@@ -21,14 +30,19 @@ class PanelController extends Controller{
         $countEvent = DB::table('events')
             ->where('user_id', auth()->id())
             ->count();  
-        
+
+        //Inicializando - Finalizando Meses Y Años
         $startMonth = date("Y-m-01"); 
         $endtMonth  = date("Y-m-t");
         $startYear  = date("Y-01-d"); 
         $endYear    = date("Y-12-t");
-
-        $year   = date("Y");
-        $month  = date("m");//->diffForHumans();
+        
+        //Array Meses en español
+        $monthSpanish = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+       
+        $year   = date("Y");  //Año Actual
+        $month = $monthSpanish[date("n")-1]; //Mes actualen español
+    
 
         //Consulta las noticias publicadas en el mes y año actual
         $postMonth = DB::table('posts')              
@@ -54,7 +68,9 @@ class PanelController extends Controller{
             ->count(); 
 
         return view('admin.panel', compact(
-            'year', 'month', 'countRol', 'countPost', 'countEvent', 'countTag', 'postMonth', 'postYear', 'eventMonth', 'eventYear'
+            'year', 'profile', 'month', 
+            'countRol', 'letterName', 'countPost', 'countEvent',
+            'countTag', 'postMonth', 'postYear', 'eventMonth', 'eventYear'
         ));
 
     }

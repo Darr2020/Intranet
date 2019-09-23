@@ -38,7 +38,8 @@ Route::middleware(['auth'])->group(function () {
 
 		Route::get('PanelAdmin', 'PanelController@view')->name('panel.view')
 			->middleware('permission:panel.view');
-			route::get('dataEstadistica', 'PanelController@dataEstadistica');
+		
+		Route::get('dataEstadistica', 'PanelController@dataEstadistica');
 
 		Route::prefix('Graficas')->group(function (){
 			Route::get('', 'ChartsController@view')->name('charts.views');

@@ -16,9 +16,7 @@ class UserController extends Controller{
   
         $titulo = "Directorio";
 
-        $name = $request->get('name');
-
-     
+        $name = $request->get('name');    
 
         $users = User::orderBy('name','ASC')
             //->where('last_login', '!=', null)
@@ -32,17 +30,14 @@ class UserController extends Controller{
     public function show($slug){
 
         $titulo = "Perfil";
-
         $user = User::where('slug', $slug)->first();
-
 
         return view('users.profile', compact('user', 'titulo'));
     }
 
     
     public function edit($id){
-        $titulo = "Editar";
-        
+        $titulo = "Editar";        
         $user = User::find($id);
         $roles = Role::get();
 

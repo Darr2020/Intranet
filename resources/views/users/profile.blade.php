@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Usuario</div>
 
-                <div class="panel-body">    
+                <div class="panel-body">  
                 </div>
             </div>
         </div>

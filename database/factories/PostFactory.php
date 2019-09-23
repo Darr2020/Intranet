@@ -14,5 +14,6 @@ $factory->define(App\Post::class, function(Faker $faker){
         'image'    => $faker->imageUrl($width = 1820, $height = 1110),
         'content' => $faker->text(1000),
         'state'    => $faker->randomElement(['DRAFT', 'PUBLISHED']),
+        'created_at' => $faker->dateTimeBetween($startDate = '-10 years', $endDate = 'now', $timezone = null)
     ];
 });
