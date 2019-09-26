@@ -10,110 +10,85 @@
 
     <title> {!!$titulo!!} ~ {{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"> 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
- 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 </head>
 <body>
-    <div id="app">
+    <div id="app">      
+        <header class="sticky-top">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
+                <div class="container">
+                    <a class="navbar-brand" href="{{ url('/') }}">MEUNET</a>                    
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-        @can('panel.view')
-                Prueba       
-        @elsecan()
-            <header class="sticky-top">
-                <div class="container-fluid">
-                    <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
-                    <div class="container">
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                        MEUNET
-                        </a>
-                        
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-    
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <!-- Left Side Of Navbar -->
-                            <ul class="navbar-nav mr-auto">
-    
-                            </ul>
-    
-                            <!-- Right Side Of Navbar -->
-                            <ul class="navbar-nav ml-auto">
-                                <!-- Authentication Links -->
-                                @guest
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">Bienvenido</a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto"></ul>
+
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav ml-auto">
+                            @guest
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">Bienvenido</a>
+                                </li>
+                            @else
+                                <!--Usuarios-->
+                                <li class="nav-item {{ active('noticias') }}">
+                                    <a class="nav-link" href="{{ url('/') }}">Inicio</a>
+                                </li>
+
+                                <li class="nav-item {{ active('directorio') }}">
+                                    <a class="nav-link" href="{{ url('directorio') }}">Directorio</a>
+                                </li>
+                                <li class="nav-item {{ active('eventos') }}">
+                                    <a class="nav-link" href="{{ url('eventos') }}">Eventos</a>
+                                </li>
+
+                                    
+                                @can('panelAdmin')
+                                    <li class="nav-item">                            
+                                        <a class="nav-link" href="{{ route('panel.view') }}">Panel Administrador</a>
                                     </li>
-                                @else
-                                    <!--Usuarios-->
-                                    <li class="nav-item {{ active('noticias') }}">
-                                        <a class="nav-link" href="{{ url('/') }}">Inicio</a>
-                                    </li>
-    
-                                    <li class="nav-item {{ active('directorio') }}">
-                                        <a class="nav-link" href="{{ url('directorio') }}">Directorio</a>
-                                    </li>
-                                    <li class="nav-item {{ active('eventos') }}">
-                                        <a class="nav-link" href="{{ url('eventos') }}">Eventos</a>
-                                    </li>
-    
-                                        
-                                    @can('panelAdmin')
-                                        <li class="nav-item">                            
-                                            <a class="nav-link" href="{{ route('panel.view') }}">Panel Administrador</a>
+                                @endcan  
+
+                                <div class="wrapper-drop">
+                                    <label>
+                                        <img src="{{ asset('icons/person.svg') }}" style="width: 30px">
+                                    </label>
+                                    <ul class="ul-drop">
+                                        <li class="li-drop"> 
+                                            <a class="nav-link" href="{{ route('users.show', Auth::user()->slug) }}">
+                                                Perfil
+                                                <img src=" {{asset('icons/favorite-red.svg')}} " alt="">
+                                            </a>
                                         </li>
-                                    @endcan  
-    
-                                    <div class="wrapper-drop">
-                                        <label>
-                                            <img src="{{ asset('icons/person.svg') }}" style="width: 30px">
-                                        </label>
-                                        <ul class="ul-drop">
-                                            <li class="li-drop"> 
-                                                <a class="nav-link" href="{{ route('users.show', Auth::user()->slug) }}">
-                                                    Perfil
-                                                    <img src=" {{asset('icons/favorite-red.svg')}} " alt="">
-                                                </a>
-                                            </li>
-                                            <li class="li-drop"> 
-                                                <a href="{{ route('logout') }}" class="nav-link"
-                                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                                    Salir
-                                                </a>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"    style="display: none;">
-                                                    @csrf
-                                                </form>
-                                            </li>
-                                        </ul>
-                                    </div>                           
-                                @endguest
-                            </ul>
-                        </div>
+                                        <li class="li-drop"> 
+                                            <a href="{{ route('logout') }}" class="nav-link"
+                                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                Salir
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"    style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>                           
+                            @endguest
+                        </ul>
                     </div>
-                    </nav>
-    
                 </div>
-            </header> 
-            <main class="py-4">
-                @yield('content')
-            </main>   
-                 
-        @endcan
-
-        
+                </nav>
+            </div>
+        </header> 
+        <main class="py-4">
+            @yield('content')
+        </main>                
 
         @if (session('info'))
             <div class="container">
@@ -125,16 +100,11 @@
                     </div>
                 </div>
             </div>
-        @endif
-
-       
+        @endif       
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-        
+    <script src="{{ asset('js/app.js') }}"></script>        
     @include('sweet::alert')
-    @yield('scripts')
-
 </body>
 </html>

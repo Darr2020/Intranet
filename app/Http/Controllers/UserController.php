@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 use Caffeinated\Shinobi\Models\Role;
 use App\User;
+use Alert;
 use Carbon\Carbon;
 
 
@@ -16,10 +17,9 @@ class UserController extends Controller{
   
         $titulo = "Directorio";
 
-        $name = $request->get('name');    
+        $name = $request->get('name');  
 
         $users = User::orderBy('name','ASC')
-            //->where('last_login', '!=', null)
             ->name($name)
             ->paginate();
      
@@ -50,7 +50,9 @@ class UserController extends Controller{
 
         $user->roles()->sync($request->get('roles'));
 
-        return redirect()->route('users.edit', $user->id)
-            ->with('info', 'Usuario guardado con éxito');
+        alert()->success('Se le ha agregado el rol a ' .$user->name. ' ' .$user->last_name ,
+         '' . auth()->user()->name)->autoclose(4000);
+
+        return redirect()->route('users.edit', $user->id);
     }
 }

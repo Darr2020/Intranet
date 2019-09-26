@@ -1,5 +1,4 @@
 @extends('admin.panel')
-
 @section('contentAdmin')
 	<div class="container">
 		<div class="row">

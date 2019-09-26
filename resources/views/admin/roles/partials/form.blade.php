@@ -42,8 +42,6 @@
 </div>
 
 @section('scripts')
-
-
 	<script>
 		$(document).ready(function(){
         	$("#name").keyup(function(){

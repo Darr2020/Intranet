@@ -59,12 +59,11 @@
 </div>
 
 <div class="form-group">
-	{{ Form::submit('Guardar noticia', ['class' => 'btn btn-color btn-lg btn-block']) }}
+	{{ Form::submit('Guardar noticia', ['class' => 'btn btn-primary btn-lg btn-block']) }}
 </div>
 
 @section('scripts')
-
-    <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}" ></script>
+	<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}" ></script>
 
 	<script>
 		$(document).ready(function(){
@@ -93,9 +92,9 @@
            return $("#slug").val(str);
 		}
 
-		CKEDITOR.config.heigth = 500;
+	/*	CKEDITOR.config.heigth = 500;
 		CKEDITOR.config.width = 'auto';
 
-		CKEDITOR.replace('content')
+		CKEDITOR.replace('content');*/
 	</script>
 @endsection

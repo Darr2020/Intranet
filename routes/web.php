@@ -73,8 +73,6 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::delete('posts/{id}','PostController@destroy')->name('posts.destroy')
 				->middleware('permission:posts.index');
-
-
 		});
 
 		/*=====  TAGS  =====*/
@@ -126,6 +124,9 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::get('', 'RoleController@index')->name('roles.index')
 				->middleware('permission:roles.index');
+
+			Route::get('listado', 'RoleController@listar')->name('listar.users')
+				->middleware('permission:roles.listar');
 
 			Route::get('create', 'RoleController@create')->name('roles.create')
 				->middleware('permission:roles.create');

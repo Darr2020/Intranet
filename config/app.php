@@ -180,6 +180,7 @@ return [
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        App\Providers\dataPanelServiceProvider::class,
 
     ],
 

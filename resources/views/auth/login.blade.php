@@ -9,18 +9,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 </head>
 <body>
-
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 offset-md-1">
@@ -82,11 +76,6 @@
             </div>
         </div>
     </div>   
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>   
-    
 </body>
 </html>
 

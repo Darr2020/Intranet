@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,28 +10,25 @@
 
   <title>Menunet Admin</title>
 
-  <!-- Custom fonts for this template-->
   <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
-  <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
-
+  <script src=" {{asset('js/sweetalert.min.js')}} "></script> 
+  <script src=" {{asset('js/jquery.min.js')}} "></script>
+  <script src=" {{asset('js/raphael.min.js')}} "></script>
+  <script src=" {{asset('js/morris.min.js')}} "></script>
 </head>
 
 <body id="page-top">
-
-  <!-- Page Wrapper --> 
- 
   <div id="wrapper">
-
       <!-- Sidebar -->
       <div class="sticky-top">
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sticky-top" id="accordionSidebar">
           <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-text mx-3">MEUNET Admin</div>
+              <div class="sidebar-brand-text mx-3">MEUNET Admin</div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
@@ -59,7 +55,10 @@
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                   @can('roles.index')
-                      <a class="collapse-item" href="{{ route('roles.index') }}">Gestionar Roles <span class="badge badge-info float-right"> {{$countRol}} </span></a>
+                      <a class="collapse-item" href="{{ route('roles.index') }}">Gestionar Roles <span class="badge badge-info float-right"> {{$TRol}} </span></a>
+                  @endcan
+                  @can('roles.asignar')
+                      <a class="collapse-item" href="{{ route('listar.users') }}">Asignar Rol</a>
                   @endcan
                   @can('roles.create')
                       <a class="collapse-item" href="{{ route('roles.create') }}">Crear Rol 
@@ -80,7 +79,7 @@
                         @can('posts.index')
                             <a class="collapse-item" href="{{ route('posts.index') }}">
                                 Gestionar Noticias 
-                                <span class="badge badge-info float-right"> {{$countPost}} </span>
+                                <span class="badge badge-info float-right"> {{$TPost}} </span>
                             </a>
                         @endcan
                         @can('posts.create')
@@ -102,7 +101,7 @@
                         @can('events.index')
                             <a class="collapse-item" href="{{ route('events.index') }}">
                                 Gestionar Eventos 
-                                <span class="badge badge-info float-right"> {{$countEvent}} </span>
+                                <span class="badge badge-info float-right"> {{$TEvent}} </span>
                             </a>
                         @endcan
                         @can('posts.create')
@@ -124,7 +123,7 @@
                         @can('tags.index')
                             <a class="collapse-item" href="{{ route('tags.index') }}">
                                 Gestionar Etiquetas 
-                                <span class="badge badge-info float-right"> {{$countTag}} </span>
+                                <span class="badge badge-info float-right"> {{$TTag}} </span>
                             </a>
                         @endcan
                         @can('posts.create')
@@ -135,11 +134,7 @@
                     </div>
                 </div>
             </li>
-            <hr class="sidebar-divider">
-  
-            <!-- More -->
-            <div class="sidebar-heading">Más ...</div>
-  
+             
             <!-- Charts statistics-->
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">
@@ -166,23 +161,29 @@
               </div>
             </li>
   
-            <!-- Reports statistics-->
+            <hr class="sidebar-divider">
             <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReports" aria-expanded="true" aria-controls="collapseReports"> 
-                  <img src=" {{asset('icons/reports.svg')}} ">
-                <span>Reportes estadísticos</span>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSesion" aria-expanded="true" aria-controls="collapseSesion">         
+                <span>Mi sesión</span>
               </a> 
-              <div id="collapseReports" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+              <div id="collapseSesion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item" href=" {{route('charts.views')}} ">Todas las gráficas</a>
-                  <a class="collapse-item" href=" {{route('charts.line')}} ">De Linea</a>
-                  <a class="collapse-item" href=" {{route('charts.bar')}} ">De Barra</a>
-                  <a class="collapse-item" href=" {{route('charts.pie')}} ">De Torta</a>
-                  
+                  <a class="collapse-item text-primary" href=" {{route('charts.views')}} ">
+                    <strong>{{ Auth::user()->name }} {{ Auth::user()->last_name }} </strong>
+                  </a>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                  </a>                
                 </div>
               </div>
             </li>
-          
+            <li class="nav-item">
+              <a href=" {{url('/')}} " class="nav-link ">
+                <img src=" {{asset('icons/back.svg')}} ">
+                Regresar al inicio
+              </a>
+            </li>
             <!-- Divider -->
           <hr class="sidebar-divider d-none d-md-block">
   
@@ -192,190 +193,115 @@
           </div>
         </ul>
       </div>
-      <!-- End of Sidebar -->
-  
-      <!-- Content Wrapper -->
+     
+
       <div id="content-wrapper" class="d-flex flex-column">
   
         <!-- Main Content -->
-        <div id="content">
-  
-          <!-- Navbar -->
-          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-  
-            <!-- Sidebar ToggleButton(Topbar) -->
-            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
-              <img src=" {{asset('icons/bar.svg')}} ">
-            </button>  
+        <div id="content"> 
+        
+        <br>
+          <!-- Sidebar ToggleButton(Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
+            <img src="{{asset('icons/bar.svg')}}">
+          </button>           
             
-            <a href=" {{url('/')}} " class="nav-link ">
-              <img src=" {{asset('icons/back.svg')}} ">
-              Regresar al inicio</a>
-  
-            <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">
+          <div class="container-fluid">                    
            
-              <div class="topbar-divider d-none d-sm-block"></div>
-  
-              <!-- Nav Item - User Information -->
-              <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }} {{ Auth::user()->last_name }}</span>
-                  <span style=" width: 30px;height: 30px;                
-                    -moz-border-radius: 50%; -webkit-border-radius: 50%;
-                    border-radius: 50%; background: #e74a3b;">
-                    <h4 class="text-white text-center">{{$letterName}}</h4> 
-                  </span>
-                </a>
-                <!-- Dropdown - User Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href=" {{route('users.show', $profile)}} ">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    perfil
-                  </a>             
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
-                  </a>
-                </div>
-              </li>
-  
-            </ul>
-  
-          </nav>
-          <!-- End of Topbar -->
-  
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
-                     
-            <h3 class="h3">Datos por Año</h3>
-            <hr>
             <div class="row"> 
               <!-- DATA FOR YEAR -->     
-              <!-- Posts Year -->
-              <div class="col-xl-3 col-md-4 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Noticias publicadas en {{$year}}</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$postYear}}</div>
-                      </div>                   
-                      <img src="{{ asset('icons/news.svg') }}" style="width: 40px">                     
+              <!-- Posts Year -->          
+              <div class="col-xl-3 col-md-4">
+                <div class="card shadow">                
+                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-danger">Noticias en {{$y}}</h6>
+                  </a>
+                  <div class="collapse show" id="collapseYear">
+                    <div class="card-body">
+                      Haz publicado <strong> {{$postY}} noticias</strong> en el año
                     </div>
                   </div>
                 </div>
               </div>
               <!-- Events Year -->
-              <div class="col-xl-3 col-md-4 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Eventos publicados en {{$year}} </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$eventYear}}</div>
-                      </div>                   
-                        <img src=" {{asset('icons/calendarA.svg')}} " style="width: 40px">                    
+              <div class="col-xl-3 col-md-4">
+                <div class="card  shadow">                
+                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-danger">Eventos en {{$y}}</h6>
+                  </a>
+                  <div class="collapse show" id="collapseYear">
+                    <div class="card-body">
+                      Haz publicado <strong> {{$eventY}}  eventos</strong> en el año
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>             
               <!-- Tasks Year -->
-              <div class="col-xl-3 col-md-4 mb-4">
-                <a href=" {{route('charts.bar')}} ">
-                <div class="card border-left-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Tareas creadas en {{$year}} </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$eventYear}}</div>
-                      </div>                   
-                        <img src=" {{asset('icons/calendarA.svg')}} " style="width: 40px">                    
+              <div class="col-xl-3 col-md-4">
+                <div class="card shadow">                
+                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-danger">Tareas en {{$y}}</h6>
+                  </a>
+                  <div class="collapse show" id="collapseYear">
+                    <div class="card-body">
+                      Los usuarios han creado <strong> <small>add tasks</small>  tareas</strong> en el año
                     </div>
                   </div>
                 </div>
-                </a>
               </div>
+              
             </div>
-  
-            <h3 class="h3">Datos por Mes</h3>
+
             <hr>
             <div class="row">
                <!-- DATA FOR MONTH -->
                <!-- Posts Months -->
-               <div class="col-xl-3 col-md-4 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Noticias publicadas en el mes de {{$month}} </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"> {{$postMonth}} </div>
-                      </div> 
-                      <img src="{{ asset('icons/news.svg') }}" style="width: 40px">                  
+               <div class="col-xl-3 col-md-4">
+                <div class="card shadow">                
+                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">Noticias en {{$m}}</h6>
+                  </a>
+                  <div class="collapse show" id="collapseMonths">
+                    <div class="card-body">
+                    Haz publicado <strong>{{$postM}}  noticias</strong> en el mes
                     </div>
                   </div>
                 </div>
-              </div>
-  
+              </div>                
               <!-- Events Months -->
-              <div class="col-xl-3 col-md-4 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                          Eventos publicados en {{$month}}
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$eventMonth}}</div>
-                      </div> 
-                      <img src=" {{asset('icons/calendar.svg')}} " style="width: 40px">                  
+              <div class="col-xl-3 col-md-4">
+                <div class="card shadow">                
+                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">Eventos en {{$m}}</h6>
+                  </a>
+                  <div class="collapse show" id="collapseMonths">
+                    <div class="card-body">
+                    Haz publicado <strong>{{$eventM}}  eventos</strong> en el mes  <img src=" {{asset('icons/calendar.svg')}} ">
                     </div>
                   </div>
                 </div>
-              </div>
-  
+              </div>  
               <!-- Tasks Months -->
-              <div class="col-xl-3 col-md-4 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                          Tareas publicados en {{$month}}
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$eventMonth}}</div>
-                      </div> 
-                      <img src=" {{asset('icons/calendar.svg')}} " style="width: 40px">                  
+              <div class="col-xl-3 col-md-4">
+                <div class="card shadow">                
+                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-black">Tareas en {{$m}}</h6>
+                  </a>
+                  <div class="collapse show" id="collapseMonths">
+                    <div class="card-body">
+                    Los usuarios han creado <strong> <small>add tasks</small>  tareas</strong> en el mes  <img src=" {{asset('icons/calendar.svg')}} ">
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-  
-                
-            <!-- Content Row -->
-            <div class="row">
-              <div class="col-lg-6 mb-4">  
-                  <main class="py-4">
-                      @yield('contentAdmin')
-                  </main>     
-              </div>
-            </div>
-        <!-- End of Main Content -->
-  
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Your Website 2019</span>
-            </div>
-          </div>
-        </footer>
-        <!-- End of Footer -->
-  
+             
+            </div>               
+      
+            <main class="py-4">
+              @yield('contentAdmin')
+            </main>     
+             
       </div>
-      <!-- End of Content Wrapper -->
-  
     </div>
   
 
@@ -407,14 +333,12 @@
   </div>
 
 
-  <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ asset('vendor/js/jquery.min.js') }}"></script>
+  <script src="{{ asset('vendor/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('vendor/js/jquery.easing.min.js') }}"></script>
+  <script src="{{ asset('js/admin.min.js') }}"></script>
 
- 
-  <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-
-
+  @include('sweet::alert')
+  @yield('scripts')
 </body>
-
 </html>

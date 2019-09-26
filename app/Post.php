@@ -20,14 +20,17 @@ class Post extends Model{
         return $this->belongsTo(User::class);
     }
 
+    public function archives(){
+		return $this->morphOne(Archive::class, 'archiveable');
+    }
+    
+    /*public function tags(){
+        return $this->morphToMany(Tag::class, 'taggable');
+    }*/
+
     public function tags(){
         return $this->belongsToMany(Tag::class);
     }
-
-    public function archives(){
-		return $this->belongsToMany(Archive::class);
-	}
-
     //SCOPE
     public function scopeTitle($query, $title){
         if($title){

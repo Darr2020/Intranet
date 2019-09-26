@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-around">
             <div class="col-4">
-                <h2>Directorio</h2>
+                <h2>Directorio</h2> 
             </div>
             <div class="col-4">
                 <form action=" {{ route('users.index') }} " method="GET" id="content2">
@@ -12,9 +12,7 @@
                     <button type="reset" class="search" id="search-btn"></button>
                 </form>
             </div>
-        </div>
-
-        
+        </div>        
         <div class="row">
             <div class="col-12">
                 <table class="table">
@@ -25,7 +23,6 @@
                             <th class="text-center">Extensión</th>
                             <th class="text-center">Email</th>
                             <th class="text-center">Ultima conexión</th>
-                            <th colspan="2">&nbsp;</th>
 
                         </tr>
                     </thead>
@@ -43,14 +40,14 @@
                                     <td class="text-center"> {{ $user->extension }} </td>
                                     <td class="text-center"> {{ $user->email }}     </td>
                                     <td class="text-center"> {{ date('d/m/Y', strtotime($user->last_login)) }}</td>
-                                    @can('users.edit')
+                                   {{-- @can('users.edit')
                                         <td width="10px">
                                             <a href="{{ route('users.edit', $user->id) }}" 
                                                 role="button">
                                         <img src="{{ asset('icons/edit.svg') }}" title="Editar evento">
                                             </a>
                                         </td>
-                                    @endcan
+                                    @endcan--}}
                                 </tr>
                             @endforeach             
                         </tbody>
