@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/inicio.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"> 
 
 
@@ -48,9 +49,7 @@
                                 <li class="nav-item {{ active('eventos') }}">
                                     <a class="nav-link" href="{{ url('eventos') }}">Eventos</a>
                                 </li>
-
-                                    
-                                @can('panelAdmin')
+                                @can('admin.panel')
                                     <li class="nav-item">                            
                                         <a class="nav-link" href="{{ route('panel.view') }}">Panel Administrador</a>
                                     </li>
@@ -64,7 +63,7 @@
                                         <li class="li-drop"> 
                                             <a class="nav-link" href="{{ route('users.show', Auth::user()->slug) }}">
                                                 Perfil
-                                                <img src=" {{asset('icons/favorite-red.svg')}} " alt="">
+                                                <img src=" {{asset('icons/favorite-red.svg')}} " class="float-right">
                                             </a>
                                         </li>
                                         <li class="li-drop"> 
@@ -104,7 +103,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>        
+    <script src="{{ asset('js/app.js') }}"></script>      
     @include('sweet::alert')
 </body>
 </html>

@@ -57,7 +57,7 @@ document.onmousemove = function(){
 const input = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 
-const expand = () => {
+const expand = ()=>{
   searchBtn.classList.toggle("close");
   input.classList.toggle("square");
 };
@@ -65,6 +65,7 @@ const expand = () => {
 if (searchBtn) {
 	searchBtn.addEventListener("click", expand);	
 }
+
 
 
 /*=====  RELOJ  =====*/

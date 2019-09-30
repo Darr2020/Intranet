@@ -37,9 +37,7 @@ class dataPanelServiceProvider extends ServiceProvider{
         View::composer(['*'], function($view){
             $y = date('Y');
             $view->with('y', $y);
-        });
-
-       
+        });       
 
         View::composer(['*'], function($view){
             $startY  = date("Y-01-d"); 

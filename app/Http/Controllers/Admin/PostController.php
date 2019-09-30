@@ -13,11 +13,7 @@ use App\Post;
 use App\Tag;
 use App\User;
 use Alert;
-
-
-
 class PostController extends Controller{
-
 
     public function __construct(){        
         $this->middleware('auth');

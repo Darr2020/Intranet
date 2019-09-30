@@ -7,6 +7,13 @@ use Caffeinated\Shinobi\Models\Permission;
 class PermissionsTableSeeder extends Seeder{
     
     public function run() {
+
+         //Users
+         Permission::create([
+            'name'          => 'Admin panel',
+            'slug'          => 'admin.panel',
+            'description'   => 'Permiso para ingresar a el panel administrador del sistema',
+        ]);
         //Users
         Permission::create([
             'name'          => 'Navegar usuarios',
@@ -25,12 +32,6 @@ class PermissionsTableSeeder extends Seeder{
             'slug'          => 'users.edit',
             'description'   => 'Podría editar cualquier dato de un usuario del sistema',
         ]);
-        
-        Permission::create([
-            'name'          => 'Eliminar usuario',
-            'slug'          => 'users.destroy',
-            'description'   => 'Podría eliminar cualquier usuario del sistema',      
-        ]);
 
         //Roles
         Permission::create([
@@ -39,11 +40,6 @@ class PermissionsTableSeeder extends Seeder{
             'description'   => 'Lista y navega todos los roles del sistema',
         ]);
 
-        Permission::create([
-            'name'          => 'Ver detalle de un rol',
-            'slug'          => 'roles.show',
-            'description'   => 'Ve en detalle cada rol del sistema',            
-        ]);
         
         Permission::create([
             'name'          => 'Creación de roles',

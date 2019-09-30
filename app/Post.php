@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model; 
 
-
 class Post extends Model{
     
 
@@ -31,9 +30,11 @@ class Post extends Model{
     public function tags(){
         return $this->belongsToMany(Tag::class);
     }
+    
     //SCOPE
     public function scopeTitle($query, $title){
-        if($title){
+        
+        if(trim($title) != ""){
             return $query->where('title', 'LIKE', "%$title%");
         }
     }

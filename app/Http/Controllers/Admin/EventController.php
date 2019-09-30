@@ -44,7 +44,7 @@ class EventController extends Controller{
     public function edit($id){
         $titulo = "Editar";
         $event = Event::find($id);
-       
+        $this->authorize('pass', $event);       
 
         return view('admin.events.edit', compact('event', 'titulo'));
     }
@@ -54,15 +54,14 @@ class EventController extends Controller{
       
         $event->fill($request->all())->save();
 
-            alert()->success('El evento ha sido editado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
-
+        alert()->success('El evento ha sido editado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
 
         return redirect()->route('events.index', $event->id);
     }
 
     public function destroy($id){
         $event = Event::find($id);
-       // $this->authorize('pass', $event);
+        $this->authorize('pass', $event);
         $event->delete();
         alert()->info('El evento ha sido eliminado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
 

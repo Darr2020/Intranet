@@ -45,6 +45,13 @@
             <div class="sidebar-heading">
             Gestión
             </div>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img src="{{ asset('icons/services.svg') }}">
+                <span>Servicios</span>
+              </a>
+            </li>
   
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" 
@@ -144,12 +151,12 @@
               <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                   <a class="collapse-item" href=" {{route('charts.views')}} ">Todas las gráficas</a>
-                  <a class="collapse-item" href=" {{route('charts.line')}} ">
-                    De Linea
+                  <a class="collapse-item" href=" {{route('charts.area')}} ">
+                    Noticias
                     <img src=" {{asset('icons/lineChart.svg')}} " class="float-right">
                   </a>
                   <a class="collapse-item" href=" {{route('charts.bar')}} ">
-                    De Barra
+                    Eventos
                     <img src=" {{asset('icons/barChart.svg')}} " class="float-right">
                   </a>
                   <a class="collapse-item" href=" {{route('charts.pie')}} ">
@@ -164,16 +171,18 @@
             <hr class="sidebar-divider">
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSesion" aria-expanded="true" aria-controls="collapseSesion">         
+                <img src="{{ asset('icons/person.svg') }}">
                 <span>Mi sesión</span>
               </a> 
               <div id="collapseSesion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item text-primary" href=" {{route('charts.views')}} ">
-                    <strong>{{ Auth::user()->name }} {{ Auth::user()->last_name }} </strong>
+                  <a class="collapse-item text-primary" href=" {{ route('users.show', Auth::user()->slug) }}">
+                    <span>{{ Auth::user()->name }} {{ Auth::user()->last_name }} </span>
+                    <img src=" {{asset('icons/favorite-red.svg')}} " class="float-right">
                   </a>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
+                    <img src=" {{asset('icons/logout.svg')}} " class="float-right">
+                      Logout
                   </a>                
                 </div>
               </div>
@@ -218,7 +227,7 @@
                   </a>
                   <div class="collapse show" id="collapseYear">
                     <div class="card-body">
-                      Haz publicado <strong> {{$postY}} noticias</strong> en el año
+                      Se han publicado <strong> {{$postY}} noticias</strong> en el año
                     </div>
                   </div>
                 </div>

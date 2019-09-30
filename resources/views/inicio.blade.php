@@ -4,6 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
+                <div class="sticky-services">
                 <section class="section-services">
                     <h4>Servicios</h4>
                     <hr>
@@ -32,16 +33,15 @@
                         Más servicios...
                     </a>
                 </section>
+                </div>
             </div>
-                
             <div class="col-md-6">
                 <form action=" {{route('noticias')}} " 
-                    method="GET" id="content">
-                    
+                    method="GET" id="content">                    
                     <input type="text" name="title" class="input" id="search-input">
                     <button type="reset" class="search" id="search-btn"></button>
+                </form>
 
-                </form>  
                 <section>
                     @foreach($posts as $post)
                         <div class="fm-card">
@@ -76,12 +76,42 @@
                     </div>
                 </section>
             </div>
-
             <div class="col-md-3">
+                <div class="card sticky-tasks">
+                    <div class="card-header top">
+                        <div id="welcome" class="text-center">Hola {{ Auth::user()->name }}</div>
+                        <div class="reloj">
+                            <ul class="timer text-center">
+                                <li id="hours">3</li>
+                                <li id="point">:</li>
+                                <li id="min">04</li>
+                                <li id="sec">12</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <a href="#" class="nav-link">
+                            <h4 class="card-title text-center">TAREAS</h4>
+                            </a>
+                           
+                        </div>
+                       <hr>
+                       <ul class="list-group">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+            {{--<div class="col-md-3">
                 <section class="tarea">
                     <section class="content-tarea">
                         <section class="top">
-                            <div id="welcome">Hola {{ Auth::user()->name }}</div>
+                         
                                 <div class="reloj">
                                     <ul class="timer">
                                         <li id="hours">3</li>
@@ -106,9 +136,24 @@
                         </section>
                     </section>
                 </section>
-            </div>
+            </div>--}}
         </div>
     </div>
+
+    <script>    
+    const input2 = document.querySelector('#search-input');
+    const btn2 = document.querySelector('#search-btn');
+
+
+    const filter = ()=>{ 
+        console.log('listi');
+        console.log(input2.value);
+    }
+    
+    btn2.addEventListener("click", filter)
+
+
+    </script>
 
    
 @endsection

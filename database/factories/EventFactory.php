@@ -16,6 +16,7 @@ $factory->define(App\Event::class, function (Faker $faker){
         'date_end'    => $faker->date($format = 'Y-m-d', $max = 'now'),
         'hora_start'  => $faker->time($format = 'H:i', $max = 'now'),
         'hora_end'     => $faker->time($format = 'H:i', $max = 'now'),
-        'state'    => $faker->randomElement(['DRAFT', 'PUBLISHED'])
+        'state'    => $faker->randomElement(['DRAFT', 'PUBLISHED']),
+        'created_at' => $faker->dateTimeBetween($startDate = '-10 years', $endDate = 'now', $timezone = null)
     ];
 });

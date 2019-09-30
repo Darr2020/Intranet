@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\auth;
 use Illuminate\Http\Request;
 use App\Post;
 use Carbon\Carbon;
+use Alert;
 
 class PostController extends Controller{
 
@@ -14,9 +15,7 @@ class PostController extends Controller{
 		$this->middleware('auth');
 	}
 
-
 	public function posts(Request $request){
-
 		$titulo = "Noticias";
 
 		$title = $request->get('title');
@@ -26,10 +25,8 @@ class PostController extends Controller{
 			->where('state', 'PUBLISHED')
 			->paginate(12);
 
-		return view('inicio', compact('posts', 'titulo'));				
+		return view('inicio', compact('posts', 'titulo'));								
 	}
-
-
 
 	public function tag($slug){
 

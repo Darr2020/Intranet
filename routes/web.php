@@ -43,13 +43,11 @@ Route::middleware(['auth'])->group(function () {
 
 		Route::prefix('Graficas')->group(function (){
 			Route::get('', 'ChartsController@view')->name('charts.views');
-			Route::get('Lineal', 'ChartsController@line')->name('charts.line');
-			Route::get('Barra', 'ChartsController@Bar')->name('charts.bar');
+			Route::get('Area', 'ChartsController@area')->name('charts.area');
+			Route::get('Barra', 'ChartsController@bar')->name('charts.bar');
 			Route::get('Torta', 'ChartsController@pie')->name('charts.pie');
 		});
-	
-
-
+		
 		/*=====  POSTS  =====*/	
 		Route::prefix('posts')->group( function(){	
 

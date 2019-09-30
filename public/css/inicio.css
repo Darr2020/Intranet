@@ -1,0 +1,132 @@
+/* ===== SERVICES - SECTION ===== */
+.sticky-services{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 55px;
+}
+.section-services{
+    width: 100%;
+    height: auto;
+    background-color: #fdfdfd;
+    text-align: center;
+    color: #33313b;
+    font-weight: 700;
+    padding: 2vh 2vh;
+}
+
+.services{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+
+.services .image{
+    flex: 40%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.services .image img{
+    width: 100%;
+    height: 100%;
+    transition: 0.4s;
+}
+
+.services .image:hover img{
+    transform: scale(1.4) rotate(15deg);
+}
+
+.btn-color{
+	background: linear-gradient(90deg, #000, #2572D9, #51E1FF);
+	background-size: 600% 50%;
+	animation: bggradient 10s linear infinite;
+	animation-direction: alternate; 
+	color: #fff;
+	box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
+}
+@keyframes bggradient {
+  0% {
+   background-position: 0%
+  }
+  100% {
+    background-position: 100%
+  }
+}
+.btn-color:hover{
+	color: #fff;
+}
+/* ===== FIN SERVICES - SECTION ===== */
+
+/* ===== SECTION - CARDS ===== */
+
+.fm-card {
+  position: relative;
+  width: 420px;
+  margin: auto;
+  background: #fff;
+  box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
+  border-radius: 8px;
+}
+.fm-card-header {
+  width: 100%;
+  height: 40%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  overflow: hidden;
+}
+.fm-card-header img {
+  max-width: 100%;
+  transition: 0.4s;
+}
+.fm-card-header:hover img {
+  transform: scale(1.8) rotate(-15deg);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.card-body .title a {
+  text-decoration: none;
+  color: #232323;
+  font-weight: bold;
+}
+.card-body .title a:hover {
+  color: dodgerblue;
+}
+.card-body .resumen p {
+  color: #555;
+  margin-top: 20px;
+  font-size: 15px;
+  overflow-wrap: break-word;
+  text-align: left;
+  max-width: 100ch;
+}
+.card-body .continue a {
+  text-decoration: none;
+  color: dodgerblue;
+  font-size: 15px;
+}
+.card-body .continue a:hover {
+  text-decoration: underline;
+}
+.fm-card-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  width: 100%;
+  height: 40px;
+  background-color: #f9f9f9;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.fm-card-footer .by {
+  padding-left: 20px;
+}
+.fm-card-footer .by a {
+  text-decoration: none;
+  color: #777;
+  font-size: 14px;
+}
+.fm-card-footer .by a:hover {
+  color: dodgerblue;
+}
