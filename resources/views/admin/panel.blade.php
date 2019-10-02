@@ -217,10 +217,10 @@
             
           <div class="container-fluid">                    
            
-            <div class="row"> 
+            <div class="row justify-content-center"> 
               <!-- DATA FOR YEAR -->     
               <!-- Posts Year -->          
-              <div class="col-xl-3 col-md-4">
+              <div class="col-xl-4 col-md-4">
                 <div class="card shadow">                
                   <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                     <h6 class="m-0 font-weight-bold text-danger">Noticias en {{$y}}</h6>
@@ -233,7 +233,7 @@
                 </div>
               </div>
               <!-- Events Year -->
-              <div class="col-xl-3 col-md-4">
+              <div class="col-xl-4 col-md-4">
                 <div class="card  shadow">                
                   <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                     <h6 class="m-0 font-weight-bold text-danger">Eventos en {{$y}}</h6>
@@ -246,7 +246,7 @@
                 </div>
               </div>             
               <!-- Tasks Year -->
-              <div class="col-xl-3 col-md-4">
+              <div class="col-xl-4 col-md-4">
                 <div class="card shadow">                
                   <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                     <h6 class="m-0 font-weight-bold text-danger">Tareas en {{$y}}</h6>
@@ -262,10 +262,10 @@
             </div>
 
             <hr>
-            <div class="row">
+            <div class="row justify-content-center">
                <!-- DATA FOR MONTH -->
                <!-- Posts Months -->
-               <div class="col-xl-3 col-md-4">
+               <div class="col-xl-4 col-md-4">
                 <div class="card shadow">                
                   <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                     <h6 class="m-0 font-weight-bold text-primary">Noticias en {{$m}}</h6>
@@ -278,7 +278,7 @@
                 </div>
               </div>                
               <!-- Events Months -->
-              <div class="col-xl-3 col-md-4">
+              <div class="col-xl-4 col-md-4">
                 <div class="card shadow">                
                   <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                     <h6 class="m-0 font-weight-bold text-primary">Eventos en {{$m}}</h6>
@@ -291,7 +291,7 @@
                 </div>
               </div>  
               <!-- Tasks Months -->
-              <div class="col-xl-3 col-md-4">
+              <div class="col-xl-4 col-md-4">
                 <div class="card shadow">                
                   <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                     <h6 class="m-0 font-weight-bold text-black">Tareas en {{$m}}</h6>

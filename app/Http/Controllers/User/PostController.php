@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Task;
 use Carbon\Carbon;
 use Alert;
 
@@ -25,7 +26,9 @@ class PostController extends Controller{
 			->where('state', 'PUBLISHED')
 			->paginate(12);
 
-		return view('inicio', compact('posts', 'titulo'));								
+		$tasks = Task::orderBy("id", "desc")->take(5)->get();	
+
+		return view('inicio', compact('posts', 'tasks', 'titulo'));								
 	}
 
 	public function tag($slug){

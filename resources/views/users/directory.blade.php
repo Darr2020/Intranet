@@ -40,14 +40,6 @@
                                     <td class="text-center"> {{ $user->extension }} </td>
                                     <td class="text-center"> {{ $user->email }}     </td>
                                     <td class="text-center"> {{ date('d/m/Y', strtotime($user->last_login)) }}</td>
-                                   {{-- @can('users.edit')
-                                        <td width="10px">
-                                            <a href="{{ route('users.edit', $user->id) }}" 
-                                                role="button">
-                                        <img src="{{ asset('icons/edit.svg') }}" title="Editar evento">
-                                            </a>
-                                        </td>
-                                    @endcan--}}
                                 </tr>
                             @endforeach             
                         </tbody>

@@ -4,17 +4,13 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Task;
 
-class TaksController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+class TaksController extends Controller{
+    
+    public function index(){
+        $tasks = Task::all(2);
+        return view('inicio', compact('tasks'));
     }
 
     /**

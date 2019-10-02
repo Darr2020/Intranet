@@ -35,21 +35,18 @@
                 </section>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <form action=" {{route('noticias')}} " 
                     method="GET" id="content">                    
                     <input type="text" name="title" class="input" id="search-input">
                     <button type="reset" class="search" id="search-btn"></button>
                 </form>
-
                 <section>
                     @foreach($posts as $post)
-                        <div class="fm-card">
-                            <div class="fm-card-header">
+                        <div class="card post">
                                 @if($post->image)
-                                    <img src="{{ $post->image }}" class="img-responsive">
+                                    <img src="{{ $post->image }}" class="card-img-top img-responsive">
                                 @endif
-                            </div>
                             <div class="card-body">
                                 <div class="title">
                                     <a href="{{ route('noticia', $post->slug) }}">
@@ -63,7 +60,7 @@
                                     <a href="{{ route('noticia', $post->slug) }}">leer más &rarr;</a>
                                 </div>
                             </div>
-                            <div class="fm-card-footer">
+                            <div class="card-footer">
                                 <small class="float-right"> 
                                     publicado {{ $post->created_at->diffForHumans() }} 
                                 </small>
@@ -76,8 +73,8 @@
                     </div>
                 </section>
             </div>
-            <div class="col-md-3">
-                <div class="card sticky-tasks">
+            <div class="col-md-4 ">
+                <div class="card sticky-tasks ml-auto" style="width: 22rem">
                     <div class="card-header top">
                         <div id="welcome" class="text-center">Hola {{ Auth::user()->name }}</div>
                         <div class="reloj">
@@ -92,18 +89,44 @@
                     <div class="card-body">
                         <div>
                             <a href="#" class="nav-link">
-                            <h4 class="card-title text-center">TAREAS</h4>
+                                <h5 class="card-title text-center">TAREAS</h5>
                             </a>
                            
                         </div>
-                       <hr>
-                       <ul class="list-group">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                          </ul>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Tarea</th>
+                                    <th class="text-center">completado</th>            
+                                </tr>
+                            </thead>
+                            <style>
+                        
+
+                            </style>
+                            <div class="card-body">
+                                <tbody>
+                                    @foreach ($tasks as $task)
+                                        <tr>                              
+                                            <td class="text-center">
+                                                <a href="#"
+                                                    class="text-decoration-none">
+                                                    {{ $task->name }}
+                                                </a>
+                                            </td>
+                                            <td class="text-center"> 
+                                                                              
+                                                    <div class="flip-switch flip-switch-text">
+                                                        <input type="checkbox" id="c3">
+                                                        <label for="c3"></label>
+                                                    </div>
+                                              
+                                            </td>
+                                        </tr>
+                                    @endforeach             
+                                </tbody>
+                            </div>
+                        </table>                           
                     </div>
                 </div>
             </div>
@@ -138,22 +161,5 @@
                 </section>
             </div>--}}
         </div>
-    </div>
-
-    <script>    
-    const input2 = document.querySelector('#search-input');
-    const btn2 = document.querySelector('#search-btn');
-
-
-    const filter = ()=>{ 
-        console.log('listi');
-        console.log(input2.value);
-    }
-    
-    btn2.addEventListener("click", filter)
-
-
-    </script>
-
-   
+    </div>   
 @endsection

@@ -8,6 +8,9 @@ class Task extends Model{
 
     protected $table = 'tasks';
 
-
-	protected $fillable = [ 'title', 'description' ];
+    protected $fillable = [ 'user_id', 'name', 'slug', 'description', 'completed' ];
+    
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

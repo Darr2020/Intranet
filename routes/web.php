@@ -13,8 +13,8 @@ Route::middleware(['auth'])->group(function () {
 
 		Route::prefix('taks')->group( function(){
 
-			Route::get('', 'TaksController@index')->name('taks.index')
-				->middleware('permission:taks.index');
+			/*Route::get('', 'TaksController@index')->name('taks.index')
+				->middleware('permission:taks.index');*/
 
 			Route::get('create', 'TaksController@create')->name('taks.create')
 				->middleware('permission:taks.create');
