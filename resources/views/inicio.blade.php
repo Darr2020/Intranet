@@ -89,24 +89,21 @@
                     <div class="card-body">
                         <div>
                             <a href="#" class="nav-link">
-                                <h5 class="card-title text-center">TAREAS</h5>
-                            </a>
-                           
+                                <h5 class="card-title text-center text-task">TAREAS</h5>
+                            </a>                           
                         </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Tarea</th>
-                                    <th class="text-center">completado</th>            
-                                </tr>
-                            </thead>
-                            <style>
-                        
-
-                            </style>
-                            <div class="card-body">
-                                <tbody>
-                                    @foreach ($tasks as $task)
+                        @if (empty($tasks))
+                            <h4 class="text-center">No tienes tareas creadas</h4> 
+                        @else
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Tarea</th>
+                                        <th class="text-center">completado</th>            
+                                    </tr>
+                                </thead>
+                                <tbody> 
+                                    @foreach ($tasks as $k => $task)
                                         <tr>                              
                                             <td class="text-center">
                                                 <a href="#"
@@ -114,19 +111,17 @@
                                                     {{ $task->name }}
                                                 </a>
                                             </td>
-                                            <td class="text-center"> 
-                                                                              
-                                                    <div class="flip-switch flip-switch-text">
-                                                        <input type="checkbox" id="c3">
-                                                        <label for="c3"></label>
-                                                    </div>
-                                              
+                                            <td class="text-center">                                                                               
+                                                <div class="flip-switch flip-switch-text">
+                                                <input type="checkbox" id="c{{$k}}">
+                                                <label for="c{{$k}}"></label>
+                                                </div>
                                             </td>
                                         </tr>
-                                    @endforeach             
-                                </tbody>
-                            </div>
-                        </table>                           
+                                    @endforeach
+                                </tbody>                           
+                            </table>  
+                        @endif                         
                     </div>
                 </div>
             </div>

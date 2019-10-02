@@ -1,4 +1,12 @@
 /* ===== SERVICES - SECTION ===== */
+
+.text-task{
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-family: 'nunito';
+  font-weight: bold;
+}
+
 .sticky-services{
   position: -webkit-sticky;
   position: sticky;

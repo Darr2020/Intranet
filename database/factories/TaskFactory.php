@@ -12,6 +12,5 @@ $factory->define(Task::class, function (Faker $faker) {
         'description'   => $faker->text(200),
         'completed'    => $faker->randomElement([TRUE, FALSE]),
         'created_at' => $faker->dateTimeBetween($startDate = '-3 years', $endDate = 'now', $timezone = null)
-
     ];
 });
