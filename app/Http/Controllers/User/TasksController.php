@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Task;
 
-class TaksController extends Controller{
+class TasksController extends Controller{
     
     public function index(){
-        $tasks = Task::all(2);
-        return view('inicio', compact('tasks'));
+        $titulo = "Mis tareas";
+        $tasks = Task::all();
+        return view('users.tasks.index', compact('tasks', 'titulo'));
     }
 
     /**

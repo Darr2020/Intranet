@@ -87,79 +87,38 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div>
-                            <a href="#" class="nav-link">
-                                <h5 class="card-title text-center">TAREAS</h5>
-                            </a>
-                           
-                        </div>
+                        <a href=" {{route('tasks.index')}} " class="nav-link card-title text-center">TAREAS</a>                         
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th class="text-center">Tarea</th>
                                     <th class="text-center">completado</th>            
                                 </tr>
-                            </thead>
-                            <style>
-                        
-
-                            </style>
-                            <div class="card-body">
-                                <tbody>
-                                    @foreach ($tasks as $task)
-                                        <tr>                              
-                                            <td class="text-center">
-                                                <a href="#"
-                                                    class="text-decoration-none">
-                                                    {{ $task->name }}
-                                                </a>
-                                            </td>
-                                            <td class="text-center"> 
-                                                                              
-                                                    <div class="flip-switch flip-switch-text">
-                                                        <input type="checkbox" id="c3">
-                                                        <label for="c3"></label>
-                                                    </div>
-                                              
-                                            </td>
-                                        </tr>
-                                    @endforeach             
-                                </tbody>
-                            </div>
+                            </thead>                            
+                            <tbody>
+                                @foreach ($tasks as $task)
+                                    <tr>                              
+                                        <td class="text-center">
+                                            <a href="#" class="text-decoration-none">{{ $task->name }}</a>
+                                        </td>
+                                        <td class="text-center"> 
+                                            @if ($task->completed == TRUE)
+                                                <span class="task-completed task-yes">SI</span>
+                                            @else
+                                                <span class="task-completed task-no">NO</span>
+                                            @endif                                                                        
+                                           {{-- <div class="flip-switch flip-switch-text">
+                                                <input type="checkbox" id="c3">
+                                                <label for="c3"></label>
+                                            </div>--}}
+                                        </td>
+                                    </tr>
+                                @endforeach             
+                            </tbody>
                         </table>                           
                     </div>
                 </div>
             </div>
-            {{--<div class="col-md-3">
-                <section class="tarea">
-                    <section class="content-tarea">
-                        <section class="top">
-                         
-                                <div class="reloj">
-                                    <ul class="timer">
-                                        <li id="hours">3</li>
-                                        <li id="point">:</li>
-                                        <li id="min">04</li>
-                                        <li id="sec">12</li>
-                                    </ul>
-                                </div>
-                        </section>
-                        <section class="tarea-body">
-                        <section class="account">En proceso de creacion<span><img src="{{ asset('icons/tareas.svg') }}" alt=""></span></section>
-                        <section class="content-bottom">
-                        <ul>
-                          <li>
-                            <span class="fa fa-github"></span>
-                            <section id="title1" class="title-tarea">Tareas</section>
-                            <section class="text">CCada usuario podra crear tareas con un tiempo especifico</section>
-                          </li>          
-                                  
-                        </ul>
-                        </section>
-                        </section>
-                    </section>
-                </section>
-            </div>--}}
         </div>
     </div>   
 @endsection

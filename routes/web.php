@@ -11,25 +11,25 @@ Route::middleware(['auth'])->group(function () {
 		Route::get('eventos', 		  'EventController@index')->name('eventos');
 		Route::get('servicios', 	  'ServiceController@services')->name('services');
 
-		Route::prefix('taks')->group( function(){
+		Route::prefix('tasks')->group( function(){
 
-			/*Route::get('', 'TaksController@index')->name('taks.index')
-				->middleware('permission:taks.index');*/
+			Route::get('', 'TasksController@index')->name('tasks.index')
+				->middleware('permission:tasks.index');
 
-			Route::get('create', 'TaksController@create')->name('taks.create')
-				->middleware('permission:taks.create');
+			Route::get('create', 'TasksController@create')->name('tasks.create')
+				->middleware('permission:tasks.create');
 
-			Route::post('store', 'TaksController@store')->name('taks.store')
-				->middleware('permission:taks.create');
+			Route::post('store', 'TasksController@store')->name('tasks.store')
+				->middleware('permission:tasks.create');
 
-			Route::get('{tarea}/edit', 'TaksController@edit')->name('taks.edit')
-				->middleware('permission:taks.edit');		
+			Route::get('{tarea}/edit', 'TasksController@edit')->name('tasks.edit')
+				->middleware('permission:tasks.edit');		
 
-			Route::put('{tarea}', 'TaksController@update')->name('taks.update')
-				->middleware('permission:taks.edit');
+			Route::put('{tarea}', 'TasksController@update')->name('tasks.update')
+				->middleware('permission:tasks.edit');
 
-			Route::delete('{tarea}', 'TaksController@destroy')->name('taks.destroy')
-				->middleware('permission:taks.destroy');
+			Route::delete('{tarea}', 'TasksController@destroy')->name('tasks.destroy')
+				->middleware('permission:tasks.destroy');
 		});	
 	});
 			
