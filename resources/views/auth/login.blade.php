@@ -12,13 +12,58 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10 offset-md-1">
-                <div class="row">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6  d-print-block ">
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src=" {{ asset('img/login.svg') }} " alt="" srcset="">
+                            </div>     
+                            <div class="col-lg-6 p-5">
+                                <div class="text-center">
+                                    <h4 class="h4 text-gray-900 mb-5">
+                                        Bienvenido
+                                    </h4>
+                                </div>
+                                <form method="POST" action="{{ route('login') }}" class="ml-4">
+                                    @csrf
+                                    <div class="group">      
+                                        <input type="email" name="email" value="{{ old('email') }}" autofocus>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Nombre de Usuario <img src="{{ asset('icons/person.svg') }}" class="float-right" style="width: 23px; margin-left: 120px"></label>
+                                    </div>                                          
+                                    <div class="group">      
+                                        <input type="password" name="password" id="password">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Contraseña <img src="{{ asset('icons/lock.svg') }}" class="float-right" style="width: 23px; margin-left: 180px"></label>
+                                        <a class="btn btn-outline-danger mt-2 pass" onclick="mostrarContrasena()">ver contraseña</a>
+                                    </div>
+                                    
+                                    @if ($errors->has('email'))
+                                        <span class="badge badge-pill badge-danger" style=" justify-content: center; margin-left: -50px;">
+                                            {{ $errors->first('email') }}
+                                        </span>
+                                    @endif 
+                                    @if ($errors->has('password'))
+                                        <span class="badge badge-pill badge-danger">
+                                            {{ $errors->first('password') }}
+                                        </span>
+                                    @endif                                   
+                                    <button class="button2">Iniciar sesión</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                {{--<div class="row">
                     <div class="col-md-5 login-left">
                         <h1 class="text-center login-title">
                            <span>M</span><span>E</span><span>U</span><span>N</span><span>E</span> <span>T</span>
@@ -28,7 +73,7 @@
                         <img src="{{ asset('icons/arrow_up.svg') }}">
                     </div>
 
-                    <div class="col-md-5 login-right">
+                    <div class="col-md-5  login-right">
                         <div class="login-form">
                                                  
                             <form method="POST" action="{{ route('login') }}">
@@ -36,9 +81,7 @@
 
                                 <div id="container">
                                     <span class="input-email">
-                                        <input type="email"
-                                                name="email" 
-                                               value="{{ old('email') }}"
+                                        <input 
                                                class="input__field" autofocus="" id="input-4"/>
                                         
                                         <label for="input-4" class="input__label">
@@ -60,23 +103,26 @@
                                     </button>                                    
                                 </div>                               
                             </form>
-                            @if ($errors->has('email'))
-                                <span class="badge badge-pill badge-danger" style=" justify-content: center; margin-left: -50px;">
-                                    {{ $errors->first('email') }}
-                                </span>
-                            @endif 
-                            @if ($errors->has('password'))
-                                <span class="badge badge-pill badge-danger">
-                                    {{ $errors->first('password') }}
-                                </span>
-                            @endif  
+                            
                         </div>
                     </div>  
-                </div>
+                </div>--}}
             </div>
         </div>
     </div> 
-    <script src="{{ asset('js/app.js') }}"></script>  
+    <script src="{{ asset('js/app.js') }}"></script>
+    
+
+    <script>
+            function mostrarContrasena(){
+                var tipo = document.getElementById("password");
+                if(tipo.type == "password"){
+                    tipo.type = "text";
+                }else{
+                    tipo.type = "password";
+                }
+            }
+          </script>
 </body>
 </html>
 

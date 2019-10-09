@@ -98,7 +98,7 @@ class PostController extends Controller{
         $this->authorize('pass', $post);
         $post->delete();
         
-        alert()->info('La noticia ha sido eliminada correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+        alert()->info('La noticia ha sido eliminada correctamente', '' . auth()->user()->name)->git ('Cerrar');
         return back();
     }
 }

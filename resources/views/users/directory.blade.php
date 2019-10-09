@@ -14,7 +14,7 @@
             </div>
         </div>        
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-11">
                 <table class="table">
                     <thead>
                         <tr>
@@ -23,7 +23,6 @@
                             <th class="text-center">Extensión</th>
                             <th class="text-center">Email</th>
                             <th class="text-center">Ultima conexión</th>
-
                         </tr>
                     </thead>
                     <div class="card-body">

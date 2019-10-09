@@ -27,17 +27,17 @@
       <div class="sticky-top">
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sticky-top" id="accordionSidebar">
           <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('panel.view')}}">
               <div class="sidebar-brand-text mx-3">MEUNET Admin</div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
-                <a class="nav-link" href=" {{route('panel.view')}} ">
-                    <img src=" {{ asset('icons/dashboard.svg') }} ">
-                    <span>Panel</span>
-                </a>
+              <a class="nav-link" href=" {{route('panel.view')}} ">
+                <img src=" {{ asset('icons/dashboard.svg') }} ">
+                <span>Panel</span>
+              </a>
             </li>
-  
+
             <!-- Divider -->
             <hr class="sidebar-divider">
   
