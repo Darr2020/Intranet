@@ -11,11 +11,66 @@
 
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
   <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 </head>
 <body>
+    <div class="svg"></div>
     <div class="container">
+        <div class="img">
+            <img src=" {{asset('undraw_login2.svg')}} ">
+        </div>
+        <div class="login-continer">
+            <form method="POST" action="{{ route('login') }}">
+                <img src=" {{asset('undraw_profile.svg')}} " class="avatar">
+                <h2>Bienvenido</h2>
+                <div class="input-div one">
+                    <div class="i">
+                        <img src=" {{asset('icons/person.svg')}} ">
+                    </div>
+                    <div>
+                        <h5>Nombre de Usuario</h5>
+                        <input class="input" type="text" name="email" value="{{ old('email') }}" autofocus>
+                    </div>
+                </div>
+                <div class="input-div two">
+                    <div class="i">
+                        <img src=" {{asset('icons/lock.svg')}} ">
+                    </div>
+                    <div>
+                        <h5>Contraseña</h5>
+                        <input class="input" type="password" name="password" id="password">
+                    </div>
+                </div>
+                <a href="#" onclick="mostrarContrasena()">ver contraseña</a>
+                <input type="submit" value="Iniciar sesión" class="btn">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const inputs = document.querySelectorAll('.input');
+
+        function focusFunc(){
+            let parent = this.parentNode.parentNode;
+            parent.classList.add('focus');
+        }
+
+        function blurFunc(){
+            let parent = this.parentNode.parentNode;
+            if(this.value == ""){
+                parent.classList.remove('focus');
+            }
+            
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('focus', focusFunc);
+            input.addEventListener('blur', blurFunc);
+
+        })
+    </script>
+    {{--<div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="card mt-5">
@@ -63,7 +118,7 @@
                     </div>
                 </div>
                 
-                {{--<div class="row">
+                <div class="row">
                     <div class="col-md-5 login-left">
                         <h1 class="text-center login-title">
                            <span>M</span><span>E</span><span>U</span><span>N</span><span>E</span> <span>T</span>
@@ -106,23 +161,21 @@
                             
                         </div>
                     </div>  
-                </div>--}}
+                </div>
             </div>
         </div>
-    </div> 
-    <script src="{{ asset('js/app.js') }}"></script>
-    
-
+    </div> --}}
+    <script src="{{ asset('js/app.js') }}"></script>  
     <script>
-            function mostrarContrasena(){
-                var tipo = document.getElementById("password");
-                if(tipo.type == "password"){
-                    tipo.type = "text";
-                }else{
-                    tipo.type = "password";
-                }
+        function mostrarContrasena(){
+            var tipo = document.getElementById("password");
+            if(tipo.type == "password"){
+                tipo.type = "text";
+            }else{
+                tipo.type = "password";
             }
-          </script>
+        }
+    </script>
 </body>
 </html>
 
