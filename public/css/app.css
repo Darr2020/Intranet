@@ -13,21 +13,8 @@
 
 /*=====  NAVBAR=====*/  
 
-header{
-	background: linear-gradient(90deg, #000, #2572D9, #51E1FF);
-	background-size: 600% 50%;
-	animation: bggradient 10s linear infinite;
-	animation-direction: alternate; 
-}
-
-@keyframes bggradient {
-  0% {
-   background-position: 0%
-  }
-  100% {
-    background-position: 100%
-  }
-}
+header{	background-color: #4267B2 }
+.navbar{ height: 45px;}
 
 .wrapper-drop {
   margin: auto;
@@ -51,10 +38,10 @@ header{
   top: 42px;
   right: 1px;
   width: 110px;
-  background-color: #000;
+  background-color: #fff;
   border-radius: 4px;
   border:none;
-  box-shadow: 0 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
   list-style-type: none;
 }
 .ul-drop:before {
@@ -73,20 +60,16 @@ header{
   height: 0;
   width: 0;
   border: 8px solid transparent;
-  border-bottom-color: #000;
+  border-bottom-color: #fff;
 }
 .li-drop {
   padding: 5px 10px;
-  color: #000;
+  color: #ccc;
   cursor: pointer;
   transition: all 100ms;
 }
-.li-drop:hover {
-  background: linear-gradient(90deg, #1CB3C8, #2572D9, #51E1FF);
-  background-size: 600% 50%;
-  animation: bggradient 10s linear infinite;
-  animation-direction: alternate; 
-}
+.li-drop:hover {  background-color: #4267B2}
+
 .li-drop:first-of-type:after {
   content: '';
   position: absolute;
@@ -96,69 +79,61 @@ header{
   width: 0;
   z-index: 1;
   border: 8px solid transparent;
-  border-bottom-color: black;
+  border-bottom-color: #fff;
   pointer-events: none;
 }
 
-/*=====  LOGIN  =====*/
-
-/* ===== SECTION - TAREAS ===== */
-
-.sticky-tasks{
+/* ===== SERVICES - SECTION ===== */
+.sticky-services{
   position: -webkit-sticky;
   position: sticky;
-  top: 65px;
+  top: 55px;
 }
-.top{
-  background: linear-gradient(90deg, #000, #2572D9, #51E1FF);
-  background-size: 600% 50%;
-  animation: bggradient 10s linear infinite;
-  animation-direction: alternate; border-radius-top-left: 2px;
-  border-radius-top-right: 2px;
-}
-
-.top #welcome{
-  font-size: 30px;
-  font-weight: 200;
-  color: white;
+.section-services{
+  width: 100%;
+  height: auto;
+  background-color: #fdfdfd;
+  text-align: center;
+  color: #33313b;
+  font-weight: 700;
+  padding: 2vh 2vh;
 }
 
-.reloj{
-  font-size: 37px; 
-  margin-left: -20px;
-  color: white;
+.services{
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
+  border-radius: 8px;
 }
 
-.reloj ul li {
-    display: inline;
-    text-align: center;
-}
-
-.reloj ul #sec{
-  font-size: 18px;
-}
-
-.tarea-body{position:relative;}
-
-.account{
-  position: relative;
-  font-size: 25px;
-  margin-top: 25px;
-  margin-left: 20px;
-  font-weight: 100;
-  color: #818181;
-}
-
-.account span{
-  margin-left: 120px;
-  font-size: 30px;
-  transition: all .3s ease;
-}
-
-.account span:hover{
-  color: #555;
+.services .image{
+  flex: 40%;
+  overflow: hidden;
   cursor: pointer;
 }
+
+.services .image img{
+  width: 100%;
+  height: 100%;
+  transition: 0.4s;
+}
+
+.services .image:hover img{
+  transform: scale(1.4) rotate(15deg);
+}
+
+.btn-service{
+	background: #4267B2;
+  color: #fff;
+  font-weight: 600;
+	box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
+}
+.btn-service:hover{ color: #fff; }
+
+/* ===== FIN SERVICES - SECTION ===== */
+
+/* ===== SECTION - TAREAS ===== */
 
 .content-bottom{
   margin-top: 15px;
@@ -169,14 +144,14 @@ header{
 }
 
 .content-bottom ul{
-    display: block;
-    position: relative;
-    list-style-type: none;
-    -webkit-margin-before: 0px;
-    -webkit-margin-after: 0px;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 0px;
+  display: block;
+  position: relative;
+  list-style-type: none;
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
 }
 
 .content-bottom ul li{
@@ -188,15 +163,9 @@ header{
   margin-top: 20px;
 }
 
+.content-bottom ul > li:first-child{ margin-top: 20px;}
 
-.content-bottom ul > li:first-child{
-    margin-top: 20px;
-}
-
-
-.content-bottom ul > li:last-child{
-  border: none;
-}
+.content-bottom ul > li:last-child{ border: none;}
 
 .content-bottom li span{
   font-size: 32px;
@@ -217,9 +186,7 @@ header{
   font-size: 18px;
 }
 
-#title1{
-  position: absolute;
-}
+#title1{ position: absolute;}
 
 
 /*BUSCADOR*/
@@ -310,7 +277,7 @@ header{
   height: 4px;
   margin-top: -1px;
   margin-left: -13px;
-  background-color: #000;
+  background-color: #4267B2;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -323,7 +290,7 @@ header{
   position: absolute;
   width: 27px;
   height: 4px;
-  background-color: #000;
+  background-color: #4267B2;
   margin-top: -1px;
   margin-left: -13px;
   cursor: pointer;
@@ -337,7 +304,7 @@ header{
   padding: 0 40px 0 10px;
   width: 300px;
   height: 50px;
-  border: 3px solid #000;
+  border: 3px solid #4267B2;
   border-radius: 0;
   background: none;
   color: #000;
@@ -355,15 +322,8 @@ header{
   transform: translate(-100%, -50%);
 }
 
-.section-padding{
-	padding: 100px 0;
-}
-
 .single-service{
-	background: linear-gradient(90deg, #1CB3C8, #2572D9, #51E1FF);
-    background-size: 600% 50%;
-    animation: bggradient 10s linear infinite;
-    animation-direction: alternate;
+	background: #4267B2;
 	padding: 15px;
 	transition: all .5s ease 0s;
 	height: 300px;
@@ -412,6 +372,4 @@ header{
 	margin-bottom: 0;
 }
 
-.single-service:hover .icon{
-	top: -10px;
-}
+.single-service:hover .icon{ top: -10px}
