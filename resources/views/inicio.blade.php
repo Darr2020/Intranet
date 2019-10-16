@@ -41,6 +41,7 @@
                 </section>
             </div>
             <div class="col-md-5">
+                    <example-component></example-component>
                 <div class="card sticky-tasks ml-auto" style="width: 22rem">
                     <div class="card-header top">
                         <div id="welcome" class="text-center">Hola {{ Auth::user()->name }}</div>
@@ -74,10 +75,6 @@
                                             @else
                                                 <span class="task-completed task-no">NO</span>
                                             @endif                                                                        
-                                           {{-- <div class="flip-switch flip-switch-text">
-                                                <input type="checkbox" id="c3">
-                                                <label for="c3"></label>
-                                            </div>--}}
                                         </td>
                                     </tr>
                                 @endforeach             

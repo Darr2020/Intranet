@@ -17,18 +17,24 @@ class PostController extends Controller{
 	}
 
 	public function posts(Request $request){
-		$titulo = "Noticias";
+		
+		
+			$titulo = "Noticias";
 
-		$title = $request->get('title');
+			$title = $request->get('title');
 
-		$posts = Post::orderBy('id', 'DESC')
-			->title($title)
-			->where('state', 'PUBLISHED')
-			->paginate(12);
+			$posts = Post::orderBy('id', 'DESC')
+				->title($title)
+				->where('state', 'PUBLISHED')
+				->paginate(12);
 
-		$tasks = Task::orderBy("id", "desc")->take(5)->get();	
+			$tasks = Task::where('user_id', auth()->user()->id)
+				->orderBy("id", "desc")
+				->take(5)
+				->get();
 
-		return view('inicio', compact('posts', 'tasks', 'titulo'));								
+			return view('inicio', compact('posts', 'tasks', 'titulo'));
+							
 	}
 
 	public function tag($slug){
