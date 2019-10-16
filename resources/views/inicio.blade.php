@@ -55,31 +55,36 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <a href=" {{route('tasks.index')}} " class="nav-link card-title text-center">TAREAS</a>                         
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Tarea</th>
-                                    <th class="text-center">completado</th>            
-                                </tr>
-                            </thead>                            
-                            <tbody>
-                                @foreach ($tasks as $task)
-                                    <tr>                              
-                                        <td class="text-center">
-                                            <a href="#" class="text-decoration-none">{{ $task->name }}</a>
-                                        </td>
-                                        <td class="text-center"> 
-                                            @if ($task->completed == TRUE)
-                                                <span class="task-completed task-yes">SI</span>
-                                            @else
-                                                <span class="task-completed task-no">NO</span>
-                                            @endif                                                                        
-                                        </td>
+                        <a href=" {{route('tasks.index')}} " class="nav-link card-title text-center">TAREAS</a>   
+                        @if ($tasks->isEmpty())
+                            <h5 class="text-center">No haz creado tareas</h5>
+                        @else
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Tarea</th>
+                                        <th class="text-center">completado</th>            
                                     </tr>
-                                @endforeach             
-                            </tbody>
-                        </table>                           
+                                </thead>                            
+                                <tbody>
+                                    @foreach ($tasks as $task)
+                                        <tr>                              
+                                            <td class="text-center">
+                                                <a href="#" class="text-decoration-none">{{ $task->name }}</a>
+                                            </td>
+                                            <td class="text-center"> 
+                                                @if ($task->completed == TRUE)
+                                                    <span class="task-completed task-yes">SI</span>
+                                                @else
+                                                    <span class="task-completed task-no">NO</span>
+                                                @endif                                                                        
+                                            </td>
+                                        </tr>
+                                    @endforeach             
+                                </tbody>
+                            </table>
+                        @endif                     
+                                                   
                     </div>
                 </div>
             </div>

@@ -8,10 +8,12 @@ use App\Task;
 
 class TasksController extends Controller{
     
-    public function index(){
-        $titulo = "Mis tareas";
-        $tasks = Task::where('user_id', auth()->user()->id)->get();
-        return view('users.tasks.index', compact('tasks', 'titulo'));
+    public function index(Request $request){
+       
+            $titulo = "Mis tareas";
+            $tasks = Task::where('user_id', auth()->user()->id)->get();
+            return view('users.tasks.index', compact('tasks', 'titulo'));
+      
     }
 
     public function create()
