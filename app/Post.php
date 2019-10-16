@@ -22,15 +22,10 @@ class Post extends Model{
     public function archives(){
 		return $this->morphOne(Archive::class, 'archiveable');
     }
-    
-    /*public function tags(){
-        return $this->morphToMany(Tag::class, 'taggable');
-    }*/
 
     public function tags(){
         return $this->belongsToMany(Tag::class);
     }
-    
     //SCOPE
     public function scopeTitle($query, $title){
         

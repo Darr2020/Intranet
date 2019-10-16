@@ -7,10 +7,14 @@
                 <h2>Mis Tareas</h2> 
             </div>
             <div class="col-4">
-                <form action=" {{ route('users.index') }} " method="GET" id="content2">
-                    <input type="text" name="name" class="input" id="search-input">
-                    <button type="reset" class="search" id="search-btn"></button>
-                </form>
+                @if ($tasks->isEmpty())
+                    <h2>Crea tus tareas</h2> 
+                @else
+                    <form action=" {{ route('tasks.index') }} " method="GET" id="content2">
+                        <input type="text" name="name" class="input" id="search-input">
+                        <button type="reset" class="search" id="search-btn"></button>
+                    </form>
+                @endif                
             </div>
         </div>        
         <div class="row">

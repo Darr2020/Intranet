@@ -20,6 +20,7 @@
                         <tr>
                             <th class="text-center">Nombre</th>
                             <th class="text-center">Apellido</th>
+                            <th class="text-center">Oficina</th>
                             <th class="text-center">Extensión</th>
                             <th class="text-center">Email</th>
                             <th class="text-center">Ultima conexión</th>
@@ -36,6 +37,7 @@
                                         </a>
                                     </td>
                                     <td class="text-center"> {{ $user->last_name }} </td>
+                                    <td class="text-center"> {{ $user->departament }} </td>
                                     <td class="text-center"> {{ $user->extension }} </td>
                                     <td class="text-center"> {{ $user->email }}     </td>
                                     <td class="text-center"> {{ date('d/m/Y', strtotime($user->last_login)) }}</td>

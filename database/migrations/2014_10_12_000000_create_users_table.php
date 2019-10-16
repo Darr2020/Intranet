@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration{
             $table->string('tlf_emergencia')->nullable();
             $table->integer('extension')->nullable();
             $table->string('email')->unique();
+            $table->string('departament')->nullable();
             $table->text('biography')->nullable();
             $table->rememberToken();
             $table->string('password');

@@ -9,9 +9,8 @@ class DatabaseSeeder extends Seeder{
         $this->call(UsersTableSeeder::class);
         $this->call(EventsTableSeeder::class);
         $this->call(ServicesTableSeeder::class);
-        $this->call(TagsTableSeeder::class);
-        
+        $this->call(TagsTableSeeder::class);        
         $this->call(PostsTableSeeder::class);
-        $this->call(TasksTableSeeder::class);
-        }
+        //$this->call(TasksTableSeeder::class);
+    }
 }

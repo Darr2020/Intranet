@@ -35,9 +35,9 @@ class User extends Authenticatable {
         return $this->hasMany(Service::class);
     }
 
-    //SCOPE
+    //SCOPE 
     public function scopeName($query, $name){
-        if($name){
+        if(trim($name) != ""){
             return $query->where('name', 'LIKE', "%$name%");
         }
     }

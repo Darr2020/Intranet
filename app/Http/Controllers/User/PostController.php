@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\auth;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Task;
+use App\Tag;
 use Carbon\Carbon;
 use Alert;
+use Illuminate\Support\Facades\Input;
 
 class PostController extends Controller{
 
@@ -21,10 +23,13 @@ class PostController extends Controller{
 
 		$title = $request->get('title');
 
-		$posts = Post::orderBy('id', 'DESC')
+
+		$posts = Post::where('title', 'like', '%'.Input::get('search').'%')->orderBy('id', 'desc')->paginate(6);
+
+		/*$posts = Post::orderBy('id', 'DESC')
 			->title($title)
 			->where('state', 'PUBLISHED')
-			->paginate(12);
+			->paginate(12);*/
 
 		$tasks = Task::orderBy("id", "desc")->take(5)->get();	
 
@@ -35,10 +40,8 @@ class PostController extends Controller{
 
 		$titulo = "Etiquetas";
 
-		$posts = Post::whereHas('tags', function($query) use($slug){
-			$query->where('slug', $slug);
-		})->orderBy('id', 'DESC')
-		  ->where('state', 'PUBLISHED');
+		$posts = Tag::where('slug',$slug)		
+			->with('posts')->get();
 
 		return view('inicio', compact('posts','titulo'));
 	}
