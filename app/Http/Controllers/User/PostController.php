@@ -18,22 +18,23 @@ class PostController extends Controller{
 		$this->middleware('auth');
 	}
 
-	public function posts(Request $request){
+	public function posts(Request $request){			
 		$titulo = "Noticias";
 
 		$title = $request->get('title');
 
-
-		$posts = Post::where('title', 'like', '%'.Input::get('search').'%')->orderBy('id', 'desc')->paginate(6);
-
-		/*$posts = Post::orderBy('id', 'DESC')
+		$posts = Post::orderBy('id', 'DESC')
 			->title($title)
 			->where('state', 'PUBLISHED')
-			->paginate(12);*/
+			->paginate(12);
 
-		$tasks = Task::orderBy("id", "desc")->take(5)->get();	
+		$tasks = Task::where('user_id', auth()->user()->id)
+			->orderBy("id", "desc")
+			->take(5)
+			->get();
 
-		return view('inicio', compact('posts', 'tasks', 'titulo'));								
+		return view('inicio', compact('posts', 'tasks', 'titulo'));
+							
 	}
 
 	public function tag($slug){

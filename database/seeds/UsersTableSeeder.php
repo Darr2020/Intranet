@@ -21,6 +21,17 @@ class UsersTableSeeder extends Seeder{
             'biography'      => 'Tecnico Superior Informático, funcionario del Ministerio de Educación Universitaria.Amante del futbol.',
             'password'       => bcrypt('2020')
         ]);
+        User::create([
+            'name'           => 'Oriolla',
+            'last_name'      => 'Caballero',
+            'slug'           => 'Oriolla-Caballero',
+            'cedula'         => '18004153',
+            'tlf_emergencia' => '04263285993',
+            'extension'      => '7522',
+            'email'          => 'oriolla@gmail.com',
+            'biography'      => 'Tecnico Superior Informático, funcionario del Ministerio de Educación Universitaria.Amante del futbol.',
+            'password'       => bcrypt('PanditaCake')
+        ]);
 
         
         User::create([

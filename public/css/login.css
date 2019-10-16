@@ -28,13 +28,19 @@ body{ font-family: 'nunito';}
   text-align: center;
 }
 
-form{ width: 360px; margin: 80px auto; }
-.avatar{ width: 200px; margin-left: 70px; }
+form{
+   width: 360px; 
+   margin: 70px auto;
+}
+.avatar{
+  width: 250px;
+  margin-left: 50px;
+}
 
 form h2{
   font-size: 2.9rem;
   text-transform: uppercase;
-  margin: 20px 24px;
+  margin-left: 50px;
   color: #333;
 }
 
@@ -50,9 +56,9 @@ form h2{
 .input-div:after, .input-div:before{
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -1px;
   width: 0;
-  height: 2px;
+  height: 2.5px;
   background-color: #4285F4; 
   transition: .3s;
 }
@@ -65,12 +71,13 @@ form h2{
   font-size: 15px;
 }
 
-.input-div.focus:after, .input-div.focus:before{
-  width: 50%;
+.input-div.focus div h5:after, .input-div.focus div h5:before {
+  background-color: #4285F4; 
+  transition: .3s;
 }
 
-
-.input-div.one{ margin-top: 0; }
+.input-div.focus:after, .input-div.focus:before{ width: 50%; }
+.input-div.one{ margin-top: 0; margin-top: 50px;}
 .input-div.two{ margin-bottom: 4px;}
 
 .i{
@@ -106,7 +113,7 @@ form h2{
   background: none;
   padding: 0.5rem 0.7rem;
   font-size: 1.2rem;
-  color: #555;    
+  color: #555;      
 }
 
 a{

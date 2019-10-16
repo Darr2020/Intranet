@@ -8,75 +8,49 @@ use App\Task;
 
 class TasksController extends Controller{
     
-    public function index(){
-        $titulo = "Mis tareas";
-        $tasks = Task::all();
-        return view('users.tasks.index', compact('tasks', 'titulo'));
+    public function index(Request $request){
+       
+            $titulo = "Mis tareas";
+            $tasks = Task::where('user_id', auth()->user()->id)->get();
+            return view('users.tasks.index', compact('tasks', 'titulo'));
+      
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+        
+        $task = new Task();
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->user_id = auth()->id();
+        $task->save();
+
+        return $task;
+    }
+
+   
+    public function show($id){
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+    public function edit($id){
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    public function update(Request $request, $id) {
+        $task = Post::find($id);        
+        $task->fill($request->all())->save();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return $task;
     }
+   
+    public function destroy($id){
+        $task = Task::find($id);
+        $task->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

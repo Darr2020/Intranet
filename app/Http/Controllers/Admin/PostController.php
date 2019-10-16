@@ -39,6 +39,8 @@ class PostController extends Controller{
 
     public function store(PostStoreRequest $request){
         $post = Post::create($request->all());
+        
+        //para editar la imagen subida
         $title = $request->title;
 
         if($request->file('image')){
@@ -49,8 +51,6 @@ class PostController extends Controller{
         }
        
         $post->tags()->attach($request->get('tags'));
-
-       // notify(new newPost($post));
         
         alert()->success('La noticia ha sido creada correctamente',
             '' . auth()->user()->name)->autoclose(4000);

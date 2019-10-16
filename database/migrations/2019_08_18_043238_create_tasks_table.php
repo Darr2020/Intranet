@@ -11,9 +11,9 @@ class CreateTasksTable extends Migration{
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name', 50);
-            $table->string('slug', 50);
+            //$table->string('slug', 50);
             $table->string('description', 200);
-            $table->boolean('completed')->default(false);            
+          //  $table->boolean('completed')->default(false);            
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')
@@ -25,3 +25,12 @@ class CreateTasksTable extends Migration{
         Schema::dropIfExists('tasks');
     }
 }
+
+
+/**
+ *  1) que cada servicio tenga su nombre
+ *  2) filtrado por oficina
+ *  3) al asignar permiso que aparaezca enb el nav al aopcion de panel administrador
+ *  4) modificar los eventos.. colocar el almanaque a un lado y el evento tipo post
+ * 
+ * * */

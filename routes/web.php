@@ -11,7 +11,7 @@ Route::middleware(['auth'])->group(function () {
 		Route::get('eventos', 		  'EventController@index')->name('eventos');
 		Route::get('servicios', 	  'ServiceController@services')->name('services');
 
-		Route::prefix('tasks')->group( function(){
+		Route::prefix('tareas')->group( function(){
 
 			Route::get('', 'TasksController@index')->name('tasks.index')
 				->middleware('permission:tasks.index');
@@ -30,8 +30,12 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::delete('{tarea}', 'TasksController@destroy')->name('tasks.destroy')
 				->middleware('permission:tasks.destroy');
-		});	
+		});
+		
+
 	});
+
+//Route::resource('/tareas', 'User\TasksController')->middleware('auth');
 			
 
 	Route::group(['namespace' => 'Admin'], function (){

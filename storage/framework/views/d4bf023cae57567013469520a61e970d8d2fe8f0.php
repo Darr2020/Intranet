@@ -1,13 +1,11 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container">
         <div class="row justify-content-around">
             <div class="col-4">
                 <h2>Directorio</h2> 
             </div>
             <div class="col-4">
-                <form action=" {{ route('users.index') }} " method="GET" id="content2">
+                <form action=" <?php echo e(route('users.index')); ?> " method="GET" id="content2">
                     <input type="text" name="name" class="input" id="search-input">
                     <button type="reset" class="search" id="search-btn"></button>
                 </form>
@@ -28,25 +26,28 @@
                     </thead>
                     <div class="card-body">
                         <tbody>
-                            @foreach($users as $user)
+                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>                              
                                     <td class="text-center">
-                                        <a href="{{ route('users.show', $user->slug) }}"
+                                        <a href="<?php echo e(route('users.show', $user->slug)); ?>"
                                             class="text-decoration-none">
-                                            {{ $user->name }}
+                                            <?php echo e($user->name); ?>
+
                                         </a>
                                     </td>
-                                    <td class="text-center"> {{ $user->last_name }} </td>
-                                    <td class="text-center"> {{ $user->office }} </td>
-                                    <td class="text-center"> {{ $user->extension }} </td>
-                                    <td class="text-center"> {{ $user->email }}     </td>
-                                    <td class="text-center"> {{ date('d/m/Y', strtotime($user->last_login)) }}</td>
+                                    <td class="text-center"> <?php echo e($user->last_name); ?> </td>
+                                    <td class="text-center"> <?php echo e($user->office); ?> </td>
+                                    <td class="text-center"> <?php echo e($user->extension); ?> </td>
+                                    <td class="text-center"> <?php echo e($user->email); ?>     </td>
+                                    <td class="text-center"> <?php echo e(date('d/m/Y', strtotime($user->last_login))); ?></td>
                                 </tr>
-                            @endforeach             
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>             
                         </tbody>
                     </div>
                 </table>
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/sistemas/intranet2/resources/views/users/directory.blade.php ENDPATH**/ ?>

@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6 offset-1">
                 <form action=" {{route('noticias')}} " 
                     method="GET" id="content">                    
                     <input type="text" name="title"  class="input" id="search-input">
@@ -43,7 +42,7 @@
                         {!! $posts->render() !!}
                     </div>--}}
                 </section>
-            </div>   
+            </div>
             <div class="col-md-5">
                 <div class="card sticky-tasks ml-auto" style="width: 22rem">
                     <div class="card-header top">
@@ -58,20 +57,18 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <a href=" {{route('tasks.index')}} " class="nav-link card-title text-center title-task">TAREAS</a>      
-                        @if(empty($tasks))
-                            <h5 class="text-center">
-                                <a href=" {{route('tasks.index')}} ">{{ Auth::user()->name }} no tienes tareas creadas</a>
-                            </h5>
-                        @else                   
+                        <a href=" {{route('tasks.index')}} " class="nav-link card-title text-center">TAREAS</a>   
+                        @if ($tasks->isEmpty())
+                            <h5 class="text-center">No haz creado tareas</h5>
+                        @else
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Tarea</th>
                                         <th class="text-center">completado</th>            
                                     </tr>
-                                </thead> 
-                                <tbody>
+                                </thead>
+                                 <tbody>
                                     @foreach ($tasks as $task)
                                         <tr>                              
                                             <td class="text-center">
@@ -82,7 +79,7 @@
                                                     <span class="task-completed task-yes">SI</span>
                                                 @else
                                                     <span class="task-completed task-no">NO</span>
-                                                @endif                                                                      
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach             
@@ -93,5 +90,4 @@
                 </div>
             </div>             
         </div>
-    </div>   
 @endsection
