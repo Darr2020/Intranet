@@ -1900,9 +1900,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1913,9 +1910,23 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  created: function created() {
+    this.getTasks();
+  },
   methods: {
-    create: function create() {
+    getTasks: function getTasks() {
       var _this = this;
+
+      var url = '/tareas';
+      axios.get(url).then(function (res) {
+        _this.tasks = res.data;
+      })["catch"](function (error) {
+        // handle error
+        console.log(error);
+      });
+    },
+    create: function create() {
+      var _this2 = this;
 
       if (this.task.name.trim() === '') {
         alert('Para poder crear una tarea debes colocarle un nombre');
@@ -1932,7 +1943,7 @@ __webpack_require__.r(__webpack_exports__);
       };
       axios.post('/tareas', dates).then(function (res) {
         //  const tasksServidor = res.data;
-        _this.tasks.push(res.data);
+        _this2.tasks.push(res.data);
       })["catch"](function (error) {
         alert(error);
       });
@@ -37259,72 +37270,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h4", [_vm._v("Crear Tareas")]),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.create($event)
-          }
-        }
-      },
-      [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.task.name,
-              expression: "task.name"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Nombre" },
-          domProps: { value: _vm.task.name },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.task, "name", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.task.description,
-              expression: "task.description"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Descripción" },
-          domProps: { value: _vm.task.description },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.task, "description", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Crear")]
-        )
-      ]
-    )
-  ])
+  return _c("div", [_vm._v("\n\n    \n   @" + _vm._s(_vm.$data) + "\n")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -49695,16 +49641,3 @@ module.exports = __webpack_require__(/*! /var/www/html/sistemas/intranet2/resour
 /***/ })
 
 /******/ });
-
-/*=====  SEARCH BUTTTON  =====*/
-const input = document.getElementById("search-input");
-const searchBtn = document.getElementById("search-btn");
-
-const expand = ()=>{
-  searchBtn.classList.toggle("close");
-  input.classList.toggle("square");
-};
-
-if (searchBtn) {
-	searchBtn.addEventListener("click", expand);	
-}

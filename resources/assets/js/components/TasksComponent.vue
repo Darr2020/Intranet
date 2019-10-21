@@ -1,11 +1,8 @@
 <template>
     <div>
-        <h4>Crear Tareas</h4>
-        <form @submit.prevent="create">
-            <input type="text" placeholder="Nombre" class="form-control" v-model="task.name">
-            <input type="text" placeholder="Descripción" class="form-control" v-model="task.description">
-            <button type="submit" class="btn btn-primary">Crear</button>
-        </form>
+
+        
+       @{{$data}}
     </div>
 </template>
 
@@ -17,7 +14,21 @@
                 task: {name: '', description: ''},
             }
         },
+        created(){
+            this.getTasks();
+        },
         methods:{
+            getTasks(){
+                let url = '/tareas';
+
+                axios.get(url)
+                    .then(res => {
+                        this.tasks = res.data;
+                    }).catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+            },
             create(){
                 if(this.task.name.trim() === ''){
                     alert('Para poder crear una tarea debes colocarle un nombre');
