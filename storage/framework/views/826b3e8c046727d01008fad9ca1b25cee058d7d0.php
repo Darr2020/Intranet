@@ -1,0 +1,25 @@
+
+
+<?php $__env->startSection('contentAdmin'); ?>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card">
+          <div class="card-header">
+            <h3>Agregar evento</h3>
+          </div>
+          <div class="card-body">
+            <?php echo Form::open(['route' => 'events.store']); ?>
+
+              <?php echo $__env->make('admin.events.partials.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo Form::close(); ?>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.panel', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/intranet2/resources/views/admin/events/create.blade.php ENDPATH**/ ?>

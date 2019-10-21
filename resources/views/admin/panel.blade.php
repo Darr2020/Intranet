@@ -202,10 +202,8 @@
           </div>
         </ul>
       </div>
-     
 
-      <div id="content-wrapper" class="d-flex flex-column">
-  
+      <div id="content-wrapper" class="d-flex flex-column">  
         <!-- Main Content -->
         <div id="content"> 
         
@@ -302,11 +300,23 @@
                     </div>
                   </div>
                 </div>
+              </div>             
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-7">
+                @if (count($errors) > 0)
+                  <div class="alert alert-danger" role="alert">
+                    @foreach ($errors->all() as $e)
+                        <ul>
+                          <li> {{$e}} </li>
+                        </ul>
+                    @endforeach
+                  </div>
+                @endif
               </div>
-             
-            </div>               
+            </div>
       
-            <main class="py-4">
+            <main class="py-3">
               @yield('contentAdmin')
             </main>     
              

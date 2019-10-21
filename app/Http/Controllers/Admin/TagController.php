@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\TagStoreRequest;
-use App\Http\Requests\TagUpdateRequest;
+use App\Http\Requests\Tag\TagStoreRequest;
+use App\Http\Requests\Tag\TagUpdateRequest;
 use App\Tag;
 
 class TagController extends Controller{

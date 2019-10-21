@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -10,20 +10,22 @@ class PostStoreRequest extends FormRequest{
         return true;
     }
 
-    
     public function rules(){
         $rules = [
             'title' => 'required',
-            //'slug'   => 'required|unique:posts,slug',
+            'slug'   => 'required|unique:posts',
             'user_id' => 'required|integer',
             'tags' => 'required|array',
             'content' => 'required',
             'state' => 'required|in:DRAFT,PUBLISHED',
         ];
-
-        if ($this->get('archivo')) {
-            $rules = array_merge($rules, ['archivo' => 'mimes:jpg,jpeg,png']);
-        }
-        return $rules;
+    }
+    public function attributes(){
+        return [
+            'title' => 'Titulo',
+            'tags'  => 'Etiqueta',
+            'content' => 'Contenido',
+            'state' => 'Estado',
+        ];
     }
 }

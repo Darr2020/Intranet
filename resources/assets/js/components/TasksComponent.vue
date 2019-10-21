@@ -1,24 +1,37 @@
 <template>
     <div>
-        <h4>Crear Tareas</h4>
-        <form @submit.prevent="create">
-            <input type="text" placeholder="Nombre" class="form-control" v-model="task.name">
-            <input type="text" placeholder="Descripción" class="form-control" v-model="task.description">
-            <button type="submit" class="btn btn-primary">Crear</button>
-        </form>
+       
     </div>
 </template>
 
 <script>
     export default {
+        created: function(){
+            this.getTasks();
+        },
         data() {
             return{
-                tasks: [],
-                task: {name: '', description: ''},
+                
+                tasks: [], //array que trae todas las tareas
+                task: {
+                    name: '',
+                    description: ''
+                },
             }
-        },
+        },        
         methods:{
-            create(){
+            getTasks: function() {
+                let url = '/tarea';
+
+                axios.get(url)
+                    .then(res => { 
+                        this.tasks = res.data; 
+                    }).catch(e =>{
+                        console.log(e); 
+                        })
+        
+            },
+           /* createTask(){
                 if(this.task.name.trim() === ''){
                     alert('Para poder crear una tarea debes colocarle un nombre');
                     return;
@@ -28,17 +41,17 @@
                     description: this.task.description
                 };
                 
-                this.nota = {nombre: '', descripcion: ''};  
+                this.task = {name: '', description: ''};  
 
                 axios.post('/tareas', dates)
-                    .then(res => {
-                      //  const tasksServidor = res.data;
-                        this.tasks.push(res.data);
+                    .then((res) => {
+                        const tasksServidor = res.data;
+                        this.tasks.push(tasksServidor);
                     })
                     .catch(function (error) {
                         alert(error);
                     });
-            }   
+            }   */
         }
     }
 </script>
