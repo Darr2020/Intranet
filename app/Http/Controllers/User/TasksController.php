@@ -2,27 +2,32 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests\Task\TaskStoreRequest;
+use App\Http\Requests\Task\TaskUpdateRequest;
 use App\Task;
 
 class TasksController extends Controller{
     
     public function index(Request $request){
-
-            $titulo = "Mis tareas";
-            $tasks = Task::where('user_id', auth()->user()->id)->get();
-            return $tasks;
-      
-    }
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request){
         
+        $tasks = Task::orderBy('id', 'DESC')->where('user_id', auth()->id())->paginate(7);
+            
+        return [
+            'pagination' =>[
+                'total' => $tasks->total(),
+                'current_page' => $tasks->currentPage(),
+                'per_page' => $tasks->perPage(),
+                'last_page' => $tasks->lastPage(),
+                'from' => $tasks->firstItem(),
+                'to'   => $tasks->lastItem(),
+            ],
+            'tasks' => $tasks
+        ];
+    }
+
+    public function store(TaskStoreRequest $request){        
         $task = new Task();
         $task->name = $request->name;
         $task->description = $request->description;
@@ -32,24 +37,14 @@ class TasksController extends Controller{
         return $task;
     }
 
-   
-    public function show($id){
-        //
-    }
-
-    public function edit($id){
-        //
-    }
-
     public function update(Request $request, $id) {
-        $task = Post::find($id);        
-        $task->fill($request->all())->save();
+        $task = Task::find($id)->update($request->all());
 
         return $task;
     }
    
     public function destroy($id){
-        $task = Task::find($id);
+        $task = Task::findOrFail($id);
         $task->delete();
 
     }

@@ -32,7 +32,7 @@
                         <img src=" <?php echo e(asset('icons/personLogin.svg')); ?> ">
                     </div>
                     <div>
-                        <h5 class="" >Nombre de Usuario</h5>
+                        <h5>Nombre de Usuario</h5>
                         <input class="input" type="text" name="email" value="<?php echo e(old('email')); ?>" autofocus>
                     </div>                   
                 </div>

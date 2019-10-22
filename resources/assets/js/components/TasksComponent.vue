@@ -1,35 +1,37 @@
 <template>
     <div>
-
-        
-       @{{$data}}
+       
     </div>
 </template>
 
 <script>
     export default {
-        data() {
-            return{
-                tasks: [],
-                task: {name: '', description: ''},
-            }
-        },
-        created(){
+        created: function(){
             this.getTasks();
         },
+        data() {
+            return{
+                
+                tasks: [], //array que trae todas las tareas
+                task: {
+                    name: '',
+                    description: ''
+                },
+            }
+        },        
         methods:{
-            getTasks(){
-                let url = '/tareas';
+            getTasks: function() {
+                let url = '/tarea';
 
                 axios.get(url)
-                    .then(res => {
-                        this.tasks = res.data;
-                    }).catch(function (error) {
-                    // handle error
-                    console.log(error);
-                });
+                    .then(res => { 
+                        this.tasks = res.data; 
+                    }).catch(e =>{
+                        console.log(e); 
+                        })
+        
             },
-            create(){
+           /* createTask(){
                 if(this.task.name.trim() === ''){
                     alert('Para poder crear una tarea debes colocarle un nombre');
                     return;
@@ -39,17 +41,17 @@
                     description: this.task.description
                 };
                 
-                this.nota = {nombre: '', descripcion: ''};  
+                this.task = {name: '', description: ''};  
 
                 axios.post('/tareas', dates)
-                    .then(res => {
-                      //  const tasksServidor = res.data;
-                        this.tasks.push(res.data);
+                    .then((res) => {
+                        const tasksServidor = res.data;
+                        this.tasks.push(tasksServidor);
                     })
                     .catch(function (error) {
                         alert(error);
                     });
-            }   
+            }   */
         }
     }
 </script>

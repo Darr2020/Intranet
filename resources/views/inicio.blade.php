@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <a href=" {{route('tasks.index')}} " class="nav-link card-title text-center">TAREAS</a>   
+                        <a href=" {{url('tareas')}} " class="nav-link card-title text-center">TAREAS</a>   
                         @if ($tasks->isEmpty())
                             <h5 class="text-center">No haz creado tareas</h5>
                         @else

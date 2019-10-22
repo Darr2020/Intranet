@@ -11,32 +11,12 @@ Route::middleware(['auth'])->group(function () {
 		Route::get('eventos', 		  'EventController@index')->name('eventos');
 		Route::get('servicios', 	  'ServiceController@services')->name('services');
 
-		Route::prefix('tareas')->group( function(){
-
-			Route::get('', 'TasksController@index')->name('tasks.index')
-				->middleware('permission:tasks.index');
-
-			Route::get('create', 'TasksController@create')->name('tasks.create')
-				->middleware('permission:tasks.create');
-
-			Route::post('store', 'TasksController@store')->name('tasks.store')
-				->middleware('permission:tasks.create');
-
-			Route::get('{tarea}/edit', 'TasksController@edit')->name('tasks.edit')
-				->middleware('permission:tasks.edit');		
-
-			Route::put('{tarea}', 'TasksController@update')->name('tasks.update')
-				->middleware('permission:tasks.edit');
-
-			Route::delete('{tarea}', 'TasksController@destroy')->name('tasks.destroy')
-				->middleware('permission:tasks.destroy');
-		});
-		
-
 	});
-
-//Route::resource('/tareas', 'User\TasksController')->middleware('auth');
-			
+Route::get('/tareas', function(){
+	$titulo = 'Mis tareas';
+	return view('users/tasks', compact('titulo'));
+});
+Route::resource('/tarea', 'User\TasksController', ['except' => 'show', 'create', 'edit'] )->middleware('auth');		
 
 	Route::group(['namespace' => 'Admin'], function (){
 
