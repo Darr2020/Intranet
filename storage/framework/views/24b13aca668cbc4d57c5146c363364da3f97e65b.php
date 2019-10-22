@@ -207,57 +207,52 @@
         <!-- Main Content -->
         <div id="content"> 
         
-        <br>
+
           <!-- Sidebar ToggleButton(Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
             <img src="<?php echo e(asset('icons/bar.svg')); ?>">
-          </button>           
-            
-          <div class="container-fluid">                    
-           
-            <div class="row justify-content-center"> 
-              <!-- DATA FOR YEAR -->     
-              <!-- Posts Year -->          
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Noticias en <?php echo e($y); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Se han publicado <strong> <?php echo e($postY); ?> noticias</strong> en el año
-                    </div>
-                  </div>
+          </button>     
+
+          <div id="carouselPanel" class="carousel slide "  data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselPanel" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselPanel" data-slide-to="1"></li>
+              <li data-target="#carouselPanel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src=" <?php echo e(asset('img/bgPanel.jpg')); ?> " class=" w-100 img-fluid">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Second slide label</h5>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
               </div>
-              <!-- Events Year -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card  shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Eventos en <?php echo e($y); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Haz publicado <strong> <?php echo e($eventY); ?>  eventos</strong> en el año
-                    </div>
+              <div class="carousel-item">
+                  <img src=" <?php echo e(asset('img/bgPanel.jpg')); ?> " class="d-block w-100 img-fluid">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                   </div>
-                </div>
-              </div>             
-              <!-- Tasks Year -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Tareas en <?php echo e($y); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Los usuarios han creado <strong> <small>add tasks</small>  tareas</strong> en el año
-                    </div>
-                  </div>
-                </div>
               </div>
-              
+              <div class="carousel-item">
+                  <img src=" <?php echo e(asset('img/bgPanel.jpg')); ?> " class="d-block w-100 img-fluid">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  </div>
+              </div>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+              <div class="container-fluid">  
+            
 
             <hr>
             <div class="row justify-content-center">

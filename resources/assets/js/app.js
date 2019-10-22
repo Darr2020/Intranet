@@ -77,7 +77,7 @@ const app = new Vue({
       },
       updateTask(id){
         let url = 'tarea/' + id;
-        axios.put(url, this.fillTask)
+        axios.post(url, this.fillTask)
           .then(res => {
             this.getTasks();
             this.fillTask =  { name: '', description: '' };

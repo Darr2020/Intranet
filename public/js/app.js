@@ -67535,7 +67535,7 @@ var app = new Vue({
       var _this3 = this;
 
       var url = 'tarea/' + id;
-      axios.put(url, this.fillTask).then(function (res) {
+      axios.post(url, this.fillTask).then(function (res) {
         _this3.getTasks();
 
         _this3.fillTask = {
