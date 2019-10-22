@@ -62,10 +62,15 @@ const app = new Vue({
           this.pagination = res.data.pagination
         });
       },
+      postTasks(id){
+        
+      },
       deleteTask(task){
         let url = 'tarea/' + task.id;
         axios.delete(url).then(res => {
-          this.getTasks();
+          let text = this.tasks.find(t => t.id === task.id);
+          let index = this.tasks.indexOf(text);
+          this.tasks.splice(index, 1);
           toastr.warning('eliminado');
         });
       },
@@ -100,7 +105,7 @@ const app = new Vue({
             this.description = '';
             this.errors = [];
             $('#create').modal('hide');
-            toastr.warning('creado');
+            toastr.success('creado');
           }).catch(error => {
               this.errors = error.res.data;
           })

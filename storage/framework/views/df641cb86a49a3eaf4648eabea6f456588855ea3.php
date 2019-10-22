@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container">
         <div class="row ">
             <div class="col-md-11">
@@ -20,18 +18,18 @@
                     </thead>
                     <tbody>
                         <tr v-for="(task, value) in tasks" :key="value">
-                            <td class="text-center"> @{{value+1}} </td>
+                            <td class="text-center"> {{value+1}} </td>
                             <td class="text-center" v-text="task.name">  </td>
-                            <td class="text-center"> @{{task.description}} </td>
-                            <td class="text-center"> @{{task.created_at | taskCreatedAt}} </td>
+                            <td class="text-center"> {{task.description}} </td>
+                            <td class="text-center"> {{task.created_at | taskCreatedAt}} </td>
                             <td class="text-center">
                                 <a href="#" @click.prevent="editTask(task)">
-                                    <img src=" {{asset('icons/edit.svg')}} ">
+                                    <img src=" <?php echo e(asset('icons/edit.svg')); ?> ">
                                 </a>
                             </td>
                             <td>
                                 <a href="#" @click.prevent="deleteTask(task)">
-                                    <img src=" {{asset('icons/delete.svg')}} ">
+                                    <img src=" <?php echo e(asset('icons/delete.svg')); ?> ">
                                 </a>
                             </td>
                         </tr>
@@ -51,11 +49,13 @@
                     </ul>
                 </nav>
                 </div>
-                @include('partials.tasks.create')  
-                @include('partials.tasks.edit')             
+                <?php echo $__env->make('partials.tasks.create', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>  
+                <?php echo $__env->make('partials.tasks.edit', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>             
             </div>
            
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/sistemas/intranet2/resources/views/users/tasks.blade.php ENDPATH**/ ?>

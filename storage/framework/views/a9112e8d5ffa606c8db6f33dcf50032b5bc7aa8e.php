@@ -202,10 +202,8 @@
           </div>
         </ul>
       </div>
-     
 
-      <div id="content-wrapper" class="d-flex flex-column">
-  
+      <div id="content-wrapper" class="d-flex flex-column">  
         <!-- Main Content -->
         <div id="content"> 
         
@@ -302,11 +300,23 @@
                     </div>
                   </div>
                 </div>
+              </div>             
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-7">
+                <?php if(count($errors) > 0): ?>
+                  <div class="alert alert-danger" role="alert">
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <ul>
+                          <li> <?php echo e($e); ?> </li>
+                        </ul>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  </div>
+                <?php endif; ?>
               </div>
-             
-            </div>               
+            </div>
       
-            <main class="py-4">
+            <main class="py-3">
               <?php echo $__env->yieldContent('contentAdmin'); ?>
             </main>     
              

@@ -85,57 +85,81 @@
         <main class="py-4">
             <div class="container-fluid">
                 <div class="row">
+                    <?php if(Request::path() == 'servicios'): ?>
+
+                    <?php else: ?>
                     <div class="col-md-3">
-                        <div class="sticky-services">
-                            <section class="section-services">
-                                <h4>Servicios</h4>
-                                <hr>
-                                <div class="services">
-                                    <a href="#" class="image">
-                                        <img src="<?php echo e(asset('img/3.png')); ?>" title="Constacia de trabajo" class="img-fluid">
+                            <div class="sticky-services">
+                                <section class="section-services">
+                                    <h4>Servicios</h4>
+                                    <hr>
+
+                                    <div class="service-box">
+                                            <div class="service-icon yellow">
+                                                <div class="front-content">
+                                                    <i class="fa fa-trophy"></i>
+                                                    <h3>SVP</h3>
+                                                </div>
+                                            </div>
+                                            <div class="service-content">
+                                                <h3>Vacaciones y Permisos</h3>
+                                                <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="service-box">
+                                            <div class="service-icon orange">
+                                                <div class="front-content">
+                                                    <i class="fa fa-anchor"></i>
+                                                    <h3>CTRP</h3>
+                                                </div>
+                                            </div>
+                                            <div class="service-content">
+                                                <h3>Constancia y Recibos</h3>
+                                                <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p>
+                                            </div>
+                                        </div>
+                                        <div class="service-box ">
+                                            <div class="service-icon red">
+                                                <div class="front-content">
+                                                    <i class="fa fa-trophy"></i>
+                                                    <h3>SGEFIRRHH</h3>
+                                                </div>
+                                            </div>
+                                            <div class="service-content">
+                                                <h3>SGEFIRRHH</h3>
+                                                <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="service-box">
+                                            <div class="service-icon grey">
+                                                <div class="front-content">
+                                                    <i class="fa fa-paper-plane-o"></i>
+                                                    <h3>SIADE</h3>
+                                                </div>
+                                            </div>
+                                            <div class="service-content">
+                                                <h3>SIADE</h3>
+                                                <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p>
+                                            </div>
+                                        </div> 
+                
+                                    
+                                    <a href="<?php echo e(route('services')); ?>" class="btn btn-service btn-block"
+                                        role="button">
+                                        Más servicios...
                                     </a>
-                                    <a href="#" class="image">
-                                        <img src="<?php echo e(asset('img/4.png')); ?>" title="Recibo de pago" class="img-fluid">
-                                    </a>
-                                    <a href="#" class="image">
-                                        <img src="<?php echo e(asset('img/5.png')); ?>" class="img-fluid">
-                                    </a>
-                                    <a href="#" class="image">
-                                        <img src="<?php echo e(asset('img/6.png')); ?>" class="img-fluid">
-                                    </a>
-                                    <a href="#" class="image">
-                                        <img src="<?php echo e(asset('img/7.png')); ?>" class="img-fluid">
-                                    </a>
-                                    <a href="#" class="image">
-                                        <img src="<?php echo e(asset('img/9.jpg')); ?>" class="img-fluid">
-                                    </a>
-                                </div>
-                                <a href="<?php echo e(route('services')); ?>" class="btn btn-service btn-block"
-                                    role="button">
-                                    Más servicios...
-                                </a>
-                            </section>
-                        </div>
-                    </div>
+                                </section>
+                            </div>
+                        </div>  
+                    <?php endif; ?>                        
                     <div class="col-md-9">
                         <?php echo $__env->yieldContent('content'); ?>
                     </div>
                 </div>
             </div>
-        </main>                
-
-        <?php if(session('info')): ?>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 offset-md-2">
-                        <div class="alert alert-primary ">
-                            <?php echo e(session('info')); ?>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>       
+        </main>                    
     </div>
 
     <!-- Scripts -->
