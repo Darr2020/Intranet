@@ -31,13 +31,26 @@
               <div class="sidebar-brand-text mx-3">MEUNET Admin</div>
             </a>
             <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
-              <a class="nav-link" href=" {{route('panel.view')}} ">
-                <img src=" {{ asset('icons/dashboard.svg') }} ">
-                <span>Panel</span>
-              </a>
-            </li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSesion" aria-expanded="true" aria-controls="collapseSesion">         
+                <img src="{{ asset('icons/personNav.svg') }}">
+                <span>Mi sesión</span>
+              </a> 
+              <div id="collapseSesion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item text-primary" href=" {{ route('users.show', Auth::user()->slug) }}">
+                    <span>{{ Auth::user()->name }} {{ Auth::user()->last_name }} </span>
+                    <img src=" {{asset('icons/favorite-red.svg')}} " class="float-right">
+                  </a>
 
+                  <a href="{{ route('logout') }}" class="dropdown-item" 
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Cerrar sesión
+                  </a>
+                  <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">@csrf</form>              
+                </div>
+              </div>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
   
@@ -169,24 +182,7 @@
             </li>
   
             <hr class="sidebar-divider">
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSesion" aria-expanded="true" aria-controls="collapseSesion">         
-                <img src="{{ asset('icons/person.svg') }}">
-                <span>Mi sesión</span>
-              </a> 
-              <div id="collapseSesion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item text-primary" href=" {{ route('users.show', Auth::user()->slug) }}">
-                    <span>{{ Auth::user()->name }} {{ Auth::user()->last_name }} </span>
-                    <img src=" {{asset('icons/favorite-red.svg')}} " class="float-right">
-                  </a>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <img src=" {{asset('icons/logout.svg')}} " class="float-right">
-                      Logout
-                  </a>                
-                </div>
-              </div>
-            </li>
+            
             <li class="nav-item">
               <a href=" {{url('/')}} " class="nav-link ">
                 <img src=" {{asset('icons/back.svg')}} ">
@@ -212,46 +208,33 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
             <img src="{{asset('icons/bar.svg')}}">
           </button>     
-
-          <div id="carouselPanel" class="carousel slide "  data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselPanel" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselPanel" data-slide-to="1"></li>
-              <li data-target="#carouselPanel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src=" {{asset('img/bgPanel.jpg')}} " class="d-block w-100 img-fluid">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Second slide label</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                  <img src=" {{asset('img/bgPanel.jpg')}} " class="d-block w-100 img-fluid">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          @if (Request::path() == 'PanelAdmin')
+            @include('partials.admin.carusel')
+          @else 
+            <div class="container-fluid">  
+            <div class="row justify-content-center">
+              <div class="col-md-7">
+                @if (count($errors) > 0)
+                  <div class="alert alert-danger" role="alert">
+                    @foreach ($errors->all() as $e)
+                        <ul>
+                          <li> {{$e}} </li>
+                        </ul>
+                    @endforeach
                   </div>
-              </div>
-              <div class="carousel-item">
-                  <img src=" {{asset('img/bgPanel.jpg')}} " class="d-block w-100 img-fluid">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </div>
+                @endif
               </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-              <div class="container-fluid">  
+      
+            <main class="py-3">
+              @yield('contentAdmin')
+            </main>     
+             
+      </div>
+
+          @endif
+         
+              
             {{--<div class="row justify-content-center"> 
               <!-- DATA FOR YEAR -->     
               <!-- Posts Year -->          
@@ -262,7 +245,7 @@
                   </a>
                   <div class="collapse show" id="collapseYear">
                     <div class="card-body">
-                      Se han publicado <strong> {{$postY}} noticias</strong> en el año
+                      
                     </div>
                   </div>
                 </div>
@@ -294,7 +277,7 @@
                 </div>
               </div>
               
-            </div>--}}
+            </div>
 
             <hr>
             <div class="row justify-content-center">
@@ -338,26 +321,8 @@
                   </div>
                 </div>
               </div>             
-            </div>
-            <div class="row justify-content-center">
-              <div class="col-md-7">
-                @if (count($errors) > 0)
-                  <div class="alert alert-danger" role="alert">
-                    @foreach ($errors->all() as $e)
-                        <ul>
-                          <li> {{$e}} </li>
-                        </ul>
-                    @endforeach
-                  </div>
-                @endif
-              </div>
-            </div>
-      
-            <main class="py-3">
-              @yield('contentAdmin')
-            </main>     
-             
-      </div>
+            </div>--}}
+           
     </div>
   
 

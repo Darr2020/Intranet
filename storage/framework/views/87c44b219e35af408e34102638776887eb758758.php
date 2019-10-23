@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('content'); ?>
     <div class="container">
         <div class="row ">
@@ -17,9 +19,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="task in tasks">
-                            <td class="text-center"> {{task.id}} </td>
-                            <td class="text-center"> {{task.name}} </td>
+                        <tr v-for="(task, value) in tasks" :key="value">
+                            <td class="text-center"> {{value+1}} </td>
+                            <td class="text-center" v-text="task.name">  </td>
                             <td class="text-center"> {{task.description}} </td>
                             <td class="text-center"> {{task.created_at | taskCreatedAt}} </td>
                             <td class="text-center">

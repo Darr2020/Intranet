@@ -31,13 +31,26 @@
               <div class="sidebar-brand-text mx-3">MEUNET Admin</div>
             </a>
             <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
-              <a class="nav-link" href=" <?php echo e(route('panel.view')); ?> ">
-                <img src=" <?php echo e(asset('icons/dashboard.svg')); ?> ">
-                <span>Panel</span>
-              </a>
-            </li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSesion" aria-expanded="true" aria-controls="collapseSesion">         
+                <img src="<?php echo e(asset('icons/personNav.svg')); ?>">
+                <span>Mi sesión</span>
+              </a> 
+              <div id="collapseSesion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item text-primary" href=" <?php echo e(route('users.show', Auth::user()->slug)); ?>">
+                    <span><?php echo e(Auth::user()->name); ?> <?php echo e(Auth::user()->last_name); ?> </span>
+                    <img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> " class="float-right">
+                  </a>
 
+                  <a href="<?php echo e(route('logout')); ?>" class="dropdown-item" 
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Cerrar sesión
+                  </a>
+                  <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;"><?php echo csrf_field(); ?></form>              
+                </div>
+              </div>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
   
@@ -169,24 +182,7 @@
             </li>
   
             <hr class="sidebar-divider">
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSesion" aria-expanded="true" aria-controls="collapseSesion">         
-                <img src="<?php echo e(asset('icons/person.svg')); ?>">
-                <span>Mi sesión</span>
-              </a> 
-              <div id="collapseSesion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item text-primary" href=" <?php echo e(route('users.show', Auth::user()->slug)); ?>">
-                    <span><?php echo e(Auth::user()->name); ?> <?php echo e(Auth::user()->last_name); ?> </span>
-                    <img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> " class="float-right">
-                  </a>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <img src=" <?php echo e(asset('icons/logout.svg')); ?> " class="float-right">
-                      Logout
-                  </a>                
-                </div>
-              </div>
-            </li>
+            
             <li class="nav-item">
               <a href=" <?php echo e(url('/')); ?> " class="nav-link ">
                 <img src=" <?php echo e(asset('icons/back.svg')); ?> ">
@@ -212,91 +208,10 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
             <img src="<?php echo e(asset('icons/bar.svg')); ?>">
           </button>     
-
-          <div id="carouselPanel" class="carousel slide "  data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselPanel" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselPanel" data-slide-to="1"></li>
-              <li data-target="#carouselPanel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src=" <?php echo e(asset('img/bgPanel.jpg')); ?> " class=" w-100 img-fluid">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Second slide label</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                  <img src=" <?php echo e(asset('img/bgPanel.jpg')); ?> " class="d-block w-100 img-fluid">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </div>
-              </div>
-              <div class="carousel-item">
-                  <img src=" <?php echo e(asset('img/bgPanel.jpg')); ?> " class="d-block w-100 img-fluid">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </div>
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-              <div class="container-fluid">  
-            
-
-            <hr>
-            <div class="row justify-content-center">
-               <!-- DATA FOR MONTH -->
-               <!-- Posts Months -->
-               <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-primary">Noticias en <?php echo e($m); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Haz publicado <strong><?php echo e($postM); ?>  noticias</strong> en el mes
-                    </div>
-                  </div>
-                </div>
-              </div>                
-              <!-- Events Months -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-primary">Eventos en <?php echo e($m); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Haz publicado <strong><?php echo e($eventM); ?>  eventos</strong> en el mes  <img src=" <?php echo e(asset('icons/calendar.svg')); ?> ">
-                    </div>
-                  </div>
-                </div>
-              </div>  
-              <!-- Tasks Months -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-black">Tareas en <?php echo e($m); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Los usuarios han creado <strong> <small>add tasks</small>  tareas</strong> en el mes  <img src=" <?php echo e(asset('icons/calendar.svg')); ?> ">
-                    </div>
-                  </div>
-                </div>
-              </div>             
-            </div>
+          <?php if(Request::path() == 'PanelAdmin'): ?>
+            <?php echo $__env->make('partials.admin.carusel', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+          <?php else: ?> 
+            <div class="container-fluid">  
             <div class="row justify-content-center">
               <div class="col-md-7">
                 <?php if(count($errors) > 0): ?>
@@ -316,6 +231,12 @@
             </main>     
              
       </div>
+
+          <?php endif; ?>
+         
+              
+            
+           
     </div>
   
 

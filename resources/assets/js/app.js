@@ -4,7 +4,7 @@ window.Vue = require('vue');
 
 import moment from 'moment';
 
-Vue.component('tasks', require('./components/TasksComponent.vue').default);
+//Vue.component('tasks', require('./components/TasksComponent.vue').default);
 
 const app = new Vue({
     el: '#app',
