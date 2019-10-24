@@ -49,7 +49,7 @@
                                 </li>
                                 @can('admin.panel')
                                     <li class="nav-item">                            
-                                        <a class="nav-link" href="{{ route('panel.view') }}">Panel Administrador</a>
+                                        <a class="nav-link" href="{{ route('admin.panel') }}">Panel Administrador</a>
                                     </li>
                                 @endcan  
 

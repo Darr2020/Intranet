@@ -54,6 +54,17 @@ class dataPanelServiceProvider extends ServiceProvider{
             $startY  = date("Y-01-d"); 
             $endY    = date("Y-12-t");
 
+            $tasksY = DB::table('tasks')              
+                ->whereBetween('created_at', [$startY, $endY])
+                ->count(); 
+            $view->with('tasksY', $tasksY);
+        });
+
+
+        View::composer(['*'], function($view){
+            $startY  = date("Y-01-d"); 
+            $endY    = date("Y-12-t");
+
             $postY = DB::table('posts')
                 ->whereBetween('created_at', [$startY, $endY])
                 ->where('state', 'PUBLISHED')
@@ -83,6 +94,17 @@ class dataPanelServiceProvider extends ServiceProvider{
                 ->where('state', 'PUBLISHED')
                 ->count();  
             $view->with('eventM', $eventM);
+        });  
+
+        View::composer(['*'], function($view){
+
+            $startM = date("Y-m-01"); 
+            $endtM  = date("Y-m-t");
+
+            $tasksM = DB::table('tasks')              
+                ->whereBetween('created_at', [$startM, $endtM])
+                ->count();   
+            $view->with('tasksM', $tasksM);
         });  
 
         View::composer(['*'], function($view){

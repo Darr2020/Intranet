@@ -27,7 +27,7 @@
       <div class="sticky-top">
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sticky-top" id="accordionSidebar">
           <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo e(route('panel.view')); ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo e(route('admin.panel')); ?>">
               <div class="sidebar-brand-text mx-3">MEUNET Admin</div>
             </a>
             <hr class="sidebar-divider my-0">
@@ -65,7 +65,7 @@
                 <span>Servicios</span>
               </a>
             </li>
-  
+            <?php if (\Shinobi::can('roles.index')): ?>
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" 
                 data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -74,20 +74,16 @@
               </a>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <?php if (\Shinobi::can('roles.index')): ?>
-                      <a class="collapse-item" href="<?php echo e(route('roles.index')); ?>">Gestionar Roles <span class="badge badge-info float-right"> <?php echo e($TRol); ?> </span></a>
-                  <?php endif; ?>
-                  <?php if (\Shinobi::can('roles.asignar')): ?>
-                      <a class="collapse-item" href="<?php echo e(route('listar.users')); ?>">Asignar Rol</a>
-                  <?php endif; ?>
-                  <?php if (\Shinobi::can('roles.create')): ?>
-                      <a class="collapse-item" href="<?php echo e(route('roles.create')); ?>">Crear Rol 
-                          <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
-                      </a>
-                  <?php endif; ?>
+                  <a class="collapse-item" href="<?php echo e(route('roles.index')); ?>">Gestionar Roles <span class="badge badge-info float-right"> <?php echo e($TRol); ?> </span></a>
+                  <a class="collapse-item" href="<?php echo e(route('listar.users')); ?>">Asignar Rol</a>   
+                  <a class="collapse-item" href="<?php echo e(route('roles.create')); ?>">Crear Rol 
+                    <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
+                  </a>                  
                 </div>
               </div>
             </li>
+            <?php endif; ?>
+            <?php if (\Shinobi::can('posts.index')): ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" 
                     data-target="#collapsePosts" aria-expanded="true" aria-controls="collapsePosts">
@@ -95,21 +91,19 @@
                     <span>Noticias</span>
                 </a>
                 <div id="collapsePosts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <?php if (\Shinobi::can('posts.index')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('posts.index')); ?>">
-                                Gestionar Noticias 
-                                <span class="badge badge-info float-right"> <?php echo e($TPost); ?> </span>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (\Shinobi::can('posts.create')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('posts.create')); ?>">Crear Noticia 
-                                <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
-                            </a>
-                        <?php endif; ?>
+                    <div class="bg-white py-2 collapse-inner rounded">   
+                      <a class="collapse-item" href="<?php echo e(route('posts.index')); ?>">
+                        Gestionar Noticias 
+                        <span class="badge badge-info float-right"> <?php echo e($TPost); ?> </span>
+                      </a>
+                        <a class="collapse-item" href="<?php echo e(route('posts.create')); ?>">Crear Noticia 
+                          <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
+                        </a>
                     </div>
                 </div>
             </li>
+            <?php endif; ?>
+            <?php if (\Shinobi::can('events.index')): ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" 
                     data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
@@ -118,43 +112,37 @@
                 </a>
                 <div id="collapseEvents" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <?php if (\Shinobi::can('events.index')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('events.index')); ?>">
-                                Gestionar Eventos 
-                                <span class="badge badge-info float-right"> <?php echo e($TEvent); ?> </span>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (\Shinobi::can('posts.create')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('events.create')); ?>">Crear Evento 
-                                <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
-                            </a>
-                        <?php endif; ?>
+                      <a class="collapse-item" href="<?php echo e(route('events.index')); ?>">
+                          Gestionar Eventos 
+                          <span class="badge badge-info float-right"> <?php echo e($TEvent); ?> </span>
+                      </a>  
+                      <a class="collapse-item" href="<?php echo e(route('events.create')); ?>">Crear Evento 
+                          <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
+                      </a>
                     </div>
                 </div>
             </li>
+            <?php endif; ?>
+            <?php if (\Shinobi::can('tags.index')): ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" 
-                    data-target="#collapseTgas" aria-expanded="true" aria-controls="collapseTgas">
-                    <img src="<?php echo e(asset('icons/tag.svg')); ?>">
-                    <span>Etiquetas</span>
+                  data-target="#collapseTgas" aria-expanded="true" aria-controls="collapseTgas">
+                  <img src="<?php echo e(asset('icons/tag.svg')); ?>">
+                  <span>Etiquetas</span>
                 </a>
                 <div id="collapseTgas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <?php if (\Shinobi::can('tags.index')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('tags.index')); ?>">
-                                Gestionar Etiquetas 
-                                <span class="badge badge-info float-right"> <?php echo e($TTag); ?> </span>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (\Shinobi::can('posts.create')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('tags.create')); ?>">Crear Etiqueta 
-                                <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
-                            </a>
-                        <?php endif; ?>
+                      <a class="collapse-item" href="<?php echo e(route('tags.index')); ?>">
+                          Gestionar Etiquetas 
+                          <span class="badge badge-info float-right"> <?php echo e($TTag); ?> </span>
+                      </a>
+                      <a class="collapse-item" href="<?php echo e(route('tags.create')); ?>">Crear Etiqueta 
+                          <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
+                      </a>
                     </div>
                 </div>
             </li>
-             
+            <?php endif; ?>
             <!-- Charts statistics-->
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">
@@ -177,6 +165,20 @@
                     <img src=" <?php echo e(asset('icons/pieChart.svg')); ?> " class="float-right">
                   </a>
                   
+                </div>
+              </div>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true" aria-controls="collapseReport">
+                  <img src=" <?php echo e(asset('icons/chart.svg')); ?> ">
+                  <span>Reporte PDF</span></a>
+              </a>
+              <div id="collapseReport" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item" href=" <?php echo e(route('report.view')); ?>"  target="_blank">Ver Reporte</a>
+                  <a class="collapse-item" href=" <?php echo e(route('report.down')); ?>"  target="_blank">Descargar Reporte</a>
                 </div>
               </div>
             </li>
@@ -234,8 +236,6 @@
 
           <?php endif; ?>
          
-              
-            
            
     </div>
   

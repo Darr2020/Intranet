@@ -18,17 +18,14 @@
 			</div>
 		</div>
 	</div>
-
 	<script>
 		new Morris.Donut({
 			element: 'pieChartEvents',
 			data: [ 
 				{label: "Eventos", value:" {{$eventsP}} "},
 				{label: "Noticias", value:" {{$postsP}} "},				  
-			],
-			
+			],			
     	});
-
 		new Morris.Donut({
 			element: 'pieChartPosts',
 			data: [ 

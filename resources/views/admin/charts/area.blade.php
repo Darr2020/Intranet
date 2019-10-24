@@ -1,21 +1,17 @@
 @extends('admin.panel')
 
 @section('contentAdmin')
-
 	<div class="container">
 		<div class="card">
 			<h3 class="text-center">Historico de Noticias</h3>
 			<div id="Area"></div>
 		</div>
 	</div>
-
 	<script>
-
 		new Morris.Area({
 			element: 'Area',
 			data: [
-				@foreach($postsYear as $post)
-					{ 
+				@foreach($postsYear as $post){  
 						year:"{{$post->year}}", 
 						noticias:"{{$post->total}}"  
 					},

@@ -49,7 +49,7 @@
                                 </li>
                                 <?php if (\Shinobi::can('admin.panel')): ?>
                                     <li class="nav-item">                            
-                                        <a class="nav-link" href="<?php echo e(route('panel.view')); ?>">Panel Administrador</a>
+                                        <a class="nav-link" href="<?php echo e(route('admin.panel')); ?>">Panel Administrador</a>
                                     </li>
                                 <?php endif; ?>  
 

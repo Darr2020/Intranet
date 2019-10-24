@@ -10,13 +10,11 @@ use App\User;
 use Alert;
 use Carbon\Carbon;
 
-
 class UserController extends Controller{
     
     public function index(Request $request){
   
         $titulo = "Directorio";
-
         $name = $request->get('name');  
 
         $users = User::orderBy('name','ASC')

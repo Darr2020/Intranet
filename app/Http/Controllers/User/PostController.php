@@ -33,14 +33,12 @@ class PostController extends Controller{
 			->take(5)
 			->get();
 
-		return view('inicio', compact('posts', 'tasks', 'titulo'));
-							
+		return view('inicio', compact('posts', 'tasks', 'titulo'));							
 	}
 
 	public function tag($slug){
 
 		$titulo = "Etiquetas";
-
 		$posts = Tag::where('slug',$slug)		
 			->with('posts')->get();
 

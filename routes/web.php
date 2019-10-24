@@ -20,10 +20,13 @@ Route::resource('/tarea', 'User\TasksController', ['except' => 'show', 'create',
 
 	Route::group(['namespace' => 'Admin'], function (){
 
-		Route::get('PanelAdmin', 'PanelController@view')->name('panel.view')
-			->middleware('permission:panel.view');
+		Route::get('PanelAdmin', 'PanelController@view')->name('admin.panel')
+			->middleware('permission:admin.panel');
 		
 		Route::get('dataEstadistica', 'PanelController@dataEstadistica');
+
+		Route::get('ver', 'ReportsController@viewReport')->name('report.view');
+		Route::get('descargar', 'ReportsController@downReport')->name('report.down');
 
 		Route::prefix('Graficas')->group(function (){
 			Route::get('', 'ChartsController@view')->name('charts.views');
