@@ -20,9 +20,8 @@
 <body>
     <div id="app">      
         <header class="sticky-top">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
-                <div class="container">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <div class="container-fluid">
                     <a class="navbar-brand" href="<?php echo e(url('/')); ?>">MEUNET</a>                    
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                         <span class="navbar-toggler-icon"></span>
@@ -79,8 +78,7 @@
                         </ul>
                     </div>
                 </div>
-                </nav>
-            </div>
+            </nav>
         </header> 
         <main class="py-4">
             <div class="container-fluid">
@@ -97,55 +95,49 @@
                                     <div class="service-box">
                                             <div class="service-icon yellow">
                                                 <div class="front-content">
-                                                    <i class="fa fa-trophy"></i>
                                                     <h3>SVP</h3>
                                                 </div>
                                             </div>
                                             <div class="service-content">
                                                 <h3>Vacaciones y Permisos</h3>
-                                                <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p>
+                                                <p>Sistema para la solicitud de vacaciones y permisos de trabajo</p>
                                             </div>
                                         </div>
                                     
                                         <div class="service-box">
                                             <div class="service-icon orange">
                                                 <div class="front-content">
-                                                    <i class="fa fa-anchor"></i>
                                                     <h3>CTRP</h3>
                                                 </div>
                                             </div>
                                             <div class="service-content">
                                                 <h3>Constancia y Recibos</h3>
-                                                <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p>
+                                                <p>Sistema para la solicitud de Constancias de trabajo y Recibo de pago</p>
                                             </div>
                                         </div>
-                                        <div class="service-box ">
+                                        <div class="service-box">
                                             <div class="service-icon red">
                                                 <div class="front-content">
-                                                    <i class="fa fa-trophy"></i>
-                                                    <h3>SGEFIRRHH</h3>
+                                                    <h3>SIGEFIRRHH</h3>
                                                 </div>
                                             </div>
                                             <div class="service-content">
-                                                <h3>SGEFIRRHH</h3>
-                                                <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p>
+                                                <h3>SIGEFIRRHH</h3>
+                                                <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.</p>
                                             </div>
                                         </div>
                                     
                                         <div class="service-box">
                                             <div class="service-icon grey">
                                                 <div class="front-content">
-                                                    <i class="fa fa-paper-plane-o"></i>
                                                     <h3>SIADE</h3>
                                                 </div>
                                             </div>
                                             <div class="service-content">
                                                 <h3>SIADE</h3>
-                                                <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p>
+                                                <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.</p>
                                             </div>
                                         </div> 
-                
-                                    
                                     <a href="<?php echo e(route('services')); ?>" class="btn btn-service btn-block"
                                         role="button">
                                         Más servicios...

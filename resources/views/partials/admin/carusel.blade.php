@@ -25,14 +25,7 @@
 			<img src=" {{asset('img/bgPanel.jpg')}} ">
 			<figcaption>lorem</figcaption>
 		</figure>
-		<figure>
-			<img src=" {{asset('img/bgPanel.jpg')}} ">
-			<figcaption>Bryce Canyon, Utah, United States</figcaption>
-		</figure>
-		<figure>
-			<img src=" {{asset('img/bgPanel.jpg')}} ">
-			<figcaption>Hobbiton, New Zealand</figcaption>
-		</figure>
+		
 	</figure>
 </div>
 
@@ -61,7 +54,8 @@ div#captioned-gallery {
 }
 figure.slider { 
   position: relative; width: 500%;
-  font-size: 0; animation: 30s slider infinite; 
+  font-size: 0; 
+  animation: 30s slider infinite ease; 
 }
 figure.slider figure { 
   width: 20%; height: auto;
