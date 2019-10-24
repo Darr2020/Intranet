@@ -27,7 +27,7 @@
       <div class="sticky-top">
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sticky-top" id="accordionSidebar">
           <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('panel.view')}}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.panel')}}">
               <div class="sidebar-brand-text mx-3">MEUNET Admin</div>
             </a>
             <hr class="sidebar-divider my-0">
@@ -65,7 +65,7 @@
                 <span>Servicios</span>
               </a>
             </li>
-  
+            @can('roles.index')
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" 
                 data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -74,20 +74,16 @@
               </a>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  @can('roles.index')
-                      <a class="collapse-item" href="{{ route('roles.index') }}">Gestionar Roles <span class="badge badge-info float-right"> {{$TRol}} </span></a>
-                  @endcan
-                  @can('roles.asignar')
-                      <a class="collapse-item" href="{{ route('listar.users') }}">Asignar Rol</a>
-                  @endcan
-                  @can('roles.create')
-                      <a class="collapse-item" href="{{ route('roles.create') }}">Crear Rol 
-                          <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
-                      </a>
-                  @endcan
+                  <a class="collapse-item" href="{{ route('roles.index') }}">Gestionar Roles <span class="badge badge-info float-right"> {{$TRol}} </span></a>
+                  <a class="collapse-item" href="{{ route('listar.users') }}">Asignar Rol</a>   
+                  <a class="collapse-item" href="{{ route('roles.create') }}">Crear Rol 
+                    <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
+                  </a>                  
                 </div>
               </div>
             </li>
+            @endcan
+            @can('posts.index')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" 
                     data-target="#collapsePosts" aria-expanded="true" aria-controls="collapsePosts">
@@ -95,21 +91,19 @@
                     <span>Noticias</span>
                 </a>
                 <div id="collapsePosts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        @can('posts.index')
-                            <a class="collapse-item" href="{{ route('posts.index') }}">
-                                Gestionar Noticias 
-                                <span class="badge badge-info float-right"> {{$TPost}} </span>
-                            </a>
-                        @endcan
-                        @can('posts.create')
-                            <a class="collapse-item" href="{{ route('posts.create') }}">Crear Noticia 
-                                <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
-                            </a>
-                        @endcan
+                    <div class="bg-white py-2 collapse-inner rounded">   
+                      <a class="collapse-item" href="{{ route('posts.index') }}">
+                        Gestionar Noticias 
+                        <span class="badge badge-info float-right"> {{$TPost}} </span>
+                      </a>
+                        <a class="collapse-item" href="{{ route('posts.create') }}">Crear Noticia 
+                          <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
+                        </a>
                     </div>
                 </div>
             </li>
+            @endcan
+            @can('events.index')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" 
                     data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
@@ -118,43 +112,37 @@
                 </a>
                 <div id="collapseEvents" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @can('events.index')
-                            <a class="collapse-item" href="{{ route('events.index') }}">
-                                Gestionar Eventos 
-                                <span class="badge badge-info float-right"> {{$TEvent}} </span>
-                            </a>
-                        @endcan
-                        @can('posts.create')
-                            <a class="collapse-item" href="{{ route('events.create') }}">Crear Evento 
-                                <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
-                            </a>
-                        @endcan
+                      <a class="collapse-item" href="{{ route('events.index') }}">
+                          Gestionar Eventos 
+                          <span class="badge badge-info float-right"> {{$TEvent}} </span>
+                      </a>  
+                      <a class="collapse-item" href="{{ route('events.create') }}">Crear Evento 
+                          <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
+                      </a>
                     </div>
                 </div>
             </li>
+            @endcan
+            @can('tags.index')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" 
-                    data-target="#collapseTgas" aria-expanded="true" aria-controls="collapseTgas">
-                    <img src="{{ asset('icons/tag.svg') }}">
-                    <span>Etiquetas</span>
+                  data-target="#collapseTgas" aria-expanded="true" aria-controls="collapseTgas">
+                  <img src="{{ asset('icons/tag.svg') }}">
+                  <span>Etiquetas</span>
                 </a>
                 <div id="collapseTgas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @can('tags.index')
-                            <a class="collapse-item" href="{{ route('tags.index') }}">
-                                Gestionar Etiquetas 
-                                <span class="badge badge-info float-right"> {{$TTag}} </span>
-                            </a>
-                        @endcan
-                        @can('posts.create')
-                            <a class="collapse-item" href="{{ route('tags.create') }}">Crear Etiqueta 
-                                <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
-                            </a>
-                        @endcan
+                      <a class="collapse-item" href="{{ route('tags.index') }}">
+                          Gestionar Etiquetas 
+                          <span class="badge badge-info float-right"> {{$TTag}} </span>
+                      </a>
+                      <a class="collapse-item" href="{{ route('tags.create') }}">Crear Etiqueta 
+                          <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
+                      </a>
                     </div>
                 </div>
             </li>
-             
+            @endcan
             <!-- Charts statistics-->
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">

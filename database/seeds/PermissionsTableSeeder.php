@@ -8,7 +8,7 @@ class PermissionsTableSeeder extends Seeder{
     
     public function run() {
 
-         //Users
+         //Admin
          Permission::create([
             'name'          => 'Admin panel',
             'slug'          => 'admin.panel',
