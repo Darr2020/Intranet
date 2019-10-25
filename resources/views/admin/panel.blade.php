@@ -142,7 +142,7 @@
                     </div>
                 </div>
             </li>
-            @endcan
+            @endcan       
             <!-- Charts statistics-->
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">
