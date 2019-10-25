@@ -38,7 +38,7 @@ class User extends Authenticatable {
     //SCOPE 
     public function scopeName($query, $name){
         if(trim($name) != ""){
-            return $query->where('name', 'LIKE', "%$name%");
+            return $query->where('name', 'LIKE', "%$name%")->orWhere('office', 'LIKE', "%$name%");
         }
     }
 }

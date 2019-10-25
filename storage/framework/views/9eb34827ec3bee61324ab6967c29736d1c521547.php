@@ -1,47 +1,22 @@
 <!-- Slider -->
 
 
-{{--<div id="captioned-gallery">
-    <figure class="slider">
-      <figure>
-        <img src=" {{asset('img/bgPanel.jpg')}} ">
-        <figcaption class="text-center">
-          
-        </figcaption>
-      </figure>
-      <figure>
-        <img src=" {{asset('img/bgPanel.jpg')}} ">
-        <figcaption class="text-center">
-         
-        </figcaption>
-      </figure>	
-      <figure>
-        <img src=" {{asset('img/bgPanel.jpg')}} ">
-        <figcaption class="text-center">
-          <h1>Noticias en {{$y}}</h1>
-          <p> Se ha publicado un total de <strong> {{$postY}} @if($postY == 1) noticia @else noticias @endif</strong> en el año</p>
-          <hr>
-          <h1>Noticias en {{$m}}</h1>
-          <p>Se ha publicado <strong> {{$postM}} @if($postM == 1) noticia @else noticias @endif</strong> en el lo que va del mes</p>
-        </figcaption>
-      </figure>	
-    </figure>
-  </div>--}}
+
 <div id="slider">
     <div class="slides">
       <div class="slider">
         <div class="legend"></div>
         <div class="content">
           <div class="content-txt">
-            <h1>Noticias en {{$y}}</h1>
-            <h2>Se ha publicado un total de <strong> {{$postY}} @if($postY == 1) noticia @else noticias @endif</strong> en el año</h2>
+            <h1>Noticias en <?php echo e($y); ?></h1>
+            <h2>Se ha publicado un total de <strong> <?php echo e($postY); ?> <?php if($postY == 1): ?> noticia <?php else: ?> noticias <?php endif; ?></strong> en el año</h2>
             <hr>
-            <h1>Noticias en {{$m}}</h1>
-            <h2>Se ha creado <strong>{{$postM}} @if($postM == 1) noticia @else noticias @endif</strong> en el lo que va del mes</h2>
+            <h1>Noticias en <?php echo e($m); ?></h1>
+            <h2>Se ha creado <strong><?php echo e($postM); ?> <?php if($postM == 1): ?> noticia <?php else: ?> noticias <?php endif; ?></strong> en el lo que va del mes</h2>
           </div>
         </div>
         <div class="image">
-          <img src=" {{asset('img/bgPanel.png')}} ">
+          <img src=" <?php echo e(asset('img/bgPanel.png')); ?> ">
           generar
         </div>
       </div>
@@ -49,30 +24,30 @@
         <div class="legend"></div>
         <div class="content">
           <div class="content-txt">
-            <h1>Eventos en {{$y}}</h1>
-            <h2> Se ha creado un total de <strong> {{$eventY}} @if($eventY == 1) evento @else eventos @endif</strong> en el año</h2>
+            <h1>Eventos en <?php echo e($y); ?></h1>
+            <h2> Se ha creado un total de <strong> <?php echo e($eventY); ?> <?php if($eventY == 1): ?> evento <?php else: ?> eventos <?php endif; ?></strong> en el año</h2>
             <hr>
-            <h1>Eventos en {{$m}}</h1>
-            <h2>Se ha creado <strong>{{$eventM}} @if($eventM == 1) evento @else eventos @endif</strong> en el lo que va del mes</h2>
+            <h1>Eventos en <?php echo e($m); ?></h1>
+            <h2>Se ha creado <strong><?php echo e($eventM); ?> <?php if($eventM == 1): ?> evento <?php else: ?> eventos <?php endif; ?></strong> en el lo que va del mes</h2>
           </div>
         </div>
         <div class="image">
-          <img src=" {{asset('img/bgPanel.png')}} ">
+          <img src=" <?php echo e(asset('img/bgPanel.png')); ?> ">
         </div>
       </div>
       <div class="slider">
         <div class="legend"></div>
         <div class="content">
           <div class="content-txt">
-            <h1>Tareas en {{$y}}</h1>
-            <h2> Se ha creado un total de <strong> {{$tasksY}} Tareas</strong> en el año</h2>
+            <h1>Tareas en <?php echo e($y); ?></h1>
+            <h2> Se ha creado un total de <strong> <?php echo e($tasksY); ?> Tareas</strong> en el año</h2>
             <hr>
-            <h1>Tareas en {{$m}}</h1>
-            <h2>Se ha creado <strong>{{$tasksM}} Tareas</strong> en el lo que va del mes</h2>
+            <h1>Tareas en <?php echo e($m); ?></h1>
+            <h2>Se ha creado <strong><?php echo e($tasksM); ?> Tareas</strong> en el lo que va del mes</h2>
           </div>
         </div>
         <div class="image">
-          <img src=" {{asset('img/bgPanel.png')}} ">
+          <img src=" <?php echo e(asset('img/bgPanel.png')); ?> ">
 
         </div>
       </div>
@@ -98,7 +73,7 @@
   position:relative;
   overflow:hidden;
 }
-@keyframes load{
+@keyframes  load{
   from{left:-100%;}
   to{left:0;}
 }
@@ -231,7 +206,7 @@
   75%{ margin-left:-300%; }
   96%{ margin-left:-300%; }
 }
-@keyframes slide{
+@keyframes  slide{
   0%,100%{ margin-left:0%; }
   21%{ margin-left:0%; }
   25%{ margin-left:-100%; }
@@ -266,7 +241,7 @@
   90%{left:-420px;}
   100%{left:-420px;}
 }
-@keyframes content-s{
+@keyframes  content-s{
   0%{left:-420px;}
   10%{left:20px;}
   15%{left:0px;}
@@ -302,7 +277,7 @@
   96%{ margin-left:45px; }
 }
 
-@keyframes on{
+@keyframes  on{
   0%,100%{ margin-left:0%; }
   21%{ margin-left:0%; }
   25%{ margin-left:15px; }
@@ -312,4 +287,4 @@
   75%{ margin-left:45px; }
   96%{ margin-left:45px; }
 }
-</style>
+</style><?php /**PATH /var/www/html/sistemas/intranet2/resources/views/partials/admin/carusel.blade.php ENDPATH**/ ?>

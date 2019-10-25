@@ -168,6 +168,20 @@
                 </div>
               </div>
             </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true" aria-controls="collapseReport">
+                  <img src=" {{asset('icons/chart.svg')}} ">
+                  <span>Reporte PDF</span></a>
+              </a>
+              <div id="collapseReport" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item" href=" {{route('report.view')}}"  target="_blank">Ver Reporte</a>
+                  <a class="collapse-item" href=" {{route('report.down')}}"  target="_blank">Descargar Reporte</a>
+                </div>
+              </div>
+            </li>
   
             <hr class="sidebar-divider">
             
@@ -222,94 +236,6 @@
 
           @endif
          
-              
-            {{--<div class="row justify-content-center"> 
-              <!-- DATA FOR YEAR -->     
-              <!-- Posts Year -->          
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Noticias en {{$y}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Events Year -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card  shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Eventos en {{$y}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Haz publicado <strong> {{$eventY}}  eventos</strong> en el año
-                    </div>
-                  </div>
-                </div>
-              </div>             
-              <!-- Tasks Year -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Tareas en {{$y}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Los usuarios han creado <strong> <small>add tasks</small>  tareas</strong> en el año
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-
-            <hr>
-            <div class="row justify-content-center">
-               <!-- DATA FOR MONTH -->
-               <!-- Posts Months -->
-               <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-primary">Noticias en {{$m}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Haz publicado <strong>{{$postM}}  noticias</strong> en el mes
-                    </div>
-                  </div>
-                </div>
-              </div>                
-              <!-- Events Months -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-primary">Eventos en {{$m}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Haz publicado <strong>{{$eventM}}  eventos</strong> en el mes  <img src=" {{asset('icons/calendar.svg')}} ">
-                    </div>
-                  </div>
-                </div>
-              </div>  
-              <!-- Tasks Months -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-black">Tareas en {{$m}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Los usuarios han creado <strong> <small>add tasks</small>  tareas</strong> en el mes  <img src=" {{asset('icons/calendar.svg')}} ">
-                    </div>
-                  </div>
-                </div>
-              </div>             
-            </div>--}}
            
     </div>
   

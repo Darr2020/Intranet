@@ -27,17 +27,30 @@
       <div class="sticky-top">
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sticky-top" id="accordionSidebar">
           <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo e(route('panel.view')); ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo e(route('admin.panel')); ?>">
               <div class="sidebar-brand-text mx-3">MEUNET Admin</div>
             </a>
             <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
-              <a class="nav-link" href=" <?php echo e(route('panel.view')); ?> ">
-                <img src=" <?php echo e(asset('icons/dashboard.svg')); ?> ">
-                <span>Panel</span>
-              </a>
-            </li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSesion" aria-expanded="true" aria-controls="collapseSesion">         
+                <img src="<?php echo e(asset('icons/personNav.svg')); ?>">
+                <span>Mi sesión</span>
+              </a> 
+              <div id="collapseSesion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item text-primary" href=" <?php echo e(route('users.show', Auth::user()->slug)); ?>">
+                    <span><?php echo e(Auth::user()->name); ?> <?php echo e(Auth::user()->last_name); ?> </span>
+                    <img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> " class="float-right">
+                  </a>
 
+                  <a href="<?php echo e(route('logout')); ?>" class="dropdown-item" 
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Cerrar sesión
+                  </a>
+                  <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;"><?php echo csrf_field(); ?></form>              
+                </div>
+              </div>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
   
@@ -52,7 +65,7 @@
                 <span>Servicios</span>
               </a>
             </li>
-  
+            <?php if (\Shinobi::can('roles.index')): ?>
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" 
                 data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -61,20 +74,16 @@
               </a>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <?php if (\Shinobi::can('roles.index')): ?>
-                      <a class="collapse-item" href="<?php echo e(route('roles.index')); ?>">Gestionar Roles <span class="badge badge-info float-right"> <?php echo e($TRol); ?> </span></a>
-                  <?php endif; ?>
-                  <?php if (\Shinobi::can('roles.asignar')): ?>
-                      <a class="collapse-item" href="<?php echo e(route('listar.users')); ?>">Asignar Rol</a>
-                  <?php endif; ?>
-                  <?php if (\Shinobi::can('roles.create')): ?>
-                      <a class="collapse-item" href="<?php echo e(route('roles.create')); ?>">Crear Rol 
-                          <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
-                      </a>
-                  <?php endif; ?>
+                  <a class="collapse-item" href="<?php echo e(route('roles.index')); ?>">Gestionar Roles <span class="badge badge-info float-right"> <?php echo e($TRol); ?> </span></a>
+                  <a class="collapse-item" href="<?php echo e(route('listar.users')); ?>">Asignar Rol</a>   
+                  <a class="collapse-item" href="<?php echo e(route('roles.create')); ?>">Crear Rol 
+                    <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
+                  </a>                  
                 </div>
               </div>
             </li>
+            <?php endif; ?>
+            <?php if (\Shinobi::can('posts.index')): ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" 
                     data-target="#collapsePosts" aria-expanded="true" aria-controls="collapsePosts">
@@ -82,21 +91,19 @@
                     <span>Noticias</span>
                 </a>
                 <div id="collapsePosts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <?php if (\Shinobi::can('posts.index')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('posts.index')); ?>">
-                                Gestionar Noticias 
-                                <span class="badge badge-info float-right"> <?php echo e($TPost); ?> </span>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (\Shinobi::can('posts.create')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('posts.create')); ?>">Crear Noticia 
-                                <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
-                            </a>
-                        <?php endif; ?>
+                    <div class="bg-white py-2 collapse-inner rounded">   
+                      <a class="collapse-item" href="<?php echo e(route('posts.index')); ?>">
+                        Gestionar Noticias 
+                        <span class="badge badge-info float-right"> <?php echo e($TPost); ?> </span>
+                      </a>
+                        <a class="collapse-item" href="<?php echo e(route('posts.create')); ?>">Crear Noticia 
+                          <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
+                        </a>
                     </div>
                 </div>
             </li>
+            <?php endif; ?>
+            <?php if (\Shinobi::can('events.index')): ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" 
                     data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
@@ -105,43 +112,37 @@
                 </a>
                 <div id="collapseEvents" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <?php if (\Shinobi::can('events.index')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('events.index')); ?>">
-                                Gestionar Eventos 
-                                <span class="badge badge-info float-right"> <?php echo e($TEvent); ?> </span>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (\Shinobi::can('posts.create')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('events.create')); ?>">Crear Evento 
-                                <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
-                            </a>
-                        <?php endif; ?>
+                      <a class="collapse-item" href="<?php echo e(route('events.index')); ?>">
+                          Gestionar Eventos 
+                          <span class="badge badge-info float-right"> <?php echo e($TEvent); ?> </span>
+                      </a>  
+                      <a class="collapse-item" href="<?php echo e(route('events.create')); ?>">Crear Evento 
+                          <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
+                      </a>
                     </div>
                 </div>
             </li>
+            <?php endif; ?>
+            <?php if (\Shinobi::can('tags.index')): ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" 
-                    data-target="#collapseTgas" aria-expanded="true" aria-controls="collapseTgas">
-                    <img src="<?php echo e(asset('icons/tag.svg')); ?>">
-                    <span>Etiquetas</span>
+                  data-target="#collapseTgas" aria-expanded="true" aria-controls="collapseTgas">
+                  <img src="<?php echo e(asset('icons/tag.svg')); ?>">
+                  <span>Etiquetas</span>
                 </a>
                 <div id="collapseTgas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <?php if (\Shinobi::can('tags.index')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('tags.index')); ?>">
-                                Gestionar Etiquetas 
-                                <span class="badge badge-info float-right"> <?php echo e($TTag); ?> </span>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (\Shinobi::can('posts.create')): ?>
-                            <a class="collapse-item" href="<?php echo e(route('tags.create')); ?>">Crear Etiqueta 
-                                <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
-                            </a>
-                        <?php endif; ?>
+                      <a class="collapse-item" href="<?php echo e(route('tags.index')); ?>">
+                          Gestionar Etiquetas 
+                          <span class="badge badge-info float-right"> <?php echo e($TTag); ?> </span>
+                      </a>
+                      <a class="collapse-item" href="<?php echo e(route('tags.create')); ?>">Crear Etiqueta 
+                          <img class="float-right" style="width: 20px;" src="<?php echo e(asset('icons/create.svg')); ?>">
+                      </a>
                     </div>
                 </div>
             </li>
-             
+            <?php endif; ?>
             <!-- Charts statistics-->
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">
@@ -167,26 +168,23 @@
                 </div>
               </div>
             </li>
-  
-            <hr class="sidebar-divider">
+
+
             <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSesion" aria-expanded="true" aria-controls="collapseSesion">         
-                <img src="<?php echo e(asset('icons/person.svg')); ?>">
-                <span>Mi sesión</span>
-              </a> 
-              <div id="collapseSesion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true" aria-controls="collapseReport">
+                  <img src=" <?php echo e(asset('icons/chart.svg')); ?> ">
+                  <span>Reporte PDF</span></a>
+              </a>
+              <div id="collapseReport" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item text-primary" href=" <?php echo e(route('users.show', Auth::user()->slug)); ?>">
-                    <span><?php echo e(Auth::user()->name); ?> <?php echo e(Auth::user()->last_name); ?> </span>
-                    <img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> " class="float-right">
-                  </a>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <img src=" <?php echo e(asset('icons/logout.svg')); ?> " class="float-right">
-                      Logout
-                  </a>                
+                  <a class="collapse-item" href=" <?php echo e(route('report.view')); ?>"  target="_blank">Ver Reporte</a>
+                  <a class="collapse-item" href=" <?php echo e(route('report.down')); ?>"  target="_blank">Descargar Reporte</a>
                 </div>
               </div>
             </li>
+  
+            <hr class="sidebar-divider">
+            
             <li class="nav-item">
               <a href=" <?php echo e(url('/')); ?> " class="nav-link ">
                 <img src=" <?php echo e(asset('icons/back.svg')); ?> ">
@@ -207,101 +205,15 @@
         <!-- Main Content -->
         <div id="content"> 
         
-        <br>
+
           <!-- Sidebar ToggleButton(Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
             <img src="<?php echo e(asset('icons/bar.svg')); ?>">
-          </button>           
-            
-          <div class="container-fluid">                    
-           
-            <div class="row justify-content-center"> 
-              <!-- DATA FOR YEAR -->     
-              <!-- Posts Year -->          
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Noticias en <?php echo e($y); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Se han publicado <strong> <?php echo e($postY); ?> noticias</strong> en el año
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Events Year -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card  shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Eventos en <?php echo e($y); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Haz publicado <strong> <?php echo e($eventY); ?>  eventos</strong> en el año
-                    </div>
-                  </div>
-                </div>
-              </div>             
-              <!-- Tasks Year -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Tareas en <?php echo e($y); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Los usuarios han creado <strong> <small>add tasks</small>  tareas</strong> en el año
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-
-            <hr>
-            <div class="row justify-content-center">
-               <!-- DATA FOR MONTH -->
-               <!-- Posts Months -->
-               <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-primary">Noticias en <?php echo e($m); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Haz publicado <strong><?php echo e($postM); ?>  noticias</strong> en el mes
-                    </div>
-                  </div>
-                </div>
-              </div>                
-              <!-- Events Months -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-primary">Eventos en <?php echo e($m); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Haz publicado <strong><?php echo e($eventM); ?>  eventos</strong> en el mes  <img src=" <?php echo e(asset('icons/calendar.svg')); ?> ">
-                    </div>
-                  </div>
-                </div>
-              </div>  
-              <!-- Tasks Months -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-black">Tareas en <?php echo e($m); ?></h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Los usuarios han creado <strong> <small>add tasks</small>  tareas</strong> en el mes  <img src=" <?php echo e(asset('icons/calendar.svg')); ?> ">
-                    </div>
-                  </div>
-                </div>
-              </div>             
-            </div>
+          </button>     
+          <?php if(Request::path() == 'PanelAdmin'): ?>
+            <?php echo $__env->make('partials.admin.carusel', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+          <?php else: ?> 
+            <div class="container-fluid">  
             <div class="row justify-content-center">
               <div class="col-md-7">
                 <?php if(count($errors) > 0): ?>
@@ -321,6 +233,10 @@
             </main>     
              
       </div>
+
+          <?php endif; ?>
+         
+           
     </div>
   
 

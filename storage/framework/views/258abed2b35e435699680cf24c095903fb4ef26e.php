@@ -45,12 +45,10 @@
                                 </li>
                                 <li class="nav-item <?php echo e(active('eventos')); ?>">
                                     <a class="nav-link" href="<?php echo e(url('eventos')); ?>">Eventos</a>
-                                </li>
-
-                                    
-                                <?php if (\Shinobi::can('panelAdmin')): ?>
+                                </li>                                    
+                                <?php if (\Shinobi::can('admin.panel')): ?>
                                     <li class="nav-item">                            
-                                        <a class="nav-link" href="<?php echo e(route('panel.view')); ?>">Panel Administrador</a>
+                                        <a class="nav-link" href="<?php echo e(route('admin.panel')); ?>">Panel Administrador</a>
                                     </li>
                                 <?php endif; ?>  
 

@@ -14,7 +14,7 @@ class ReportsController extends Controller{
         $view =  \View::make('admin.reports.report', compact('date'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('report');
+        return $pdf->stream('Reporte PDF');
     }
 
     public function downReport(){ 
@@ -23,6 +23,6 @@ class ReportsController extends Controller{
         $view =  \View::make('admin.reports.report', compact('date'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->download('report.pdf');
+        return $pdf->download('Reporte.pdf');
     }
 }

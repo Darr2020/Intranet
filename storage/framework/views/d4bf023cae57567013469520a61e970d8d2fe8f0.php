@@ -1,10 +1,10 @@
 <?php $__env->startSection('content'); ?>
-    <div class="container">
-        <div class="row justify-content-around">
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-4">
                 <h2>Directorio</h2> 
             </div>
-            <div class="col-4">
+            <div class="col-md-4 offset-md-2">
                 <form action=" <?php echo e(route('users.index')); ?> " method="GET" id="content2">
                     <input type="text" name="name" class="input" id="search-input">
                     <button type="reset" class="search" id="search-btn"></button>

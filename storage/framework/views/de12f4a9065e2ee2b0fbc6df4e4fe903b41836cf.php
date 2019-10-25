@@ -106,12 +106,12 @@ td {
     <header>
         <nav>
             <img src="./../public/img/mppeu.jpg" width="150" height="150">
-            <small class="right">{{ $date }}</small>
+            <small class="right"><?php echo e($date); ?></small>
         </nav>
     </header>
     <main>
         <div class="text-center">
-            <h1>Datos estadísticos en el año  <i>{{$y}}</i></h1>
+            <h1>Datos estadísticos en el año  <i><?php echo e($y); ?></i></h1>
         </div>   
         <p>En el presente reporte se observan los datos generados al año y por cada mes de los boletines informativos, eventos institucionales y las tareas creadas por los usuarios</p>   
         <div class="table-title">
@@ -128,16 +128,16 @@ td {
             </thead>
             <tbody class="table-hover">
                 <tr>
-                    <td class="text-center">Anual <small> {{$y}} </small></td>  
-                    <td class="text-center">{{$postY}}</td>  
-                    <td class="text-center">{{$eventY}}</td>    
-                    <td class="text-center">{{$tasksY}}</td>
+                    <td class="text-center">Anual <small> <?php echo e($y); ?> </small></td>  
+                    <td class="text-center"><?php echo e($postY); ?></td>  
+                    <td class="text-center"><?php echo e($eventY); ?></td>    
+                    <td class="text-center"><?php echo e($tasksY); ?></td>
                 </tr>
                 <tr>
-                    <td class="text-center">Mes de <small>{{$m}}</small></td>
-                    <td class="text-center">{{$postM}}</td>  
-                    <td class="text-center">{{$eventM}}</td>    
-                    <td class="text-center">{{$tasksM}}</td>
+                    <td class="text-center">Mes de <small><?php echo e($m); ?></small></td>
+                    <td class="text-center"><?php echo e($postM); ?></td>  
+                    <td class="text-center"><?php echo e($eventM); ?></td>    
+                    <td class="text-center"><?php echo e($tasksM); ?></td>
                 </tr>
             </tbody>
         </table>
@@ -145,3 +145,4 @@ td {
     
     </body>
 </html>
+<?php /**PATH /var/www/html/sistemas/intranet2/resources/views/admin/reports/report.blade.php ENDPATH**/ ?>

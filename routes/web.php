@@ -24,9 +24,10 @@ Route::resource('/tarea', 'User\TasksController', ['except' => 'show', 'create',
 			->middleware('permission:admin.panel');
 		
 		Route::get('dataEstadistica', 'PanelController@dataEstadistica');
-		//Route::get('Reporte', 'ReportsController@createReport');
-		Route::get('ver', 'ReportsController@viewReport');
-		Route::get('descargar', 'ReportsController@downReport');
+
+		Route::get('ver', 'ReportsController@viewReport')->name('report.view');
+		Route::get('descargar', 'ReportsController@downReport')->name('report.down');
+
 		Route::prefix('Graficas')->group(function (){
 			Route::get('', 'ChartsController@view')->name('charts.views');
 			Route::get('Area', 'ChartsController@area')->name('charts.area');
