@@ -129,15 +129,15 @@ function focusFunc(){
 }
 
 function blurFunc(){
-    let parent = this.parentNode.parentNode;
-    if(this.value == ""){
-        parent.classList.remove('focus');
-    }            
+  let parent = this.parentNode.parentNode;
+  if(this.value == ""){
+    parent.classList.remove('focus');
+  }            
 }
 
 inputs.forEach(input => {
-    input.addEventListener('focus', focusFunc);
-    input.addEventListener('blur', blurFunc);
+  input.addEventListener('focus', focusFunc);
+  input.addEventListener('blur', blurFunc);
 });
 
 /*=====  404 Ghost  =====*/
@@ -171,24 +171,39 @@ if (searchBtn) {
 }
 
 /*=====  RELOJ  =====*/
-
 $(document).ready(function() {
 
 	var newDate = new Date();
 
 	setInterval( function() {
-		var seconds = new Date().getSeconds();
+		let seconds = new Date().getSeconds();
 		$("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
 	},1000);
 	
 	setInterval( function() {
-		var minutes = new Date().getMinutes();
+		let minutes = new Date().getMinutes();
 		$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
     },1000);
 	
 	setInterval( function() {
-		var hours = new Date().getHours();
+		let hours = new Date().getHours();
 		$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
 	}, 1000);  
+});
+
+$(document).ready(function() {
+  $(window).scroll(function(){
+    if($(this).scrollTop() > 0){
+      $('#scrollUp').slideDown(300);
+    }else{
+      $('#scrollUp').slideUp(300);
+    }
+  });
+  $('#scrollUp').on('click', function(){
+    $('body, html').animate({
+      scrollTop: 0
+    }, 700);
+    return false;
+  });
 });
 

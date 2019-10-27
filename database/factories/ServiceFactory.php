@@ -6,9 +6,9 @@ $factory->define(App\Service::class, function (Faker $faker) {
     $name = $faker->unique->word(8);
     return [
         'name'    => $name,
-        'slug'      => str_slug($name),
+        'user_id' => '21',
         'description' => $faker->sentence,
         'route' => $faker->url,
-        'state'    => $faker->randomElement(['DRAFT', 'PUBLISHED']),
+        'state' => $faker->randomElement(['ACTIVE', 'DEACTIVATED']),
     ];
 });

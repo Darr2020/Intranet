@@ -11,16 +11,14 @@ class PostUpdateRequest extends FormRequest{
         return true;
     }
 
- 
     public function rules(){
-
-         $rules = [
+        return [
             'title' => 'required',
             'slug'   => 'required|unique:posts' . $this->post,
             'user_id' => 'required|integer',
             'tags' => 'required|array',
-            'content' => 'required',
-            'state' => 'required|in:DRAFT,PUBLISHED',
+            'description' => 'required',
+            'state' => 'required|in:DRAFT,PUBLISHED'
         ];
     }
 
@@ -28,7 +26,7 @@ class PostUpdateRequest extends FormRequest{
         return [
             'title' => 'Titulo',
             'tags'  => 'Etiqueta',
-            'content' => 'Contenido',
+            'description' => 'Contenido',
             'state' => 'Estado',
         ];
     }

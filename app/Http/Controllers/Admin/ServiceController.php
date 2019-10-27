@@ -4,24 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Service;
 
-class ServiceController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+class ServiceController extends Controller{
+    
+    public function index(){
+        $titulo = 'servicios';
+        $services = Service::all();
+
+        return view('admin.services.index', compact('titulo', 'services'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         //

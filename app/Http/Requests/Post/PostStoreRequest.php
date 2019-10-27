@@ -11,12 +11,12 @@ class PostStoreRequest extends FormRequest{
     }
 
     public function rules(){
-        $rules = [
+        return [
             'title' => 'required',
             'slug'   => 'required|unique:posts',
             'user_id' => 'required|integer',
             'tags' => 'required|array',
-            'content' => 'required',
+            'description' => 'required',
             'state' => 'required|in:DRAFT,PUBLISHED',
         ];
     }
@@ -24,7 +24,7 @@ class PostStoreRequest extends FormRequest{
         return [
             'title' => 'Titulo',
             'tags'  => 'Etiqueta',
-            'content' => 'Contenido',
+            'description' => 'Contenido',
             'state' => 'Estado',
         ];
     }

@@ -3,47 +3,17 @@
 <?php $__env->startSection('content'); ?>
 	<div class="container">
 		<div class="row text-center">
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<div class="single-service">
-					<div class="icon">
-						<img src="<?php echo e(asset('icons/favorite.svg')); ?>">
+			<?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+				<div class="col-md-3 col-sm-6 col-xs-12">
+					<div class="single-service">
+						<div class="icon">
+							<img src="<?php echo e(asset('icons/favorite.svg')); ?>">
+						</div>	
+						<h3><?php echo e($service->name); ?></h3>
+						<p><?php echo e($service->description); ?></p>
 					</div>
-					<h3>Lorem</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<div class="single-service">
-					<div class="icon">
-						<img src="<?php echo e(asset('icons/favorite.svg')); ?>">
-					</div>
-					<h3>Lorem</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<div class="single-service">
-					<div class="icon">
-						<img src="<?php echo e(asset('icons/favorite.svg')); ?>">
-					</div>
-					<h3>Lorem</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<div class="single-service">
-					<div class="icon">
-						<img src="<?php echo e(asset('icons/favorite.svg')); ?>">
-					</div>
-					<h3>Lorem</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
-			</div>
-			
+			<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>			
 		</div>
 	</div>
 <?php $__env->stopSection(); ?>

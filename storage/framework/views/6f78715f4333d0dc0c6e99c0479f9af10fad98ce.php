@@ -1,12 +1,12 @@
+    
+
 <?php $__env->startSection('contentAdmin'); ?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="text-center">Editar Rol</h4>
-                </div>
-
+            <h3 class="text-center">Editar Rol</h3> 
+            <hr>
+            <div class="card">              
                 <div class="card-body">                    
                     <?php echo Form::model($role, ['route' => ['roles.update', $role->id],
                     'method' => 'PUT']); ?>

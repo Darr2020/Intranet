@@ -8,14 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title> {!!$titulo!!} ~ {{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} - {!!$titulo!!}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/inicio.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"> 
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">    
 </head>
 <body>
     <div id="app">      
@@ -151,7 +149,13 @@
                     </div>
                 </div>
             </div>
-        </main>                    
+        </main>  
+        <div class="scrollUp" id="scrollUp">
+            <input type="button" value="Subir" class="scrollUp-text">
+            <span class="scrollIcon">
+                <img src=" {{asset('icons/arrow_up.svg')}}">
+            </span>
+        </div>                  
     </div>
 
     <!-- Scripts -->

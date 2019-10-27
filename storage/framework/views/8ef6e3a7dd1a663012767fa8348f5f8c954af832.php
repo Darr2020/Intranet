@@ -105,7 +105,7 @@ td {
 </style>
     <header>
         <nav>
-            <img src="mppeu.jpg">
+            <img src="./../public/img/mppeu.jpg" width="150" height="150">
             <small class="right"><?php echo e($date); ?></small>
         </nav>
     </header>

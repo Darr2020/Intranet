@@ -12,7 +12,7 @@ class Post extends Model{
     const REJECTED  = 3;
 
     protected $fillable = [
-     	'user_id',  'title', 'slug', 'summary', 'image', 'content', 'state','fecha_publicacion'
+     	'user_id', 'title', 'slug', 'summary', 'image', 'description', 'state', 'date_published'
     ];
 
     public function user(){

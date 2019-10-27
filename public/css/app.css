@@ -10980,29 +10980,94 @@ header {
   padding: 2vh 2vh;
 }
 
-.services {
-  display: flex;
-  flex-wrap: wrap-reverse;
-  justify-content: center;
-  box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
-  border-radius: 8px;
-}
-
-.services .image {
-  flex: 40%;
+.service-box {
+  position: relative;
+  display: block;
   overflow: hidden;
-  cursor: pointer;
+  margin-bottom: 10px;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+  height: 100px;
 }
 
-.services .image img {
+.service-icon {
   width: 100%;
-  height: 100%;
-  transition: 0.4s;
+  height: 100px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.5s ease;
 }
 
-.services .image:hover img {
-  transform: scale(1.4) rotate(15deg);
-  background: rgba(0, 0, 0, 0.5);
+.service-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  width: 100%;
+  height: 220px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.5s ease;
+  background-color: #4285F4;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transform: translateY(110px) rotateX(-90deg);
+}
+
+.service-box .service-icon .front-content {
+  position: relative;
+  margin: auto auto;
+  transform: translateY(-50%);
+}
+
+.service-box .service-icon .front-content h3 {
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.service-box .service-content h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.service-box .service-content p {
+  font-size: 13px;
+  color: #fff;
+  margin: 0;
+}
+
+.yellow {
+  background-color: #ffc000;
+}
+
+.orange {
+  background-color: #fc7f0c;
+}
+
+.red {
+  background-color: #e84b3a;
+}
+
+.grey {
+  background-color: #474747;
+}
+
+.service-box:hover .service-icon {
+  opacity: 0;
+  transform: translateY(-110px) rotateX(90deg);
+}
+
+.service-box:hover .service-content {
+  opacity: 1;
+  transform: rotateX(0);
 }
 
 .btn-service {
@@ -11018,68 +11083,7 @@ header {
 
 /* ===== FIN SERVICES - SECTION ===== */
 
-/* ===== SECTION - TAREAS ===== */
-
-.content-bottom {
-  margin-top: 15px;
-  width: 100%;
-  height: 230px;
-  border-top: 1px solid #eaeaea;
-  background-color: #fcfcfc;
-}
-
-.content-bottom ul {
-  display: block;
-  position: relative;
-  list-style-type: none;
-  -webkit-margin-before: 0px;
-  -webkit-margin-after: 0px;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
-  -webkit-padding-start: 0px;
-}
-
-.content-bottom ul li {
-  position: relative;
-  list-style: none;
-  border-bottom: 1px solid #eaeaea;
-  background-color: trasparent;
-  height: 55px;
-  margin-top: 20px;
-}
-
-.content-bottom ul > li:first-child {
-  margin-top: 20px;
-}
-
-.content-bottom ul > li:last-child {
-  border: none;
-}
-
-.content-bottom li span {
-  font-size: 32px;
-  margin-left: 25px;
-  margin-right: 10px;
-}
-
-.text {
-  position: absolute;
-  top: 40%;
-  left: 17%;
-}
-
-.title-tarea {
-  position: absolute;
-  top: 8%;
-  left: 17%;
-  font-size: 18px;
-}
-
-#title1 {
-  position: absolute;
-}
-
-/*BUSCADOR*/
+/* =====  INICIO BUSCADOR  ===== */
 
 #content {
   height: 50px;
@@ -11188,6 +11192,10 @@ header {
   transform: translate(-100%, -50%);
 }
 
+/* =====  FIN  BUSCADOR  ===== */
+
+/* ===== SERVICES ALL===== */
+
 .single-service {
   background: #4267B2;
   padding: 15px;
@@ -11242,6 +11250,10 @@ header {
 .single-service:hover .icon {
   top: -10px;
 }
+
+/* =====  FIN  SERVICES  ===== */
+
+/* =====  INICIO  TASKS  ===== */
 
 .input-div {
   position: relative;
@@ -11335,95 +11347,60 @@ header {
   color: #555;
 }
 
-/*------------*/
+/* =====  FIN  TASKS  ===== */
 
-.service-box {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  margin-bottom: 10px;
-  perspective: 1000px;
-  -webkit-perspective: 1000px;
-  height: 100px;
+/*=====  SCROLLUP  ======*/
+
+.scrollUp {
+  display: none;
+  position: fixed;
+  height: 30px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: #4267B2;
 }
 
-.service-icon {
-  width: 100%;
-  height: 100px;
-  padding: 20px;
-  text-align: center;
-  transition: all 0.5s ease;
-}
-
-.service-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  opacity: 0;
-  width: 100%;
-  height: 220px;
-  padding: 20px;
-  text-align: center;
-  transition: all 0.5s ease;
-  background-color: #4285F4;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  transform-style: preserve-3d;
-  transform: translateY(110px) rotateX(-90deg);
-}
-
-.service-box .service-icon .front-content {
-  position: relative;
-  margin: auto auto;
-  transform: translateY(-50%);
-}
-
-.service-box .service-icon .front-content h3 {
-  font-size: 20px;
+.scrollUp .scrollUp-text {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
   color: #fff;
-  text-align: center;
-  margin-bottom: 15px;
+  float: left;
   text-transform: uppercase;
+  font-weight: bold;
+  margin-top: -10px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 30px;
+  width: 0;
+  transition: 0.4s;
 }
 
-.service-box .service-content h3 {
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 10px;
-  text-transform: uppercase;
+.scrollUp .scrollIcon {
+  float: right;
+  width: 30px;
+  margin-top: -10px;
+  font-size: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s;
 }
 
-.service-box .service-content p {
-  font-size: 13px;
-  color: #fff;
-  margin: 0;
+.scrollUp:hover > .scrollUp-text {
+  width: 80px;
+  padding: 0 6px;
 }
 
-.yellow {
-  background-color: #ffc000;
-}
-
-.orange {
-  background-color: #fc7f0c;
-}
-
-.red {
-  background-color: #e84b3a;
-}
-
-.grey {
-  background-color: #474747;
-}
-
-.service-box:hover .service-icon {
-  opacity: 0;
-  transform: translateY(-110px) rotateX(90deg);
-}
-
-.service-box:hover .service-content {
-  opacity: 1;
-  transform: rotateX(0);
+.scrollUp:hover > .scrollIcon {
+  background: #E84B3A;
+  margin-left: 25px;
 }
 

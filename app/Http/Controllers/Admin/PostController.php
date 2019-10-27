@@ -9,6 +9,7 @@ use App\Http\Requests\Post\PostUpdateRequest;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 use App\Notifications\newPost;
+use Carbon\Carbon;
 use App\Post;
 use App\Tag;
 use App\User;
@@ -38,14 +39,32 @@ class PostController extends Controller{
 
 
     public function store(PostStoreRequest $request){
-        $post = Post::create($request->all());
+    
+       $user_id = User::where('id', auth()->id())->value('id');      
+           
+        $post = new Post([
+            'title'       => $request->get('title'),
+            'user_id'     => $user_id,
+            'slug'        => $request->get('slug'),
+            'summary'     => $request->get('summary'),
+            'image'       => $request->get('image'),
+            'description' => $request->get('description'),
+            'state'       => $request->get('state')
+        ]); 
         
-        //para editar la imagen subida
-        $title = $request->title;
+        $date = Carbon::now();
+        if($request->get('state')  == 'PUBLISHED'){
+            $post->date_published = $date;
+            $post->save();
+        }else{
+            $post->save();
+        }                        
+        
+        $title = $request->title; //para editar elnombre la imagen subida
 
         if($request->file('image')){
             $path = $request->file('image');
-            $file = $path->storeAs('image', $request->user()->id  .' '. $title);
+            $file = $path->storeAs('image', $request->user()->id  .'-'. $title);
 
             $post->fill(['image' => asset($file)])->save();
         }
@@ -78,7 +97,22 @@ class PostController extends Controller{
     public function update(PostUpdateRequest $request, $id){
         $post = Post::find($id);
         $this->authorize('pass', $post);
-        $post->fill($request->all())->save();
+
+        $post->title = $request->get('title');
+        $post->slug  = $request->get('slug');
+        $post->summary = $request->get('summary');
+        $post->image = $request->get('image');
+        $post->description = $request->get('description');
+        $post->state = $request->get('state');  
+        
+        $date = Carbon::now();
+        
+        if($request->get('state')  == 'PUBLISHED'){
+            $post->date_published = $date;
+            $post->save();
+        }else{
+            $post->save();
+        }       
 
         if($request->file('image')){
             $path = Storage::disk('public')->put('image',  $request->file('image'));

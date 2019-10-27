@@ -10,34 +10,40 @@ Route::middleware(['auth'])->group(function () {
 		Route::get('etiqueta/{slug}', 'PostController@tag')->name('etiqueta');
 		Route::get('eventos', 		  'EventController@index')->name('eventos');
 		Route::get('servicios', 	  'ServiceController@services')->name('services');
-
+		Route::resource('tarea',      'TasksController', ['except' => 'show', 'create', 'edit']);
 	});
-Route::get('/tareas', function(){
-	$titulo = 'Mis tareas';
-	return view('users/tasks', compact('titulo'));
-});
-Route::resource('/tarea', 'User\TasksController', ['except' => 'show', 'create', 'edit'] )->middleware('auth');		
+
+	Route::get('/tareas', function(){
+		$titulo = 'Mis tareas';
+		return view('users/tasks', compact('titulo'));
+	});
 
 	Route::group(['namespace' => 'Admin'], function (){
 
 		Route::get('PanelAdmin', 'PanelController@view')->name('admin.panel')
 			->middleware('permission:admin.panel');
-		
-		Route::get('dataEstadistica', 'PanelController@dataEstadistica');
 
-		Route::get('ver', 'ReportsController@viewReport')->name('report.view');
-		Route::get('descargar', 'ReportsController@downReport')->name('report.down');
+		/*=====  SERVICES  =====*/	
+		Route::prefix('services')->group( function(){
+			Route::get('', 	          'ServiceController@index')->name('services.index')
+				->middleware('permission:services.index');
 
-		Route::prefix('Graficas')->group(function (){
-			Route::get('', 'ChartsController@view')->name('charts.views');
-			Route::get('Area', 'ChartsController@area')->name('charts.area');
-			Route::get('Barra', 'ChartsController@bar')->name('charts.bar');
-			Route::get('Torta', 'ChartsController@pie')->name('charts.pie');
+			Route::get('create',      'ServiceController@create')->name('services.create')
+				->middleware('permission:services.create');
+
+			Route::post('store',      'ServiceController@store')->name('services.store')
+				->middleware('permission:services.store');
+
+			Route::get('{id}/edit',   'ServiceController@edit')->name('services.edit')
+				->middleware('permission:services.edit');
+
+			Route::put('{id}', 	      'ServiceController@update')->name('services.update')
+				->middleware('permission:services.update');
 		});
+	
 		
 		/*=====  POSTS  =====*/	
-		Route::prefix('posts')->group( function(){	
-
+		Route::prefix('posts')->group( function(){
 			Route::get('', 	          'PostController@index')->name('posts.index')
 				->middleware('permission:posts.index');
 
@@ -127,7 +133,22 @@ Route::resource('/tarea', 'User\TasksController', ['except' => 'show', 'create',
 
 			Route::delete('{role}', 'RoleController@destroy')->name('roles.destroy')
 				->middleware('permission:roles.destroy');
-		});			
+		});
+		
+		/*=====  REPORTS  =====*/	
+		Route::prefix('Reportes')->group(function (){	
+			Route::get('dataEstadistica', 'PanelController@dataEstadistica');
+			Route::get('ver', 'ReportsController@viewReport')->name('report.view');
+			Route::get('descargar', 'ReportsController@downReport')->name('report.down');
+		});
+		
+		/*=====  CHARTS  =====*/	
+		Route::prefix('Graficas')->group(function (){
+			Route::get('', 'ChartsController@view')->name('charts.views');
+			Route::get('Area', 'ChartsController@area')->name('charts.area');
+			Route::get('Barra', 'ChartsController@bar')->name('charts.bar');
+			Route::get('Torta', 'ChartsController@pie')->name('charts.pie');
+		});
 	    
 	});
 

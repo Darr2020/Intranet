@@ -7,22 +7,17 @@
                     method="GET" id="content">                    
                     <input type="text" name="title"  class="input" id="search-input">
                     <button type="reset" class="search" id="search-btn"></button>
-                </form>
+                </form> 
                
-                <section>
-                    
-                <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                   
-                 <div class="card post">
-                                <?php if($post->image): ?>
-                                    <img src="<?php echo e($post->image); ?>" class="card-img-top img-responsive">
-                                <?php endif; ?>
+                <section>                    
+                    <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                   
+                        <div class="card post">
+                            <?php if($post->image): ?>
+                                <img src="<?php echo e($post->image); ?>" class="card-img-top img-responsive">
+                            <?php endif; ?>
                             <div class="card-body">
                                 <div class="title">
-                                    <a href="<?php echo e(route('noticia', $post->slug)); ?>">
-                                        <?php echo e($post->title); ?>
-
-                                    </a>
+                                    <a href="<?php echo e(route('noticia', $post->slug)); ?>"><?php echo e($post->title); ?></a>
                                 </div>
                                 <div class="resumen">
                                     <p><?php echo e($post->summary); ?></p>
@@ -33,13 +28,16 @@
                             </div>
                             <div class="card-footer">
                                 <small class="float-right"> 
-                                    publicado <?php echo e($post->created_at->diffForHumans()); ?> 
+                                    publicado <?php echo e(\Carbon\Carbon::parse($post->date_published  )->format('d/m/Y')); ?>  
                                 </small>
                             </div>
                         </div>
                         <br>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    
+                    <div style="margin-left: 150px">
+                        <?php echo $posts->render(); ?>
+
+                    </div>
                 </section>
             </div>
             <div class="col-md-5">

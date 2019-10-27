@@ -7,21 +7,17 @@
                     method="GET" id="content">                    
                     <input type="text" name="title"  class="input" id="search-input">
                     <button type="reset" class="search" id="search-btn"></button>
-                </form>
+                </form> 
                
-                <section>
-                    
-                @foreach($posts as $post)
-                   
-                 <div class="card post">
-                                @if($post->image)
-                                    <img src="{{ $post->image }}" class="card-img-top img-responsive">
-                                @endif
+                <section>                    
+                    @foreach($posts as $post)                   
+                        <div class="card post">
+                            @if($post->image)
+                                <img src="{{ $post->image }}" class="card-img-top img-responsive">
+                            @endif
                             <div class="card-body">
                                 <div class="title">
-                                    <a href="{{ route('noticia', $post->slug) }}">
-                                        {{ $post->title }}
-                                    </a>
+                                    <a href="{{ route('noticia', $post->slug) }}">{{ $post->title }}</a>
                                 </div>
                                 <div class="resumen">
                                     <p>{{ $post->summary }}</p>
@@ -32,15 +28,15 @@
                             </div>
                             <div class="card-footer">
                                 <small class="float-right"> 
-                                    publicado {{ $post->created_at->diffForHumans() }} 
+                                    publicado {{ \Carbon\Carbon::parse($post->date_published  )->format('d/m/Y')}}  
                                 </small>
                             </div>
                         </div>
                         <br>
                     @endforeach
-                    {{--<div class="float-right">
+                    <div style="margin-left: 150px">
                         {!! $posts->render() !!}
-                    </div>--}}
+                    </div>
                 </section>
             </div>
             <div class="col-md-5">

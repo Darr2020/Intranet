@@ -25,7 +25,7 @@
   <div id="wrapper">
       <!-- Sidebar -->
       <div class="sticky-top">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sticky-top" id="accordionSidebar">
+        <ul class="navbar-nav sidebar sidebar-dark accordion sticky-top" style="background: #4267B2" id="accordionSidebar">
           <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.panel')}}">
               <div class="sidebar-brand-text mx-3">MEUNET Admin</div>
@@ -58,13 +58,14 @@
             <div class="sidebar-heading">
             Gestión
             </div>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <img src="{{ asset('icons/services.svg') }}">
-                <span>Servicios</span>
-              </a>
-            </li>
+            @can('services.index')
+              <li class="nav-item">
+                <a class="nav-link" href=" {{route('services.index')}} ">
+                  <img src="{{ asset('icons/services.svg') }}">
+                  <span>Servicios</span>
+                </a>
+              </li>     
+            @endcan                                      
             @can('roles.index')
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" 
@@ -172,23 +173,24 @@
 
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true" aria-controls="collapseReport">
-                  <img src=" {{asset('icons/chart.svg')}} ">
+                  <img src=" {{asset('icons/pdf.svg')}} ">
                   <span>Reporte PDF</span></a>
               </a>
               <div id="collapseReport" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item" href=" {{route('report.view')}}"  target="_blank">Ver Reporte</a>
-                  <a class="collapse-item" href=" {{route('report.down')}}"  target="_blank">Descargar Reporte</a>
+                  <a class="collapse-item" href=" {{route('report.view')}}"  target="_blank">
+                    Ver reporte <img src=" {{asset('icons/ver.svg')}} " class="float-right">
+                  </a>
+                  <a class="collapse-item" href=" {{route('report.down')}}"  target="_blank">
+                    Descargar reporte <img src=" {{asset('icons/down.svg')}} " class="float-right">
+                  </a>
                 </div>
               </div>
-            </li>
-  
-            <hr class="sidebar-divider">
-            
+            </li>  
+            <hr class="sidebar-divider">            
             <li class="nav-item">
-              <a href=" {{url('/')}} " class="nav-link ">
-                <img src=" {{asset('icons/back.svg')}} ">
-                Regresar al inicio
+              <a href=" {{url('/')}} " class="nav-link">
+                <img src="{{asset('icons/back.svg')}}"> Regresar al inicio
               </a>
             </li>
             <!-- Divider -->
@@ -204,12 +206,12 @@
       <div id="content-wrapper" class="d-flex flex-column">  
         <!-- Main Content -->
         <div id="content"> 
-        
+      
+        <!-- Sidebar ToggleButton(Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
+          <img src="{{asset('icons/bar.svg')}}">
+        </button> 
 
-          <!-- Sidebar ToggleButton(Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
-            <img src="{{asset('icons/bar.svg')}}">
-          </button>     
           @if (Request::path() == 'PanelAdmin')
             @include('partials.admin.carusel')
           @else 
@@ -228,7 +230,7 @@
               </div>
             </div>
       
-            <main class="py-3">
+            <main class="py-4">
               @yield('contentAdmin')
             </main>     
              

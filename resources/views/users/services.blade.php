@@ -3,47 +3,17 @@
 @section('content')
 	<div class="container">
 		<div class="row text-center">
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<div class="single-service">
-					<div class="icon">
-						<img src="{{ asset('icons/favorite.svg') }}">
+			@foreach ($services as $service)
+				<div class="col-md-3 col-sm-6 col-xs-12">
+					<div class="single-service">
+						<div class="icon">
+							<img src="{{ asset('icons/favorite.svg') }}">
+						</div>	
+						<h3>{{ $service->name }}</h3>
+						<p>{{ $service->description}}</p>
 					</div>
-					<h3>Lorem</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<div class="single-service">
-					<div class="icon">
-						<img src="{{ asset('icons/favorite.svg') }}">
-					</div>
-					<h3>Lorem</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<div class="single-service">
-					<div class="icon">
-						<img src="{{ asset('icons/favorite.svg') }}">
-					</div>
-					<h3>Lorem</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<div class="single-service">
-					<div class="icon">
-						<img src="{{ asset('icons/favorite.svg') }}">
-					</div>
-					<h3>Lorem</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
-			</div>
-			
+			@endforeach			
 		</div>
 	</div>
 @endsection

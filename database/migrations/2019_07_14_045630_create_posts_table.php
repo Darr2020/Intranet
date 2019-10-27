@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration{
             $table->string('title', 150);
             $table->string('slug', 150)->unique();
             $table->mediumText('summary')->nullable();
-            $table->text('content');
+            $table->text('description');
             $table->string('image')->nullable();
             $table->enum('state', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->timestamp('date_published')->nullable();
@@ -29,13 +29,7 @@ class CreatePostsTable extends Migration{
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
+    public function down(){
         Schema::dropIfExists('posts');
     }
 }

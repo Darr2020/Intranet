@@ -5,13 +5,8 @@
   border-radius: 8px;
   transition: 0.4s;
 }
-.post:hover{
-  transform: rotate(-5deg);
-
-}
-.card .card-img-top{
-  max-width: 100%;
-}
+.post:hover{ transform: rotate(-5deg);}
+.card .card-img-top{ max-width: 100%; }
 
 .card .card-img-top:hover{
   opacity: 0.8;
@@ -26,9 +21,7 @@
   font-weight: bold;
 }
 
-.card-body .title a:hover {
-  color: dodgerblue;
-}
+.card-body .title a:hover { color: dodgerblue; }
 
 .card-body .resumen p {
   color: #555;
