@@ -5,10 +5,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 offset-md-2">
+                <h2 class="text-center">Editar Servicio</h2>
+                <hr>
                 <div class="card">
-                    <div class="card-header">
-                        <h3>Editar Servicio</h3>
-                    </div>
                     <div class="card-body">
                         {!! Form::model($service, ['route' => ['services.update', $service->id],
                             'method' => 'PUT']) !!}

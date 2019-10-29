@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
+use Illuminate\Support\Facades\Input; 
 use app\User;
 
 class RoleController extends Controller{
@@ -17,8 +18,11 @@ class RoleController extends Controller{
         return view('admin.roles.index', compact('roles', 'titulo'));
     }
 
-    public function listar(){
-        $users = User::orderBy('name','ASC')->get();
+    public function listar(Request $request){
+        $users = User::orderBy('name','ASC')
+            ->where('name', 'LIKE', '%'.Input::get('q').'%')    
+            ->orWhere('office', 'LIKE', '%'.Input::get('q').'%')
+            ->paginate();
         return view('admin.roles.listar', compact('users'));
     }
     

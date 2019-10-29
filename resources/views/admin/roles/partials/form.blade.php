@@ -29,7 +29,7 @@
 	    <li class="list-group-item">
 	        <label>
 	        	{{ Form::checkbox('permissions[]', $permission->id, null) }}
-	        	{{ $permission->name }}
+	        	<strong>{{ $permission->name }}</strong>
 	        	<em>({{ $permission->description }})</em>
 	        </label>
 	    </li>

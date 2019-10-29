@@ -1,14 +1,11 @@
-
-
 <?php $__env->startSection('contentAdmin'); ?>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 offset-md-2">
+			<div class="col-md-10 offset-md-1">
+				<h2 class="text-center">Editar Noticias</h2>
+				<hr>
 				<div class="card">
-					<div class="card-header">
-						<h3>Editar Noticias</h3>
-					</div>
 					<div class="card-body">
 						<?php echo Form::model($post, ['route' => ['posts.update', $post->id],
 						 'method' => 'PUT', 'files' => true]); ?>

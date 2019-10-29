@@ -1,3 +1,4 @@
+<strong><?php echo e($users->total()); ?> Noticias | página <?php echo e($users->currentPage()); ?> de <?php echo e($users->lastPage()); ?> </strong>
 <table class="table">
     <thead>
         <tr>

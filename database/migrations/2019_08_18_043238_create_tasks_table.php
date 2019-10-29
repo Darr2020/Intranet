@@ -27,9 +27,6 @@ class CreateTasksTable extends Migration{
 
 
 /**
- *  1) que cada servicio tenga su nombre
- *  2) filtrado por oficina
- *  3) al asignar permiso que aparaezca enb el nav al aopcion de panel administrador
  *  4) modificar los eventos.. colocar el almanaque a un lado y el evento tipo post
  * 
  * * */

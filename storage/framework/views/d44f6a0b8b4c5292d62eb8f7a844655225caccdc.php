@@ -36,8 +36,7 @@
 	        <label>
 	        	<?php echo e(Form::checkbox('permissions[]', $permission->id, null)); ?>
 
-	        	<?php echo e($permission->name); ?>
-
+	        	<strong><?php echo e($permission->name); ?></strong>
 	        	<em>(<?php echo e($permission->description); ?>)</em>
 	        </label>
 	    </li>

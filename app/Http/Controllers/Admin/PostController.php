@@ -39,12 +39,10 @@ class PostController extends Controller{
 
 
     public function store(PostStoreRequest $request){
-    
-       $user_id = User::where('id', auth()->id())->value('id');      
-           
+
         $post = new Post([
             'title'       => $request->get('title'),
-            'user_id'     => $user_id,
+            'user_id'     => $request->get('user_id'),
             'slug'        => $request->get('slug'),
             'summary'     => $request->get('summary'),
             'image'       => $request->get('image'),
@@ -98,7 +96,7 @@ class PostController extends Controller{
         $post = Post::find($id);
         $this->authorize('pass', $post);
 
-        $post->title = $request->get('title');
+         $post->title = $request->get('title');
         $post->slug  = $request->get('slug');
         $post->summary = $request->get('summary');
         $post->image = $request->get('image');

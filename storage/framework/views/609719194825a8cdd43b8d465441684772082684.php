@@ -1,15 +1,15 @@
-<?php $__env->startSection('contentAdmin'); ?>
+<?php $__env->startSection('contentAdmin'); ?>    
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10 mt-5">
-            <h3 class="text-center">Listado de Servicios</h3>
+        <div class="col-md-11 mt-5">
+            <h2 class="text-center">Listado de Servicios</h2>
             <hr>
             <br>
-           
+           <strong><?php echo e($services->total()); ?> Servicios | página <?php echo e($services->currentPage()); ?> de <?php echo e($services->lastPage()); ?> </strong>          
             <a href="<?php echo e(route('services.create')); ?>" class="float-right">
-                <img src=" <?php echo e(asset('icons/create.svg')); ?>" style="width: 30px;" title="Agregar servicio">
-            </a>
-            <table class="table table-striped table-hover">
+                <img src=" <?php echo e(asset('icons/create.svg')); ?>" style="width: 35px;" title="Agregar servicio">
+            </a>                                                                                      
+            <table class="table table-striped table-hover table-responsive">
                 <thead>
                     <tr>
                         <th class="text-center" width="10px">#</th>
@@ -23,15 +23,15 @@
                 <tbody>
                     <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td class="text-center"><?php echo e($service->id); ?></td>
+                        <td class="text-center"><?php echo e($loop->iteration); ?></td>
                         <td class="text-center"><?php echo e($service->name); ?></td>
                         <td class="text-center"><?php echo e($service->description); ?></td>
                         <td class="text-center"><?php echo e($service->route); ?></td>
                         <td class="text-center">
                             <?php if($service->state == 'ACTIVE'): ?>
-                                <p class="text-success">Servicio inactivo</p>
+                                <strong class="text-success">Servicio activo</strong>
                             <?php else: ?>
-                                <p class="text-danger">Servicio inactivo</p>
+                                <strong class="text-danger">Servicio inactivo</strong>
                             <?php endif; ?>
                         </td>                        
                         <?php if (\Shinobi::can('services.edit')): ?>
@@ -46,7 +46,8 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-            
+            <?php echo e($services->render()); ?>
+
         </div>
     </div>
 </div>

@@ -1,17 +1,17 @@
 @extends('admin.panel')
 
-@section('contentAdmin')
+@section('contentAdmin')    
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10 mt-5">
-            <h3 class="text-center">Listado de Servicios</h3>
+        <div class="col-md-11 mt-5">
+            <h2 class="text-center">Listado de Servicios</h2>
             <hr>
             <br>
-           {{-- <strong>{{$services->total()}} Servicios | página {{$services->currentPage()}} de {{$services->lastPage()}} </strong>--}}
+           <strong>{{$services->total()}} Servicios | página {{$services->currentPage()}} de {{$services->lastPage()}} </strong>          
             <a href="{{ route('services.create') }}" class="float-right">
-                <img src=" {{ asset('icons/create.svg') }}" style="width: 30px;" title="Agregar servicio">
-            </a>
-            <table class="table table-striped table-hover">
+                <img src=" {{ asset('icons/create.svg') }}" style="width: 35px;" title="Agregar servicio">
+            </a>                                                                                      
+            <table class="table table-striped table-hover table-responsive">
                 <thead>
                     <tr>
                         <th class="text-center" width="10px">#</th>
@@ -25,15 +25,15 @@
                 <tbody>
                     @foreach($services as $service)
                     <tr>
-                        <td class="text-center">{{ $service->id }}</td>
+                        <td class="text-center">{{ $loop->iteration	}}</td>
                         <td class="text-center">{{ $service->name }}</td>
                         <td class="text-center">{{ $service->description }}</td>
                         <td class="text-center">{{ $service->route }}</td>
                         <td class="text-center">
                             @if($service->state == 'ACTIVE')
-                                <p class="text-success">Servicio inactivo</p>
+                                <strong class="text-success">Servicio activo</strong>
                             @else
-                                <p class="text-danger">Servicio inactivo</p>
+                                <strong class="text-danger">Servicio inactivo</strong>
                             @endif
                         </td>                        
                         @can('services.edit')
@@ -48,7 +48,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{-- $services->render() --}}
+            {{$services->render()}}
         </div>
     </div>
 </div>

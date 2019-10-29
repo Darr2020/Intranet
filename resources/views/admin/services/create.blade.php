@@ -3,11 +3,10 @@
 @section('contentAdmin')
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-10 offset-md-1">
-				<div class="card">
-					<div class="card-header">
-						<h3>Agregar Servicio</h3>
-					</div>
+			<div class="col-md-9 offset-md-2">
+				<h3 class="text-center">Agregar Servicio</h3>
+				<hr>
+				<div class="card">					
 					<div class="card-body">
 						{!! Form::open(['route' => 'services.store']) !!}
 							@include('admin.services.partials.form')
@@ -17,4 +16,4 @@
 			</div>
 		</div>
 	</div>
-@endsection
+@endsection	

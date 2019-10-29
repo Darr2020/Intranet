@@ -1,3 +1,4 @@
+<strong>{{$users->total()}} Usuarios | Página {{$users->currentPage()}} de {{$users->lastPage()}} </strong>
 <table class="table">
     <thead>
         <tr>

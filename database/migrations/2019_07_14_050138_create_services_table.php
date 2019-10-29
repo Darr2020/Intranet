@@ -12,7 +12,7 @@ class CreateServicesTable extends Migration{
             $table->integer('user_id');
             $table->string('name');
             $table->string('description', 250)->nullable();
-            $table->string('route')->unique();
+            $table->string('route');
             $table->enum('state', ['ACTIVE', 'DEACTIVATED'])->default('DEACTIVATED');
             $table->timestamps();
 
