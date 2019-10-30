@@ -509,3 +509,24 @@ header{	background-color: #4267B2 }
   background: #E84B3A;
   margin-left: 25px;
 }
+
+.circle{
+    width:150px;
+    height:150px;
+    border-radius:100%;
+    border-right:3px solid #4267B2;
+    border-left:3px solid #4267B2;
+    border-top:3px solid #4267B2;
+    border-bottom:3px solid #4267B2;  
+    margin-bottom: 20px;
+}
+
+.name-profile{
+  text-transform: uppercase;
+  font-size: 50px;
+}
+
+.name-profile strong, .name-profile a{
+  font-size: 18px;
+  color: #4267b2;
+}
