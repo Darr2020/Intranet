@@ -23,10 +23,9 @@
 
 </div>
 <hr>
-<h3>Permiso especial</h3>
+<h4>Permiso especial</h4>
 <div class="form-group">
- 	<label><?php echo e(Form::radio('special', 'all-access')); ?> Acceso total</label>
- 	<label><?php echo e(Form::radio('special', 'no-access')); ?> Ningún acceso</label>
+ 	<?php echo e(Form::radio('special', 'all-access')); ?> Acceso total
 </div>
 <hr>
 <h4 class="text-center">Lista de permisos</h4>
@@ -37,8 +36,7 @@
 	        <label>
 	        	<?php echo e(Form::checkbox('permissions[]', $permission->id, null)); ?>
 
-	        	<?php echo e($permission->name); ?>
-
+	        	<strong><?php echo e($permission->name); ?></strong>
 	        	<em>(<?php echo e($permission->description); ?>)</em>
 	        </label>
 	    </li>

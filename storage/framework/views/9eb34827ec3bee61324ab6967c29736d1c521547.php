@@ -1,7 +1,4 @@
 <!-- Slider -->
-
-
-
 <div id="slider">
     <div class="slides">
       <div class="slider">
@@ -191,10 +188,10 @@
   21%{ margin-left:0%; }
   25%{ margin-left:-100%; }
   46%{ margin-left:-100%; }
-  50%{ margin-left:-200%; }
-  71%{ margin-left:-200%; }
-  75%{ margin-left:-300%; }
-  96%{ margin-left:-300%; }
+  50%{ margin-right:-200%; }
+  71%{ margin-right:-200%; }
+  75%{ margin-left:0%; }
+  96%{ margin-left:0%; }
 }
 @-moz-keyframes slide{
   0%,100%{ margin-left:0%; }
@@ -203,8 +200,8 @@
   46%{ margin-left:-100%; }
   50%{ margin-left:-200%; }
   71%{ margin-left:-200%; }
-  75%{ margin-left:-300%; }
-  96%{ margin-left:-300%; }
+  75%{ margin-left:0%; }
+  96%{ margin-left:0%; }
 }
 @keyframes  slide{
   0%,100%{ margin-left:0%; }
@@ -213,8 +210,8 @@
   46%{ margin-left:-100%; }
   50%{ margin-left:-200%; }
   71%{ margin-left:-200%; }
-  75%{ margin-left:-300%; }
-  96%{ margin-left:-300%; }
+  75%{ margin-left:0%; }
+  96%{ margin-left:0%; }
 }
 
 @-webkit-keyframes content-s{
@@ -262,8 +259,8 @@
   46%{ margin-left:15px; }
   50%{ margin-left:30px; }
   71%{ margin-left:30px; }
-  75%{ margin-left:45px; }
-  96%{ margin-left:45px; }
+  75%{ margin-left:0; }
+  96%{ margin-left:0; }
 }
 
 @-moz-keyframes on{
@@ -273,8 +270,8 @@
   46%{ margin-left:15px; }
   50%{ margin-left:30px; }
   71%{ margin-left:30px; }
-  75%{ margin-left:45px; }
-  96%{ margin-left:45px; }
+  75%{ margin-left:0; }
+  96%{ margin-left:0; }
 }
 
 @keyframes  on{
@@ -284,7 +281,7 @@
   46%{ margin-left:15px; }
   50%{ margin-left:30px; }
   71%{ margin-left:30px; }
-  75%{ margin-left:45px; }
-  96%{ margin-left:45px; }
+  75%{ margin-left:0; }
+  96%{ margin-left:0; }
 }
 </style><?php /**PATH /var/www/html/sistemas/intranet2/resources/views/partials/admin/carusel.blade.php ENDPATH**/ ?>

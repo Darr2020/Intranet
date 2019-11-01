@@ -10,8 +10,8 @@ use App\User;
 use App\Post;
 
 class newPost extends Notification{
-    use Queueable;
 
+    use Queueable;
     
     public function __construct($post){
         $this->post = $post;
@@ -24,17 +24,10 @@ class newPost extends Notification{
     public function toDatabase($notifiable){
         return [
             'post' => $this->post,
-            'post' => Post::find($this->post->post_id),
-            
+            'user' => User::all($this->user->id)            
         ];
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function toArray($notifiable)
     {
         return [

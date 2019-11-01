@@ -18,10 +18,18 @@
         @foreach($users as $user)
             <tr>                              
                 <td class="text-center">
-                    <a href="{{ route('users.show', $user->slug) }}"
-                        class="text-decoration-none">
-                        {{ $user->name }}
-                    </a>
+                    @if (Request::path() == 'roles/listado')
+                        <a href="{{ route('users.edit', $user->id) }}"
+                            class="text-decoration-none">
+                            {{ $user->name }}
+                        </a>
+                    @else
+                        <a href="{{ route('users.show', $user->slug) }}"
+                            class="text-decoration-none">
+                            {{ $user->name }}
+                        </a>
+                    @endif
+                    
                 </td>
                 <td class="text-center"> {{ $user->last_name }} </td>
                 <td class="text-center"> {{ $user->office }} </td>

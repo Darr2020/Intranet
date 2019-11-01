@@ -8,14 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title> <?php echo $titulo; ?> ~ <?php echo e(config('app.name', 'Laravel')); ?></title>
+    <title><?php echo e(config('app.name', 'Laravel')); ?> - <?php echo $titulo; ?></title>
 
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/inicio.css')); ?>" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"> 
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">    
 </head>
 <body>
     <div id="app">      
@@ -151,7 +149,13 @@
                     </div>
                 </div>
             </div>
-        </main>                    
+        </main>  
+        <div class="scrollUp" id="scrollUp">
+            <input type="button" value="Subir" class="scrollUp-text">
+            <span class="scrollIcon">
+                <img src=" <?php echo e(asset('icons/arrow_up.svg')); ?>">
+            </span>
+        </div>                  
     </div>
 
     <!-- Scripts -->

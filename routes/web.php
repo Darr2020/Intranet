@@ -39,8 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::put('{id}', 	      'ServiceController@update')->name('services.update')
 				->middleware('permission:services.update');
-		});
-	
+		});	
 		
 		/*=====  POSTS  =====*/	
 		Route::prefix('posts')->group( function(){
