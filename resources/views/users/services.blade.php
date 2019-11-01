@@ -10,7 +10,7 @@
 							<img src="{{ asset('icons/favorite.svg') }}">
 						</div>	
 						<h3>{{ $service->name }}</h3>
-						<p>{{ $service->description}}</p>
+						<p>{!! $service->description !!}</p>
 					</div>
 				</div>
 			@endforeach			

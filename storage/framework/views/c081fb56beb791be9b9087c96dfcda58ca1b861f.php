@@ -16,36 +16,9 @@
 		</div>
 	</div>
 </div>
-<div class="form-group">
-	<?php echo e(Form::label('description', 'Descripción:')); ?>
 
-	<?php echo e(Form::textarea('description', null, ['class' => 'form-control', 'style' => 'height:100px;'])); ?>
-
-</div>
-<hr>
-<h4>Permiso especial</h4>
 <div class="form-group">
-	 <?php echo e(Form::radio('special', 'all-access')); ?> Acceso total
-	 <?php echo e(Form::radio('special', '', ['checked'])); ?> Acceso limitado
-</div>
-<hr>
-<h4 class="text-center">Lista de permisos</h4>
-<div class="form-group">
-	<ul class="list-group">
-		<?php $__currentLoopData = $permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-	    <li class="list-group-item">
-	        <label>
-	        	<?php echo e(Form::checkbox('permissions[]', $permission->id, null)); ?>
-
-	        	<strong><?php echo e($permission->name); ?></strong>
-	        	<em>(<?php echo e($permission->description); ?>)</em>
-	        </label>
-	    </li>
-	    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </ul>
-</div>
-<div class="form-group">
-	<?php echo e(Form::submit('Guardar rol', ['class' => 'btn btn-primary btn-lg btn-block'])); ?>
+	<?php echo e(Form::submit('Guardar etiqueta', ['class' => 'btn btn-color btn-lg btn-block'])); ?>
 
 </div>
 
@@ -75,6 +48,6 @@
                 .replace(/-+/g, '-'); // quita las plecas
 
            return $("#slug").val(str);
-		}
+}
 	</script>
-<?php $__env->stopSection(); ?><?php /**PATH /var/www/html/sistemas/intranet2/resources/views/admin/roles/partials/form.blade.php ENDPATH**/ ?>
+<?php $__env->stopSection(); ?><?php /**PATH /var/www/html/sistemas/intranet2/resources/views/admin/tags/partials/form.blade.php ENDPATH**/ ?>

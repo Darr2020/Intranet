@@ -122,7 +122,7 @@
                       </a>
                     </div>
                 </div>
-            </li>
+            </li> 
             @endcan
             @can('tags.index')
             <li class="nav-item">

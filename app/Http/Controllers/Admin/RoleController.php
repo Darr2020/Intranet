@@ -36,8 +36,7 @@ class RoleController extends Controller{
     public function store(Request $request){
 
         $role = Role::create($request->all());
-        $role->created_at = now();
-
+        
         $role->permissions()->sync($request->get('permissions'));
 
         alert()->success('El rol ha sido creado correctamente', '' . auth()->user()->name)->persistent('Cerrar');

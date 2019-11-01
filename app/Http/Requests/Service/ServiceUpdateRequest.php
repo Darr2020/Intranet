@@ -17,7 +17,7 @@ class ServiceUpdateRequest extends FormRequest{
             'name' => 'required',
             'description' => 'required',
             'route' => 'required',
-            'state' => 'required|in:ACTIVE,DEACTIVE',
+            'state' => 'required|in:ACTIVE,DEACTIVATED',
         ];
     }
 

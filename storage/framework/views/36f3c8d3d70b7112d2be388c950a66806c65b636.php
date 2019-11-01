@@ -8,7 +8,7 @@
 							<img src="<?php echo e(asset('icons/favorite.svg')); ?>">
 						</div>	
 						<h3><?php echo e($service->name); ?></h3>
-						<p><?php echo e($service->description); ?></p>
+						<p><?php echo $service->description; ?></p>
 					</div>
 				</div>
 			<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>			

@@ -18,8 +18,6 @@ class CreateEventsTable extends Migration{
             $table->text('description', 250)->nullable();
             $table->date('date_start');
             $table->date('date_end');
-            $table->time('hora_start')->nullable();
-            $table->time('hora_end')->nullable();
             $table->enum('state', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->timestamps();
             $table->softDeletes();

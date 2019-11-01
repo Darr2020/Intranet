@@ -3,7 +3,7 @@
 <?php echo csrf_field(); ?>
 
 <div class="form-row">
-	<div class="col">
+	<div class="col-md-6">
 		<div class="form-group">
 			<?php echo e(Form::label('title', 'Titulo:')); ?>
 
@@ -11,7 +11,7 @@
 
 		</div>
 	</div>
-	<div class="col">
+	<div class="col-md-6">
 		<div class="form-group">
 			<?php echo e(Form::label('slug', 'Url:')); ?>
 
@@ -19,16 +19,13 @@
 
 		</div>
 	</div>
-</div>
-	
+</div>	
 <div class="form-group">
 	<?php echo e(Form::label('color', 'Color:')); ?>
 
 	<?php echo e(Form::color('color', null, ['class' => 'form-control', 'id' => 'color'])); ?>
 
 </div>
-
-
 <div class="form-row">
 	<div class="col">
 		<div class="form-group">
@@ -66,15 +63,13 @@
 
 </div>
 
-
 <div class="form-group">
-	<?php echo e(Form::submit('Guardar evento', ['class' => 'btn btn-color btn-lg btn-block'])); ?>
+	<?php echo e(Form::submit('Guardar evento', ['class' => 'btn btn-primary btn-lg btn-block'])); ?>
 
+</div>
 
 <?php $__env->startSection('scripts'); ?>
-
     <script src="<?php echo e(asset('vendor/ckeditor/ckeditor.js')); ?>" ></script>
-
 	<script>
 		$(document).ready(function(){
         	$("#title").keyup(function(){
@@ -107,7 +102,6 @@
 
 		CKEDITOR.replace('description');
 	</script>
-
 <?php $__env->stopSection(); ?>
 
 

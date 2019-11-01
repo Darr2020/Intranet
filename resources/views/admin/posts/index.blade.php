@@ -33,8 +33,7 @@
 										<strong class="text-success">Noticia publicada</strong>
 									@else
 										<strong class="text-danger">Guardada como borrador</strong>
-									@endif
-									
+									@endif									
 								</td>
 
 								<td class="text-center" width="10px">

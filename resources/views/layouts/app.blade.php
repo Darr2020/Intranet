@@ -35,15 +35,18 @@
                                 </li>
                             @else
                                 <!--Usuarios-->
-                                <li class="nav-item {{ active('noticias') }}">
-                                    <a class="nav-link" href="{{ url('/') }}">Inicio</a>
+                                <li class="nav-item {{active('noticias')}}">
+                                    <a class="nav-link" href="{{url('/')}}">Inicio</a>
                                 </li>
 
-                                <li class="nav-item {{ active('directorio') }}">
-                                    <a class="nav-link" href="{{ url('directorio') }}">Directorio</a>
+                                <li class="nav-item {{active('directorio')}}">
+                                    <a class="nav-link" href="{{url('directorio')}}">Directorio</a>
                                 </li>
-                                <li class="nav-item {{ active('eventos') }}">
-                                    <a class="nav-link" href="{{ url('eventos') }}">Eventos</a>
+                                <li class="nav-item {{active('eventos')}}">
+                                    <a class="nav-link" href="{{url('eventos')}}">Eventos</a>
+                                </li>
+                                <li class="nav-item {{active('tareas')}}">
+                                    <a class="nav-link" href="{{url('tareas')}}">Tareas</a>
                                 </li>
                                 @can('admin.panel')
                                     <li class="nav-item">                            

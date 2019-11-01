@@ -49,7 +49,7 @@ class ServiceController extends Controller{
 
     public function update(ServiceUpdateRequest $request, $id){
         $service = Service::find($id);
-        $service = new Service([
+        $service->update([
             'user_id'     => $request->get('user_id'),
             'name'        => $request->get('name'),
             'route'     => $request->get('route'),

@@ -122,7 +122,7 @@
                       </a>
                     </div>
                 </div>
-            </li>
+            </li> 
             <?php endif; ?>
             <?php if (\Shinobi::can('tags.index')): ?>
             <li class="nav-item">

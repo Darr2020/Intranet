@@ -25,7 +25,7 @@
                     <tr>
                         <td class="text-center"><?php echo e($loop->iteration); ?></td>
                         <td class="text-center"><?php echo e($service->name); ?></td>
-                        <td class="text-center"><?php echo e($service->description); ?></td>
+                        <td class="text-center"><?php echo $service->description; ?></td>
                         <td class="text-center"><?php echo e($service->route); ?></td>
                         <td class="text-center">
                             <?php if($service->state == 'ACTIVE'): ?>
