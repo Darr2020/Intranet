@@ -58,7 +58,7 @@
                                     <ul class="ul-drop">
                                         <li class="li-drop"> 
                                             <a class="nav-link" href="{{ route('users.show', Auth::user()->slug) }}">
-                                                Perfil
+                                                <span class="text-primary">Perfil</span>
                                                 <img src=" {{asset('icons/favorite-red.svg')}} " class="float-right">
                                             </a>
                                         </li>
@@ -66,7 +66,7 @@
                                             <a href="{{ route('logout') }}" class="nav-link"
                                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                                Salir
+                                                <span class="text-primary">Salir</span>
                                             </a>
                                             <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">@csrf</form>
                                         </li>

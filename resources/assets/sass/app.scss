@@ -64,7 +64,7 @@ header{	background-color: #4267B2 }
   cursor: pointer;
   transition: all 100ms;
 }
-.li-drop:hover {  background-color: #4267B2}
+.li-drop:hover {  background-color: rgba(23, 23, 23, 0.2)}
 
 .li-drop:first-of-type:after {
   content: '';

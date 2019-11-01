@@ -37,7 +37,6 @@ class PostController extends Controller{
 	}
 
 	public function tag($slug){
-
 		$titulo = "Etiquetas";
 		$posts = Tag::where('slug',$slug)		
 			->with('posts')->get();
@@ -47,9 +46,36 @@ class PostController extends Controller{
 
 	public function post($slug){
 		$titulo = "Noticia";
-
 		$post = Post::where('slug', $slug)->first();
-
 		return view('users.post', compact('post', 'titulo'));
 	}
+
+	public function toggleLike($slug){
+        $post = Post::find($slug);	
+		$post->toggleLikeBy();
+
+		if ($post->liked) {
+			return response()->json([
+				'like' => [
+					'isLiked' => true,
+					'likes'   => $post->likesCount(),
+				]
+			]);
+		}else{
+			return response()->json([
+				'like' => [
+					'isLiked' => false,
+					'likes'   => $post->likesCount(),
+				]
+			]);
+		}
+        
+    }
+
+    public function unlike(Post $post)
+    {
+        $post->unlikeBy();
+
+        return back();
+    }
 }

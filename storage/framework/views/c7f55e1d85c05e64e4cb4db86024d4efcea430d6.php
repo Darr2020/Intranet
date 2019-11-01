@@ -19,7 +19,13 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <div class="jumbotron">
 				    <p class="text-center"><?php echo e($post->summary); ?></p>
-				</div>	           
+				</div>
+				
+				<p id="likeCount"> <?php echo e($post->likesCount); ?> </p>
+				
+				<p class="like" id="like"><img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> ">Me gusta</p>
+				<p class="like" id="unLike">  </p>   
+
 	            <div class="card-body">		                
 	                <div class="text-center" style="font-size: 22px">
 	                    <p><?php echo $post->description; ?></p>
@@ -28,6 +34,43 @@
 		    </div>
 		</div>	
 	</div>
+
+	<script type="text/javascript">
+
+		<?php if($post->liked): ?>
+			$('#like').hide();
+			$('#unLike').show();
+		<?php else: ?>
+			$('#like').show();
+			$('#unLike').hide();
+		<?php endif; ?>
+
+		$('.like').on('click', function(){
+			const user = <?php echo e(Auth::user()->id); ?>
+
+
+			$.ajax({
+				type: 'get',
+				url: ` <?php echo e(route('toggleLike', $post->slug)); ?> `,
+				data: user, 
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function(data){
+					if (data.like.isLiked) {
+						$('#like').hide();
+						$('#unLike').show();
+						$('#likeCount').html('<img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> ">' + data.like.likes);
+					}else{
+						$('#like').show();
+						$('#unLike').hide();
+						$('#likeCount').html('<img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> ">' + data.like.likes)
+
+					}
+				}
+			});
+		});
+	</script>
 <?php $__env->stopSection(); ?>     
 
            

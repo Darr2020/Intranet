@@ -2,10 +2,13 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model; 
+use Illuminate\Database\Eloquent\Model;
+use Cog\Contracts\Love\Likeable\Models\Likeable as LikeableContract;
+use Cog\Laravel\Love\Likeable\Models\Traits\Likeable;
 
-class Post extends Model{
-    
+class Post extends Model implements LikeableContract{
+
+    use Likeable; 
 
     const PUBLISHED = 1;
     const PENDING   = 2;

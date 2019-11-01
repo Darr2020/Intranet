@@ -5,12 +5,14 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
 
 	Route::group(['namespace' => 'User'], function(){
-		Route::get('/',               'PostController@posts')->name('noticias');
-		Route::get('noticia/{slug}',  'PostController@post')->name('noticia');
-		Route::get('etiqueta/{slug}', 'PostController@tag')->name('etiqueta');
-		Route::get('eventos', 		  'EventController@index')->name('eventos');
-		Route::get('servicios', 	  'ServiceController@services')->name('services');
-		Route::resource('tarea',      'TasksController', ['except' => 'show', 'create', 'edit']);
+		Route::get('/',               'PostController@posts')->name('noticias'); //Principal
+		Route::get('noticia/{slug}',  'PostController@post')->name('noticia');   //Noticia
+		Route::get('etiqueta/{slug}', 'PostController@tag')->name('etiqueta');	 //Etiquetas
+		Route::get('eventos', 		  'EventController@index')->name('eventos'); //Eventos
+		Route::get('servicios', 	  'ServiceController@services')->name('services'); //Servicios
+		Route::resource('tarea',      'TasksController', ['except' => 'show', 'create', 'edit']); //Tareas
+
+		Route::post('like/{$slug}', 'PostController@toggleLike')->name('toggleLike'); 
 	});
 
 	Route::get('/tareas', function(){

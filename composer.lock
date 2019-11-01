@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b75d981bf8c9b0aeab3de2b0d7c8b86b",
+    "content-hash": "0d54908671634021cde064e06dcbc1d5",
     "packages": [
         {
             "name": "balping/json-raw-encoder",
@@ -249,16 +249,16 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "v1.8.0",
+            "version": "v1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "d768d58baee9a4862ca783840eca1b9add7a7f57"
+                "reference": "d4374ae95b36062d02ef310100ed33d78738d76c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/d768d58baee9a4862ca783840eca1b9add7a7f57",
-                "reference": "d768d58baee9a4862ca783840eca1b9add7a7f57",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/d4374ae95b36062d02ef310100ed33d78738d76c",
+                "reference": "d4374ae95b36062d02ef310100ed33d78738d76c",
                 "shasum": ""
             },
             "require": {
@@ -294,16 +294,16 @@
             ],
             "authors": [
                 {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
                 {
                     "name": "Benjamin Eberlei",
                     "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
                 },
                 {
                     "name": "Jonathan Wage",
@@ -320,7 +320,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2018-08-21T18:01:43+00:00"
+            "time": "2019-10-28T09:31:32+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -1530,16 +1530,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.4",
+            "version": "v4.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "97e59c7a16464196a8b9c77c47df68e4a39a45c4"
+                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/97e59c7a16464196a8b9c77c47df68e4a39a45c4",
-                "reference": "97e59c7a16464196a8b9c77c47df68e4a39a45c4",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
+                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
                 "shasum": ""
             },
             "require": {
@@ -1547,6 +1547,7 @@
                 "php": ">=7.0"
             },
             "require-dev": {
+                "ircmaxell/php-yacc": "0.0.4",
                 "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
             },
             "bin": [
@@ -1577,7 +1578,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-09-01T07:51:21+00:00"
+            "time": "2019-10-25T18:33:07+00:00"
         },
         {
             "name": "opis/closure",
@@ -1863,16 +1864,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
+                "reference": "bf73deb2b3b896a9d9c75f3f0d88185d2faa27e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/bf73deb2b3b896a9d9c75f3f0d88185d2faa27e2",
+                "reference": "bf73deb2b3b896a9d9c75f3f0d88185d2faa27e2",
                 "shasum": ""
             },
             "require": {
@@ -1881,7 +1882,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -1906,7 +1907,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2018-11-20T15:27:04+00:00"
+            "time": "2019-10-25T08:06:51+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -3699,6 +3700,86 @@
             "time": "2019-10-04T19:48:13+00:00"
         },
         {
+            "name": "taliptako/laravel-love",
+            "version": "5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/taliptako/laravel-love.git",
+                "reference": "8bd74c4ca2e23ec4d4056eb6e075a57f602091a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/taliptako/laravel-love/zipball/8bd74c4ca2e23ec4d4056eb6e075a57f602091a7",
+                "reference": "8bd74c4ca2e23ec4d4056eb6e075a57f602091a7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.10",
+                "mockery/mockery": "^1.0",
+                "orchestra/database": "~3.5.0|~3.6.0|~3.7.0",
+                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Cog\\Laravel\\Love\\Providers\\LoveServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cog\\Contracts\\Love\\": "contracts/",
+                    "Cog\\Laravel\\Love\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Komarev",
+                    "email": "a.komarev@cybercog.su",
+                    "homepage": "http://ell.folio.su",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Make Laravel Eloquent models Likeable & Dislikeable in a minutes!",
+            "homepage": "https://github.com/cybercog/laravel-love",
+            "keywords": [
+                "Rate",
+                "Rating",
+                "Unlike",
+                "adore",
+                "cog",
+                "cybercog",
+                "dislike",
+                "eloquent",
+                "emotion",
+                "favorite",
+                "favourite",
+                "hate",
+                "kudos",
+                "laravel",
+                "likable",
+                "like",
+                "likeable",
+                "love",
+                "reaction",
+                "star",
+                "trait",
+                "undislike"
+            ],
+            "time": "2019-03-04T23:13:55+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.2",
             "source": {
@@ -3867,6 +3948,91 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "cybercog/laravel-love",
+            "version": "6.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cybercog/laravel-love.git",
+                "reference": "d7cf15b8190aaff4337e170b240a2b541519cfaa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cybercog/laravel-love/zipball/d7cf15b8190aaff4337e170b240a2b541519cfaa",
+                "reference": "d7cf15b8190aaff4337e170b240a2b541519cfaa",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.6.*|5.7.*|5.8.*",
+                "illuminate/support": "5.6.*|5.7.*|5.8.*",
+                "php": "^7.1.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.10",
+                "mockery/mockery": "^1.0",
+                "orchestra/database": "~3.6.0|~3.7.0|~3.8.0",
+                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Cog\\Laravel\\Love\\LoveServiceProvider"
+                    ],
+                    "aliases": {
+                        "Love": "Cog\\Laravel\\Love\\Facades\\Love"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cog\\Contracts\\Love\\": "contracts/",
+                    "Cog\\Laravel\\Love\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Komarev",
+                    "email": "anton@komarev.com",
+                    "homepage": "https://komarev.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Make Laravel Eloquent models reactable with any type of emotions in a minutes!",
+            "homepage": "https://github.com/cybercog/laravel-love",
+            "keywords": [
+                "Rate",
+                "Rating",
+                "Unlike",
+                "adore",
+                "cog",
+                "cybercog",
+                "dislike",
+                "eloquent",
+                "emotion",
+                "favorite",
+                "favourite",
+                "hate",
+                "kudos",
+                "laravel",
+                "likable",
+                "like",
+                "likeable",
+                "love",
+                "reactable",
+                "reacter",
+                "reaction",
+                "star",
+                "trait",
+                "undislike"
+            ],
+            "time": "2019-06-13T21:54:38+00:00"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.2.0",
@@ -4828,16 +4994,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.16",
+            "version": "7.5.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "316afa6888d2562e04aeb67ea7f2017a0eb41661"
+                "reference": "4c92a15296e58191a4cd74cff3b34fc8e374174a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/316afa6888d2562e04aeb67ea7f2017a0eb41661",
-                "reference": "316afa6888d2562e04aeb67ea7f2017a0eb41661",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4c92a15296e58191a4cd74cff3b34fc8e374174a",
+                "reference": "4c92a15296e58191a4cd74cff3b34fc8e374174a",
                 "shasum": ""
             },
             "require": {
@@ -4908,7 +5074,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-09-14T09:08:39+00:00"
+            "time": "2019-10-28T10:37:36+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
