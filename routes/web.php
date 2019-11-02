@@ -34,15 +34,14 @@ Route::middleware(['auth'])->group(function () {
 				->middleware('permission:services.create');
 
 			Route::post('store',      'ServiceController@store')->name('services.store')
-				->middleware('permission:services.store');
+				->middleware('permission:services.create');
 
 			Route::get('{id}/edit',   'ServiceController@edit')->name('services.edit')
 				->middleware('permission:services.edit');
 
 			Route::put('{id}', 	      'ServiceController@update')->name('services.update')
-				->middleware('permission:services.update');
-		});
-	
+				->middleware('permission:services.edit');
+		});	
 		
 		/*=====  POSTS  =====*/	
 		Route::prefix('posts')->group( function(){
@@ -56,13 +55,13 @@ Route::middleware(['auth'])->group(function () {
 				->middleware('permission:posts.create');
 
 			Route::post('store',      'PostController@store')->name('posts.store')
-				->middleware('permission:posts.store');
+				->middleware('permission:posts.create');
 
 			Route::get('{id}/edit',   'PostController@edit')->name('posts.edit')
 				->middleware('permission:posts.edit');
 
 			Route::put('{id}', 	      'PostController@update')->name('posts.update')
-				->middleware('permission:posts.update');
+				->middleware('permission:posts.edit');
 
 			Route::delete('posts/{id}','PostController@destroy')->name('posts.destroy')
 				->middleware('permission:posts.index');
@@ -78,13 +77,13 @@ Route::middleware(['auth'])->group(function () {
 				->middleware('permission:tags.create');
 
 			Route::post('store',    'TagController@store')->name('tags.store')
-				->middleware('permission:tags.store');
+				->middleware('permission:tags.create');
 
 			Route::get('{id}/edit', 'TagController@edit')->name('tags.edit')
 				->middleware('permission:tags.edit');
 
 			Route::put('{id}',      'TagController@update')->name('tags.update')
-				->middleware('permission:tags.update');			
+				->middleware('permission:tags.edit');			
 
 			Route::delete('{id}',   'TagController@destroy')->name('tags.destroy')
 				->middleware('permission:tags.destroy');
@@ -100,13 +99,13 @@ Route::middleware(['auth'])->group(function () {
 				->middleware('permission:events.create');
 
 			Route::post('store', 	'EventController@store')->name('events.store')
-				->middleware('permission:events.store');
+				->middleware('permission:events.create');
 
 			Route::get('{id}/edit', 'EventController@edit')->name('events.edit')
 				->middleware('permission:events.edit');
 
 			Route::put('{id}', 		'EventController@update')->name('events.update')
-				->middleware('permission:events.update');
+				->middleware('permission:events.edit');
 
 			Route::delete('{id}',   'EventController@destroy')->name('events.destroy')
 				->middleware('permission:events.destroy');

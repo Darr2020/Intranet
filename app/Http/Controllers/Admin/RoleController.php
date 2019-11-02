@@ -36,7 +36,7 @@ class RoleController extends Controller{
     public function store(Request $request){
 
         $role = Role::create($request->all());
-
+        
         $role->permissions()->sync($request->get('permissions'));
 
         alert()->success('El rol ha sido creado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
@@ -60,7 +60,6 @@ class RoleController extends Controller{
         $role->permissions()->sync($request->get('permissions'));
 
         alert()->info('El rol ha sido editado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
-
 
         return redirect()->route('roles.index', $role->id);
     }

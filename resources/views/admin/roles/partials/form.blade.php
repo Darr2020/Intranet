@@ -19,7 +19,8 @@
 <hr>
 <h4>Permiso especial</h4>
 <div class="form-group">
- 	{{ Form::radio('special', 'all-access') }} Acceso total
+	 {{ Form::radio('special', 'all-access') }} Acceso total
+	 {{ Form::radio('special', '', ['checked']) }} Acceso limitado
 </div>
 <hr>
 <h4 class="text-center">Lista de permisos</h4>

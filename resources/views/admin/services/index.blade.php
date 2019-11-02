@@ -27,7 +27,7 @@
                     <tr>
                         <td class="text-center">{{ $loop->iteration	}}</td>
                         <td class="text-center">{{ $service->name }}</td>
-                        <td class="text-center">{{ $service->description }}</td>
+                        <td class="text-center">{!! $service->description !!}</td>
                         <td class="text-center">{{ $service->route }}</td>
                         <td class="text-center">
                             @if($service->state == 'ACTIVE')

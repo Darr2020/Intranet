@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Event\EventStoreRequest;
 use App\Http\Requests\Event\EventUpdateRequest;
+use Illuminate\Support\Facades\DB;
 use App\Event;
 
 class EventController extends Controller{
@@ -33,12 +34,31 @@ class EventController extends Controller{
  
     public function store(EventStoreRequest $request){
 
-        $event = Event::create($request->all());
-
+        if ($request->get('date_start') >= $request->get('date_end')) {
+            alert()->error('La fecha de inicio debe ser menor a la de finalización', '' . auth()->user()->name)->persistent('Cerrar');
+            return back();
+        } else {
+            DB::beginTransaction();
+            try {
+               $event = Event::create([
+                    'user_id'     => $request->get('user_id'),
+                    'title'       => $request->get('title'),            
+                    'slug'        => $request->get('slug'),
+                    'color'       => $request->get('color'),
+                    'date_start'  => $request->get('date_start'),
+                    'date_end'    => $request->get('date_end'),
+                    'description' => $request->get('description'),
+                    'state'       => $request->get('state')
+                ]);
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollback();
+                
+                throw $e;
+            }
             alert()->success('El evento ha sido creado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
-
-       
-        return redirect()->route('events.index', $event->id);
+            return redirect()->route('events.index', $event->id);
+        }              
     }
 
     public function edit($id){

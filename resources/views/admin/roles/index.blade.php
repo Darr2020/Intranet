@@ -1,16 +1,18 @@
 @extends('admin.panel')
 
 @section('contentAdmin')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-10 mt-5">
             <h3 class="text-center">Listado de roles</h3>
             <hr>
             <br>
             <strong>{{$roles->total()}} Roles | página {{$roles->currentPage()}} de {{$roles->lastPage()}} </strong>
-            <a href="{{ route('roles.create') }}" class="float-right">
+            <a href="{{ route('roles.create') }}" class="float-right ml-5">
                 <img src=" {{ asset('icons/create.svg') }}" style="width: 30px;" title="Crear Rol">
             </a>
+            <a href="{{ route('listar.users') }}" role="button" class="btn btn-outline-success float-right ">Asignar rol</a>
+            
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>

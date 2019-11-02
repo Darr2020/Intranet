@@ -1,72 +1,68 @@
 <?php echo e(Form::hidden('user_id', auth()->user()->id)); ?>
 
+<?php echo csrf_field(); ?>
 
 <div class="form-row">
-	<div class="col">
+	<div class="col-md-6">
 		<div class="form-group">
-			<?php echo e(Form::label('title', 'Titulo:')); ?>
-
+			<h5><?php echo e(Form::label('title', 'Titulo:')); ?></h5>
 			<?php echo e(Form::text('title', null, ['class' => 'form-control', 'id' => 'title'])); ?>
 
 		</div>
 	</div>
-	<div class="col">
+	<div class="col-md-6">
 		<div class="form-group">
-			<?php echo e(Form::label('slug', 'URL:')); ?>
-
+			<h5><?php echo e(Form::label('slug', 'URL:')); ?></h5>
 			<?php echo e(Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'readonly' ])); ?>
 
 		</div>
 	</div>
 </div>
-<div class="custom-file">
-	<div class="form-group">
-		<?php echo e(Form::label('image', 'Archivo...', ['class' => 'custom-file-label'])); ?>
+<div class="form-row">
+	<div class="col-md-7">
+		<h5>Archivo: </h5>
+		<div class="custom-file">		
+			<div class="form-group">
+				<?php echo e(Form::label('image', 'Archivo...', ['class' => 'custom-file-label'])); ?>
 
-		<?php echo e(Form::file('image', ['class' => 'custom-file-input', 'lang' => 'es'])); ?>
+				<?php echo e(Form::file('image', ['class' => 'custom-file-input', 'lang' => 'es'])); ?>
 
-	</div>
-</div>
-
-<div class="row mt-4">
-	<div class="col-md-8">
+			</div>
+		</div>
+		<hr>
 		<div class="form-group">
-			<?php echo e(Form::label('slug', 'Estado:')); ?>
+			<h5><?php echo e(Form::label('slug', 'Estado:')); ?></h5>
+			<ul class="list-group">
+				<li class="list-group-item">
+					<?php echo e(Form::radio('state', 'PUBLISHED')); ?> <strong class="text-success">Publicar noticia </strong>
+				</li>
+				<li class="list-group-item">
+					<?php echo e(Form::radio('state', 'PUBLISHED')); ?> <strong class="text-danger">Guardar noticia como borrador</strong>
+				</li>
+			</ul>			
+		</div>
+		<div class="form-group">
+			<h5><?php echo e(Form::label('summary', 'Resumen:')); ?></h5>
+			<?php echo e(Form::textarea('summary', null, ['class' => 'form-control', 'rows' => '2'])); ?>
 
-			<label>
-				<?php echo e(Form::radio('state', 'PUBLISHED')); ?> Publicado  
-			</label>
-			<label>
-				<?php echo e(Form::radio('state', 'DRAFT')); ?> Borrador.
-			</label>
 		</div>
 	</div>
-	<div class="col-md-4">
-		<div class="btn-group">
-			<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-   			Etiquetas:
- 			</button>
-		   	<div class="dropdown-menu dropdown-menu-right">
-				<?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-					<a class="dropdown-item"><?php echo e(Form::checkbox('tags[]', $tag->id)); ?> <?php echo e($tag->name); ?></a>
-				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>	
-		   	</div>
-		</div>
+
+	<div class="col-md-5">
+		<h5>Listado de etiquetas:</h5>
+		<ul class="list-group">
+			<?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+				<li class="list-group-item">
+					<?php echo e(Form::checkbox('tags[]', $tag->id)); ?> <strong><?php echo e($tag->name); ?></strong> <em>(<?php echo e($tag->description); ?> )</em>
+				</li>
+			<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>	
+		</ul>
 	</div>
 </div>
-	
-<div class="form-group">
-    <?php echo e(Form::label('summary', 'Resumen:')); ?>
-
-    <?php echo e(Form::textarea('summary', null, ['class' => 'form-control', 'rows' => '2'])); ?>
-
-</div>
-	
 
 <div class="form-group">
-    <?php echo e(Form::label('content', 'Contenido:')); ?>
-
-    <?php echo e(Form::textarea('content', null, ['class' => 'form-control'])); ?>
+    <h5><?php echo e(Form::label('description', 'Contenido:')); ?></h5>
+    <?php echo e(Form::textarea('description', null, ['class' => 'form-control'])); ?>
 
 </div>
 
@@ -105,9 +101,9 @@
            return $("#slug").val(str);
 		}
 
-	/*	CKEDITOR.config.heigth = 500;
+		CKEDITOR.config.heigth = 500;
 		CKEDITOR.config.width = 'auto';
 
-		CKEDITOR.replace('content');*/
+		CKEDITOR.replace('description');
 	</script>
 <?php $__env->stopSection(); ?><?php /**PATH /var/www/html/sistemas/intranet2/resources/views/admin/posts/partials/form.blade.php ENDPATH**/ ?>

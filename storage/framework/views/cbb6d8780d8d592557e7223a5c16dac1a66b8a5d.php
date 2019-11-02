@@ -1,34 +1,14 @@
 <?php $__env->startSection('contentAdmin'); ?>
-        <div class="col-12">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="text-center">Nombre</th>
-                        <th class="text-center">Apellido</th>
-                        <th class="text-center">Extensión</th>
-                        <th class="text-center">Email</th>
-                    </tr>
-                </thead>
-                <div class="card-body">
-                    <tbody>
-                        <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <tr>                              
-                                <td class="text-center">
-                                    <a href="<?php echo e(route('users.edit', $user->id)); ?>"
-                                        class="text-decoration-none">
-                                        <?php echo e($user->name); ?>
-
-                                    </a>
-                                </td>
-                                <td class="text-center"> <?php echo e($user->last_name); ?> </td>
-                                <td class="text-center"> <?php echo e($user->extension); ?> </td>
-                                <td class="text-center"> <?php echo e($user->email); ?>     </td>
-                            </tr>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>             
-                    </tbody>
-                </div>
-            </table>
-        </div>
+    <div class="row justify-content-center">
+        <form class="form-inline my-2 mb-2 my-lg-0" action=" <?php echo e(route('listar.users')); ?>" method="GET">
+            <input class="form-control mr-sm-2" type="search" placeholder="Nombre o Oficina" name="q" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form> 
+    
+    <br>
+    <div class="col-md-11">
+        <?php echo $__env->make('partials.users.directory', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
+</div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.panel', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/sistemas/intranet2/resources/views/admin/roles/listar.blade.php ENDPATH**/ ?>
