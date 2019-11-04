@@ -45,6 +45,9 @@
                                 <li class="nav-item <?php echo e(active('eventos')); ?>">
                                     <a class="nav-link" href="<?php echo e(url('eventos')); ?>">Eventos</a>
                                 </li>
+                                <li class="nav-item <?php echo e(active('tareas')); ?>">
+                                    <a class="nav-link" href="<?php echo e(url('tareas')); ?>">Tareas</a>
+                                </li>
                                 <?php if (\Shinobi::can('admin.panel')): ?>
                                     <li class="nav-item">                            
                                         <a class="nav-link" href="<?php echo e(route('admin.panel')); ?>">Panel Administrador</a>

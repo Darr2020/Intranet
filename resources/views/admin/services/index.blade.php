@@ -1,7 +1,7 @@
 @extends('admin.panel')
 
 @section('contentAdmin')    
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-11 mt-5">
             <h2 class="text-center">Listado de Servicios</h2>
@@ -11,7 +11,7 @@
             <a href="{{ route('services.create') }}" class="float-right">
                 <img src=" {{ asset('icons/create.svg') }}" style="width: 35px;" title="Agregar servicio">
             </a>                                                                                      
-            <table class="table table-striped table-hover table-responsive">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th class="text-center" width="10px">#</th>

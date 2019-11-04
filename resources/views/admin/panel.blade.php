@@ -43,7 +43,7 @@
                     <img src=" {{asset('icons/favorite-red.svg')}} " class="float-right">
                   </a>
 
-                  <a href="{{ route('logout') }}" class="dropdown-item" 
+                  <a href="{{ route('logout') }}" class="dropdown-item text-danger" 
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Cerrar sesión
                   </a>
@@ -53,16 +53,12 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
-  
-            <!-- HeaderSideNav -->
-            <div class="sidebar-heading">
-            Gestión
-            </div>
             @can('services.index')
               <li class="nav-item">
                 <a class="nav-link" href=" {{route('services.index')}} ">
                   <img src="{{ asset('icons/services.svg') }}">
                   <span>Servicios</span>
+                  <span class="float-right">{{$Tservice}}</span>
                 </a>
               </li>     
             @endcan                                      
@@ -143,8 +139,22 @@
                     </div>
                 </div>
             </li>
-            @endcan       
-            <!-- Charts statistics-->
+            @endcan
+            
+            <div class="sidebar-heading">
+              Auditoria
+            </div>
+
+            @can('trace.index')
+              <li class="nav-item">
+                <a class="nav-link" href=" {{route('trace.index')}} ">
+                  <img src=" {{asset('icons/audit.svg')}}">
+                  <span>Acciones</span>
+                </a>
+              </li>     
+            @endcan 
+
+            <!-- CHARTS STADISTICS-->
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">
                   <img src=" {{asset('icons/chart.svg')}} ">
@@ -152,18 +162,14 @@
               </a>
               <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item" href=" {{route('charts.views')}} ">Todas las gráficas</a>
                   <a class="collapse-item" href=" {{route('charts.area')}} ">
-                    Noticias
-                    <img src=" {{asset('icons/lineChart.svg')}} " class="float-right">
+                    Noticias <img src=" {{asset('icons/lineChart.svg')}} " class="float-right">
                   </a>
                   <a class="collapse-item" href=" {{route('charts.bar')}} ">
-                    Eventos
-                    <img src=" {{asset('icons/barChart.svg')}} " class="float-right">
+                    Eventos <img src=" {{asset('icons/barChart.svg')}} " class="float-right">
                   </a>
                   <a class="collapse-item" href=" {{route('charts.pie')}} ">
-                    De Torta
-                    <img src=" {{asset('icons/pieChart.svg')}} " class="float-right">
+                    Publicado|Borrador <img src=" {{asset('icons/pieChart.svg')}} " class="float-right">
                   </a>
                   
                 </div>

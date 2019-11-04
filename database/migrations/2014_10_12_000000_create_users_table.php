@@ -14,7 +14,6 @@ class CreateUsersTable extends Migration{
             $table->string('name');
             $table->string('last_name');
             $table->string('slug');               
-            $table->string('alias')->nullable();                      
             $table->enum('office', ['Tecnología', 'Gestión Humana', 'Gestión Comunicacional', 'Servicios Generales', 'Seguridad'])->nullable();
             $table->integer('cedula')->unique();
             $table->string('tlf_emergencia')->nullable();

@@ -34,7 +34,7 @@
 									@if ($event->state == 'PUBLISHED')
 										<strong class="text-success">Evento publicado</strong>
 									@else
-										<strong class="text-danger">Guardada como borrador</strong>
+										<strong class="text-danger">Guardado como borrador</strong>
 									@endif
 								</td>							
 								<td width="10px">

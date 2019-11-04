@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Cog\Contracts\Love\Likeable\Models\Likeable as LikeableContract;
 use Cog\Laravel\Love\Likeable\Models\Traits\Likeable;
+use Cog\Contracts\Love\Likeable\Models\Likeable as LikeableContract;
+
 
 class Post extends Model implements LikeableContract{
 
@@ -21,11 +22,7 @@ class Post extends Model implements LikeableContract{
     public function user(){
         return $this->belongsTo(User::class);
     }
-
-    public function archives(){
-		return $this->morphOne(Archive::class, 'archiveable');
-    }
-
+    
     public function tags(){
         return $this->belongsToMany(Tag::class);
     }

@@ -5,14 +5,15 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
 
 	Route::group(['namespace' => 'User'], function(){
-		Route::get('/',               'PostController@posts')->name('noticias'); //Principal
-		Route::get('noticia/{slug}',  'PostController@post')->name('noticia');   //Noticia
-		Route::get('etiqueta/{slug}', 'PostController@tag')->name('etiqueta');	 //Etiquetas
-		Route::get('eventos', 		  'EventController@index')->name('eventos'); //Eventos
-		Route::get('servicios', 	  'ServiceController@services')->name('services'); //Servicios
-		Route::resource('tarea',      'TasksController', ['except' => 'show', 'create', 'edit']); //Tareas
+		Route::get('/',               'PostController@posts')->name('noticias'); //PRINCIPAL
+		Route::get('noticia/{slug}',  'PostController@post')->name('noticia');   //POST
+		Route::get('etiqueta/{slug}', 'PostController@tag')->name('etiqueta');	 //TAG
+		Route::get('eventos', 		  'EventController@index')->name('eventos'); //EVENTS
+		Route::get('servicios', 	  'ServiceController@services')->name('services'); //SERVICES
+		Route::resource('tarea',      'TasksController', ['except' => 'show', 'create', 'edit']); //TASKS
 
-		Route::post('like/{$slug}', 'PostController@toggleLike')->name('toggleLike'); 
+		Route::get('noticia/{post}/like', 'PostController@like')->name('post.like');//LIKE
+    	Route::get('noticia/{post}/unlike', 'PostController@unlike')->name('post.unlike');//UNLIKE
 	});
 
 	Route::get('/tareas', function(){
@@ -22,7 +23,7 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::group(['namespace' => 'Admin'], function (){
 
-		Route::get('PanelAdmin', 'PanelController@view')->name('admin.panel')
+		Route::get('PanelAdmin', 'PanelController@view')->name('admin.panel') //PANELADMIN	
 			->middleware('permission:admin.panel');
 
 		/*=====  SERVICES  =====*/	
@@ -142,6 +143,8 @@ Route::middleware(['auth'])->group(function () {
 			Route::get('ver', 'ReportsController@viewReport')->name('report.view');
 			Route::get('descargar', 'ReportsController@downReport')->name('report.down');
 		});
+		Route::get('traza', 'TraceController@getTrace')->name('trace.index');
+
 		
 		/*=====  CHARTS  =====*/	
 		Route::prefix('Graficas')->group(function (){

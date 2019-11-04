@@ -50,32 +50,13 @@ class PostController extends Controller{
 		return view('users.post', compact('post', 'titulo'));
 	}
 
-	public function toggleLike($slug){
-        $post = Post::find($slug);	
-		$post->toggleLikeBy();
-
-		if ($post->liked) {
-			return response()->json([
-				'like' => [
-					'isLiked' => true,
-					'likes'   => $post->likesCount(),
-				]
-			]);
-		}else{
-			return response()->json([
-				'like' => [
-					'isLiked' => false,
-					'likes'   => $post->likesCount(),
-				]
-			]);
-		}
-        
+	public function like(Post $post){
+        $post->likeBy();
+        return back();
     }
 
-    public function unlike(Post $post)
-    {
+    public function unlike(Post $post){
         $post->unlikeBy();
-
         return back();
     }
 }

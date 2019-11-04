@@ -20,10 +20,11 @@
 				    <p class="text-center">{{$post->summary}}</p>
 				</div>
 				
-				<p id="likeCount"> {{$post->likesCount}} </p>
-				
-				<p class="like" id="like"><img src=" {{asset('icons/favorite-red.svg')}} ">Me gusta</p>
-				<p class="like" id="unLike">  </p>   
+				@if (! $post->liked)
+				<a href="{{ route('post.like', $post) }}" class="btn btn-primary btn-sm">({{ $post->likesCount }}) Me gusta</a>
+			@else
+				<a href="{{ route('post.unlike', $post) }}" class="btn btn-primary btn-sm">({{ $post->likesCount }}) Te gusta</a>
+			@endif
 
 	            <div class="card-body">		                
 	                <div class="text-center" style="font-size: 22px">
@@ -34,41 +35,7 @@
 		</div>	
 	</div>
 
-	<script type="text/javascript">
-
-		@if($post->liked)
-			$('#like').hide();
-			$('#unLike').show();
-		@else
-			$('#like').show();
-			$('#unLike').hide();
-		@endif
-
-		$('.like').on('click', function(){
-			const user = {{Auth::user()->id}}
-
-			$.ajax({
-				type: 'get',
-				url: ` {{ route('toggleLike', $post->slug) }} `,
-				data: user, 
-				cache: false,
-				contentType: false,
-				processData: false,
-				success: function(data){
-					if (data.like.isLiked) {
-						$('#like').hide();
-						$('#unLike').show();
-						$('#likeCount').html('<img src=" {{asset('icons/favorite-red.svg')}} ">' + data.like.likes);
-					}else{
-						$('#like').show();
-						$('#unLike').hide();
-						$('#likeCount').html('<img src=" {{asset('icons/favorite-red.svg')}} ">' + data.like.likes)
-
-					}
-				}
-			});
-		});
-	</script>
+	
 @endsection     
 
            

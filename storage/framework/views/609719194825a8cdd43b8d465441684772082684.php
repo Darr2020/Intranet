@@ -1,5 +1,7 @@
+
+
 <?php $__env->startSection('contentAdmin'); ?>    
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-11 mt-5">
             <h2 class="text-center">Listado de Servicios</h2>
@@ -9,7 +11,7 @@
             <a href="<?php echo e(route('services.create')); ?>" class="float-right">
                 <img src=" <?php echo e(asset('icons/create.svg')); ?>" style="width: 35px;" title="Agregar servicio">
             </a>                                                                                      
-            <table class="table table-striped table-hover table-responsive">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th class="text-center" width="10px">#</th>
@@ -25,7 +27,7 @@
                     <tr>
                         <td class="text-center"><?php echo e($loop->iteration); ?></td>
                         <td class="text-center"><?php echo e($service->name); ?></td>
-                        <td class="text-center"><?php echo e($service->description); ?></td>
+                        <td class="text-center"><?php echo $service->description; ?></td>
                         <td class="text-center"><?php echo e($service->route); ?></td>
                         <td class="text-center">
                             <?php if($service->state == 'ACTIVE'): ?>

@@ -15,7 +15,7 @@ class dataPanelServiceProvider extends ServiceProvider{
 
 
     public function boot(){
-        /*Cuenta Roles, Etiquetas, Noticias y Eventos que hay enla base de Datos*/
+        /*Total de  Roles, Etiquetas, Noticias, Eventos y Eventos que hay en la base de Datos*/
        View::composer(['*'], function($view){
             $TRol = DB::table('roles')->count();
             $view->with('TRol', $TRol);
@@ -25,11 +25,17 @@ class dataPanelServiceProvider extends ServiceProvider{
             $view->with('TPost', $TPost);
         });
         View::composer(['*'], function($view){
-            $TEvent = DB::table('posts')->count();
+            $TEvent = DB::table('events')->count();
             $view->with('TEvent', $TEvent);
         });
+
         View::composer(['*'], function($view){
-            $TTag = DB::table('posts')->count();
+            $Tservice = DB::table('services')->count();
+            $view->with('Tservice', $Tservice);
+        });
+
+        View::composer(['*'], function($view){
+            $TTag = DB::table('tags')->count();
             $view->with('TTag', $TTag);
         });
 

@@ -64,7 +64,7 @@
 </div>
 
 <div class="form-group">
-	<?php echo e(Form::submit('Guardar evento', ['class' => 'btn btn-color btn-lg btn-block'])); ?>
+	<?php echo e(Form::submit('Guardar evento', ['class' => 'btn btn-primary btn-lg btn-block'])); ?>
 
 </div>
 

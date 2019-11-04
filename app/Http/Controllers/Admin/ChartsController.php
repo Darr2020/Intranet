@@ -35,12 +35,17 @@ class ChartsController extends Controller{
 
         $titulo = "Torta";     
    
-        $eventsP = DB::table('events')->where('state', 'PUBLISHED')->count();
-        $eventsD = DB::table('events')->where('state', 'DRAFT')->count();
+        $eventsP = DB::table('events')->where('state', 'PUBLISHED')->count(); //Eventos publicados
+        $eventsD = DB::table('events')->where('state', 'DRAFT')->count(); // Eventos guardados como borrador
 
-        $postsP = DB::table('posts')->where('state', 'PUBLISHED')->count();
-        $postsD = DB::table('posts')->where('state', 'DRAFT')->count();
+        $postsP = DB::table('posts')->where('state', 'PUBLISHED')->count(); //Noticias publicados
+        $postsD = DB::table('posts')->where('state', 'DRAFT')->count(); //Noticias guardados como borrador
+        
+        $servicesA = DB::table('services')->where('state', 'ACTIVE')->count();//Servicios activos
+        $servicesD = DB::table('services')->where('state', 'DEACTIVATED')->count();//Servicios guardados como borrador
 
-        return view('admin.charts.pie', compact('titulo', 'eventsP', 'eventsD', 'postsP', 'postsD'));        
+        return view('admin.charts.pie', compact(
+            'titulo', 'eventsP', 'eventsD', 'postsP', 'postsD', 'servicesA', 'servicesD', 'eventsT'
+        ));        
     }
 }

@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements LikerContract {    
     
-    use Notifiable, ShinobiTrait, Liker;
+    use Notifiable, ShinobiTrait, Liker; 
 
     protected $table = 'users';
 
@@ -19,6 +19,11 @@ class User extends Authenticatable implements LikerContract {
     ];
 
     protected $hidden = [ 'password', 'remember_token', ];
+
+
+    public function traces(){
+        return $this->hasMany(Trace::class);
+    }
 
     public function posts(){
         return $this->hasMany(Post::class);

@@ -1,5 +1,5 @@
 <?php
-
+ 
 use Illuminate\Database\Seeder;
 
 use Caffeinated\Shinobi\Models\Permission;
@@ -9,25 +9,18 @@ class PermissionsTableSeeder extends Seeder{
     public function run() {
 
          //ADMIN
-         Permission::create([
+        Permission::create([
             'name'          => 'Admin panel',
             'slug'          => 'admin.panel',
             'description'   => 'Permiso para ingresar a el panel administrador del sistema',
         ]);
+        Permission::create([
+            'name'          => 'Todas las acciones',
+            'slug'          => 'trace.index',
+            'description'   => 'Permiso para iver todas las acciones del sistemas',
+        ]);
 
         //USERS
-        Permission::create([
-            'name'          => 'Navegar usuarios',
-            'slug'          => 'users.index',
-            'description'   => 'Lista y navega todos los usuarios del sistema',
-        ]);
-
-        Permission::create([
-            'name'          => 'Ver detalle de usuario',
-            'slug'          => 'users.show',
-            'description'   => 'Ve en detalle cada usuario del sistema',            
-        ]);
-        
         Permission::create([
             'name'          => 'Edición de usuarios',
             'slug'          => 'users.edit',
@@ -97,13 +90,12 @@ class PermissionsTableSeeder extends Seeder{
             'slug'          => 'posts.edit',
             'description'   => 'Permiso de editar cualquier dato de un noticia',
         ]);
-        
        
         //EVENTS    
         Permission::create([
-            'name'          => 'Ver detalle de un evento',
-            'slug'          => 'events.show',
-            'description'   => 'Ve en detalle cada evento',            
+            'name'          => 'Navegar eventos',
+            'slug'          => 'events.index',
+            'description'   => 'Lista y navega todos los eventos',            
         ]);
         
         Permission::create([
@@ -124,37 +116,7 @@ class PermissionsTableSeeder extends Seeder{
             'description'   => 'Permiso de eliminar eventos'      
         ]);
 
-        //TASKS
-        Permission::create([
-            'name'          => 'Navegar tareas',
-            'slug'          => 'tasks.index',
-            'description'   => 'Lista y navega todas las tareas',
-        ]);
-
-        Permission::create([
-            'name'          => 'Ver detalle de un tarea',
-            'slug'          => 'tasks.show',
-            'description'   => 'Ve en detalle cada tarea',            
-        ]);
-        
-        Permission::create([
-            'name'          => 'Creación de tareas',
-            'slug'          => 'tasks.create',
-            'description'   => 'Permiso para crear nuevas tareas',
-        ]);
-        
-        Permission::create([
-            'name'          => 'Edición de tareas',
-            'slug'          => 'tasks.edit',
-            'description'   => 'Permiso de editar algun dato de una tarea',
-        ]);
-        
-        Permission::create([
-            'name'          => 'Eliminar tareas',
-            'slug'          => 'tasks.destroy',
-            'description'   => 'Permiso de eliminar tareas'      
-        ]);
-
+       
         //TAGS
         Permission::create([
             'name'          => 'Navegar etiquetas',
@@ -179,7 +141,6 @@ class PermissionsTableSeeder extends Seeder{
             'slug'          => 'tags.destroy',
             'description'   => 'Permiso de eliminar etiquetas'      
         ]);
-
 
     }
 }

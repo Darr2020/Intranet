@@ -8,6 +8,9 @@ use App\Http\Requests\Event\EventStoreRequest;
 use App\Http\Requests\Event\EventUpdateRequest;
 use Illuminate\Support\Facades\DB;
 use App\Event;
+use App\Trace;
+use App\Notification;
+
 
 class EventController extends Controller{
 
@@ -34,26 +37,38 @@ class EventController extends Controller{
  
     public function store(EventStoreRequest $request){
 
-        if ($request->get('date_start') >= $request->get('date_end')) {
+        if ($request['date_start'] >= $request['date_end']) {
             alert()->error('La fecha de inicio debe ser menor a la de finalización', '' . auth()->user()->name)->persistent('Cerrar');
             return back();
         } else {
             DB::beginTransaction();
             try {
                $event = Event::create([
-                    'user_id'     => $request->get('user_id'),
-                    'title'       => $request->get('title'),            
-                    'slug'        => $request->get('slug'),
-                    'color'       => $request->get('color'),
-                    'date_start'  => $request->get('date_start'),
-                    'date_end'    => $request->get('date_end'),
-                    'description' => $request->get('description'),
-                    'state'       => $request->get('state')
+                    'user_id'     => $request['user_id'],
+                    'title'       => $request['title'],            
+                    'slug'        => $request['slug'],
+                    'color'       => $request['color'],
+                    'date_start'  => $request['date_start'],
+                    'date_end'    => $request['date_end'],
+                    'description' => $request['description'],
+                    'state'       => $request['state']
                 ]);
+                $notification = Notification::create([
+                    'who_id' => $request['user_id'],
+                    'type' => Trace::EVENT,
+                    'title' => 'Servicio',
+                    'description' => Notification::DESCRIPTION_E
+                ]);
+
+                $trace = Trace::create([
+                    'user_id' => $request['user_id'],
+                    'action' => Trace::EVENT,
+                    'type_action' => 'CREATE',
+                    'description' =>'Ha creado un evento institucional'
+                ]);                
                 DB::commit();
             } catch (\Exception $e) {
-                DB::rollback();
-                
+                DB::rollback();                     
                 throw $e;
             }
             alert()->success('El evento ha sido creado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
@@ -69,14 +84,31 @@ class EventController extends Controller{
         return view('admin.events.edit', compact('event', 'titulo'));
     }
 
-   public function update(EventUpdateRequest $request, $id){
+    public function update(EventUpdateRequest $request, $id){
+
         $event = Event::find($id);
-      
         $event->fill($request->all())->save();
+        if ($request->get('date_start') >= $request->get('date_end')) {
+            alert()->error('La fecha de inicio debe ser menor a la de finalización', '' . auth()->user()->name)->persistent('Cerrar');
+            return back();
+        } else {
+            DB::beginTransaction();
+            try {         
 
-        alert()->success('El evento ha sido editado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
-
-        return redirect()->route('events.index', $event->id);
+                $trace = Trace::create([
+                    'user_id' => $request['user_id'],
+                    'action' => Trace::EVENT,
+                    'type_action' => 'UPDATE',
+                    'description' =>'Ha creado un evento institucional'
+                ]);                
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollback();                     
+                throw $e;
+            }
+            alert()->success('El evento ha sido editado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
+            return redirect()->route('events.index', $event->id);
+        }        
     }
 
     public function destroy($id){

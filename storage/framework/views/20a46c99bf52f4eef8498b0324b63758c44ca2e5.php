@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <a href=" <?php echo e(url('tareas')); ?> " class="nav-link card-title text-center">TAREAS</a>   
+                        <a href="<?php echo e(url('tareas')); ?>" class="nav-link card-title text-center">TAREAS</a>   
                         <?php if($tasks->isEmpty()): ?>
                             <h5 class="text-center">No haz creado tareas</h5>
                         <?php else: ?>

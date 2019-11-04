@@ -29,8 +29,7 @@ class UserController extends Controller{
 
         $titulo = "Perfil";
         $user = User::where('slug', $slug)->first();
-        $alias = User::where('slug', $slug)->get('alias');
-        return view('users.profile', compact('user', 'titulo', 'alias'));
+        return view('users.profile', compact('user', 'titulo'));
     }
 
     

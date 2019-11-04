@@ -18,11 +18,20 @@
         <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>                              
                 <td class="text-center">
-                    <a href="<?php echo e(route('users.show', $user->slug)); ?>"
-                        class="text-decoration-none">
-                        <?php echo e($user->name); ?>
+                    <?php if(Request::path() == 'roles/listado'): ?>
+                        <a href="<?php echo e(route('users.edit', $user->id)); ?>"
+                            class="text-decoration-none">
+                            <?php echo e($user->name); ?>
 
-                    </a>
+                        </a>
+                    <?php else: ?>
+                        <a href="<?php echo e(route('users.show', $user->slug)); ?>"
+                            class="text-decoration-none">
+                            <?php echo e($user->name); ?>
+
+                        </a>
+                    <?php endif; ?>
+                    
                 </td>
                 <td class="text-center"> <?php echo e($user->last_name); ?> </td>
                 <td class="text-center"> <?php echo e($user->office); ?> </td>

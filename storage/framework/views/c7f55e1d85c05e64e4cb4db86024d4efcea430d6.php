@@ -21,10 +21,11 @@
 				    <p class="text-center"><?php echo e($post->summary); ?></p>
 				</div>
 				
-				<p id="likeCount"> <?php echo e($post->likesCount); ?> </p>
-				
-				<p class="like" id="like"><img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> ">Me gusta</p>
-				<p class="like" id="unLike">  </p>   
+				<?php if(! $post->liked): ?>
+				<a href="<?php echo e(route('post.like', $post)); ?>" class="btn btn-primary btn-sm">(<?php echo e($post->likesCount); ?>) Me gusta</a>
+			<?php else: ?>
+				<a href="<?php echo e(route('post.unlike', $post)); ?>" class="btn btn-primary btn-sm">(<?php echo e($post->likesCount); ?>) Te gusta</a>
+			<?php endif; ?>
 
 	            <div class="card-body">		                
 	                <div class="text-center" style="font-size: 22px">
@@ -35,42 +36,7 @@
 		</div>	
 	</div>
 
-	<script type="text/javascript">
-
-		<?php if($post->liked): ?>
-			$('#like').hide();
-			$('#unLike').show();
-		<?php else: ?>
-			$('#like').show();
-			$('#unLike').hide();
-		<?php endif; ?>
-
-		$('.like').on('click', function(){
-			const user = <?php echo e(Auth::user()->id); ?>
-
-
-			$.ajax({
-				type: 'get',
-				url: ` <?php echo e(route('toggleLike', $post->slug)); ?> `,
-				data: user, 
-				cache: false,
-				contentType: false,
-				processData: false,
-				success: function(data){
-					if (data.like.isLiked) {
-						$('#like').hide();
-						$('#unLike').show();
-						$('#likeCount').html('<img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> ">' + data.like.likes);
-					}else{
-						$('#like').show();
-						$('#unLike').hide();
-						$('#likeCount').html('<img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> ">' + data.like.likes)
-
-					}
-				}
-			});
-		});
-	</script>
+	
 <?php $__env->stopSection(); ?>     
 
            

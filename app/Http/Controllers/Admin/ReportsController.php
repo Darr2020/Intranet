@@ -11,7 +11,7 @@ class ReportsController extends Controller{
     public function viewReport(){ 
         $date = Carbon::now();
         $date = $date->format('d/m/Y'); 
-        $view =  \View::make('admin.reports.report', compact('date'))->render();
+        $view =  \View::make('admin.audit.report', compact('date'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('Reporte PDF');
@@ -20,7 +20,7 @@ class ReportsController extends Controller{
     public function downReport(){ 
         $date = Carbon::now();
         $date = $date->format('d/m/Y'); 
-        $view =  \View::make('admin.reports.report', compact('date'))->render();
+        $view =  \View::make('admin.audit.report', compact('date'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->download('Reporte.pdf');

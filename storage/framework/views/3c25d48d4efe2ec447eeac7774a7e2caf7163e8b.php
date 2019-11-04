@@ -1,16 +1,18 @@
 
 
 <?php $__env->startSection('contentAdmin'); ?>
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-10 mt-5">
             <h3 class="text-center">Listado de roles</h3>
             <hr>
             <br>
             <strong><?php echo e($roles->total()); ?> Roles | página <?php echo e($roles->currentPage()); ?> de <?php echo e($roles->lastPage()); ?> </strong>
-            <a href="<?php echo e(route('roles.create')); ?>" class="float-right">
+            <a href="<?php echo e(route('roles.create')); ?>" class="float-right ml-5">
                 <img src=" <?php echo e(asset('icons/create.svg')); ?>" style="width: 30px;" title="Crear Rol">
             </a>
+            <a href="<?php echo e(route('listar.users')); ?>" role="button" class="btn btn-outline-success float-right ">Asignar rol</a>
+            
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
