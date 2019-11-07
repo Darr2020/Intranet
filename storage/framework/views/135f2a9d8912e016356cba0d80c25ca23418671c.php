@@ -39,6 +39,18 @@
                                     <a class="nav-link" href="<?php echo e(url('/')); ?>">Inicio</a>
                                 </li>
 
+                                <div class="dropdown">
+                                    <a href="#" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     <img src=" <?php echo e(asset('icons/notifications.svg')); ?> " class="mt-2">
+                                    </a>
+                                  
+                                    <div class="dropdown-menu" aria-labelledby="dropdownNotification">
+                                        <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $n): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <a class="dropdown-item" href="#"><?php echo e($n->type); ?> <?php echo e($n->title); ?></a>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </div>
+                                  </div>
+
                                 <li class="nav-item <?php echo e(active('directorio')); ?>">
                                     <a class="nav-link" href="<?php echo e(url('directorio')); ?>">Directorio</a>
                                 </li>
@@ -61,7 +73,7 @@
                                     <ul class="ul-drop">
                                         <li class="li-drop"> 
                                             <a class="nav-link" href="<?php echo e(route('users.show', Auth::user()->slug)); ?>">
-                                                Perfil
+                                                <span class="text-primary">Perfil</span>
                                                 <img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> " class="float-right">
                                             </a>
                                         </li>
@@ -69,7 +81,7 @@
                                             <a href="<?php echo e(route('logout')); ?>" class="nav-link"
                                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                                Salir
+                                                <span class="text-primary">Salir</span>
                                             </a>
                                             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;"><?php echo csrf_field(); ?></form>
                                         </li>

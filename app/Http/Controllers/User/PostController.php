@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Task;
 use App\Tag;
+use App\Notification;
 use Carbon\Carbon;
 use Alert;
 use Illuminate\Support\Facades\Input;
@@ -33,7 +34,9 @@ class PostController extends Controller{
 			->take(5)
 			->get();
 
-		return view('inicio', compact('posts', 'tasks', 'titulo'));							
+			$notifications = Notification::all();
+
+		return view('inicio', compact('posts', 'tasks', 'titulo', 'notifications'));							
 	}
 
 	public function tag($slug){
@@ -50,7 +53,9 @@ class PostController extends Controller{
 		return view('users.post', compact('post', 'titulo'));
 	}
 
-	public function like(Post $post){
+	
+
+	/*public function like(Post $post){
         $post->likeBy();
         return back();
     }
@@ -58,5 +63,5 @@ class PostController extends Controller{
     public function unlike(Post $post){
         $post->unlikeBy();
         return back();
-    }
+    }*/
 }

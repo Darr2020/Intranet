@@ -32,7 +32,7 @@
 									<?php if($event->state == 'PUBLISHED'): ?>
 										<strong class="text-success">Evento publicado</strong>
 									<?php else: ?>
-										<strong class="text-danger">Guardada como borrador</strong>
+										<strong class="text-danger">Guardado como borrador</strong>
 									<?php endif; ?>
 								</td>							
 								<td width="10px">

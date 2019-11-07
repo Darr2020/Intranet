@@ -1,19 +1,15 @@
 <?php $__env->startSection('contentAdmin'); ?>
-
 	<div class="container">
 		<div class="card">
 			<h3 class="text-center">Historico de Noticias</h3>
 			<div id="Area"></div>
 		</div>
 	</div>
-
 	<script>
-
 		new Morris.Area({
 			element: 'Area',
 			data: [
-				<?php $__currentLoopData = $postsYear; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-					{ 
+				<?php $__currentLoopData = $postsYear; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>{  
 						year:"<?php echo e($post->year); ?>", 
 						noticias:"<?php echo e($post->total); ?>"  
 					},

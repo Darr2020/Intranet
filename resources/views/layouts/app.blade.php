@@ -39,6 +39,18 @@
                                     <a class="nav-link" href="{{url('/')}}">Inicio</a>
                                 </li>
 
+                                <div class="dropdown">
+                                    <a href="#" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     <img src=" {{asset('icons/notifications.svg')}} " class="mt-2">
+                                    </a>
+                                  
+                                    <div class="dropdown-menu" aria-labelledby="dropdownNotification">
+                                        @foreach ($notifications as $n)
+                                            <a class="dropdown-item" href="#">{{$n->type}} {{$n->title}}</a>
+                                        @endforeach
+                                    </div>
+                                  </div>
+
                                 <li class="nav-item {{active('directorio')}}">
                                     <a class="nav-link" href="{{url('directorio')}}">Directorio</a>
                                 </li>

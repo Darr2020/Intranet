@@ -43,7 +43,7 @@
                     <img src=" <?php echo e(asset('icons/favorite-red.svg')); ?> " class="float-right">
                   </a>
 
-                  <a href="<?php echo e(route('logout')); ?>" class="dropdown-item" 
+                  <a href="<?php echo e(route('logout')); ?>" class="dropdown-item text-danger" 
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Cerrar sesión
                   </a>
@@ -53,16 +53,12 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
-  
-            <!-- HeaderSideNav -->
-            <div class="sidebar-heading">
-            Gestión
-            </div>
             <?php if (\Shinobi::can('services.index')): ?>
               <li class="nav-item">
                 <a class="nav-link" href=" <?php echo e(route('services.index')); ?> ">
                   <img src="<?php echo e(asset('icons/services.svg')); ?>">
                   <span>Servicios</span>
+                  <span class="float-right"><?php echo e($Tservice); ?></span>
                 </a>
               </li>     
             <?php endif; ?>                                      
@@ -143,8 +139,22 @@
                     </div>
                 </div>
             </li>
-            <?php endif; ?>       
-            <!-- Charts statistics-->
+            <?php endif; ?>
+            
+            <div class="sidebar-heading">
+              Auditoria
+            </div>
+
+            <?php if (\Shinobi::can('trace.index')): ?>
+              <li class="nav-item">
+                <a class="nav-link" href=" <?php echo e(route('trace.index')); ?> ">
+                  <img src=" <?php echo e(asset('icons/audit.svg')); ?>">
+                  <span>Acciones</span>
+                </a>
+              </li>     
+            <?php endif; ?> 
+
+            <!-- CHARTS STADISTICS-->
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">
                   <img src=" <?php echo e(asset('icons/chart.svg')); ?> ">
@@ -152,18 +162,14 @@
               </a>
               <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item" href=" <?php echo e(route('charts.views')); ?> ">Todas las gráficas</a>
                   <a class="collapse-item" href=" <?php echo e(route('charts.area')); ?> ">
-                    Noticias
-                    <img src=" <?php echo e(asset('icons/lineChart.svg')); ?> " class="float-right">
+                    Noticias <img src=" <?php echo e(asset('icons/lineChart.svg')); ?> " class="float-right">
                   </a>
                   <a class="collapse-item" href=" <?php echo e(route('charts.bar')); ?> ">
-                    Eventos
-                    <img src=" <?php echo e(asset('icons/barChart.svg')); ?> " class="float-right">
+                    Eventos <img src=" <?php echo e(asset('icons/barChart.svg')); ?> " class="float-right">
                   </a>
                   <a class="collapse-item" href=" <?php echo e(route('charts.pie')); ?> ">
-                    De Torta
-                    <img src=" <?php echo e(asset('icons/pieChart.svg')); ?> " class="float-right">
+                    Publicado|Borrador <img src=" <?php echo e(asset('icons/pieChart.svg')); ?> " class="float-right">
                   </a>
                   
                 </div>

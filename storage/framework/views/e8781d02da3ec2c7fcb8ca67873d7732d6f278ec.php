@@ -17,7 +17,14 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <div class="jumbotron">
 				    <p class="text-center"><?php echo e($post->summary); ?></p>
-				</div>	           
+				</div>
+				
+				<?php if(! $post->liked): ?>
+				<a href="<?php echo e(route('post.like', $post)); ?>" class="btn btn-primary btn-sm">(<?php echo e($post->likesCount); ?>) Me gusta</a>
+			<?php else: ?>
+				<a href="<?php echo e(route('post.unlike', $post)); ?>" class="btn btn-primary btn-sm">(<?php echo e($post->likesCount); ?>) Te gusta</a>
+			<?php endif; ?>
+
 	            <div class="card-body">		                
 	                <div class="text-center" style="font-size: 22px">
 	                    <p><?php echo $post->description; ?></p>
@@ -26,6 +33,8 @@
 		    </div>
 		</div>	
 	</div>
+
+	
 <?php $__env->stopSection(); ?>     
 
            

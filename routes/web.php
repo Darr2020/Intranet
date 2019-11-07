@@ -1,8 +1,8 @@
 <?php
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function(){
 
 	Route::group(['namespace' => 'User'], function(){
 		Route::get('/',               'PostController@posts')->name('noticias'); //PRINCIPAL

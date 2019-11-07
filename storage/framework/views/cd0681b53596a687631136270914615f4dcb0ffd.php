@@ -31,8 +31,7 @@
 										<strong class="text-success">Noticia publicada</strong>
 									<?php else: ?>
 										<strong class="text-danger">Guardada como borrador</strong>
-									<?php endif; ?>
-									
+									<?php endif; ?>									
 								</td>
 
 								<td class="text-center" width="10px">

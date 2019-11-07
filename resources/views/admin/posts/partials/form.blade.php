@@ -32,7 +32,7 @@
 					{{ Form::radio('state', 'PUBLISHED') }} <strong class="text-success">Publicar noticia </strong>
 				</li>
 				<li class="list-group-item">
-					{{ Form::radio('state', 'PUBLISHED') }} <strong class="text-danger">Guardar noticia como borrador</strong>
+					{{ Form::radio('state', 'DRAFT') }} <strong class="text-danger">Guardar noticia como borrador</strong>
 				</li>
 			</ul>			
 		</div>
