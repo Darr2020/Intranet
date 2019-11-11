@@ -1,0 +1,250 @@
+<<<<<<< HEAD
+/* ===== SERVICES - SECTION ===== */
+
+.text-task{
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-family: 'nunito';
+  font-weight: bold;
+}
+
+.sticky-services{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 55px;
+}
+.section-services{
+  width: 100%;
+  height: auto;
+  background-color: #fdfdfd;
+  text-align: center;
+  color: #33313b;
+  font-weight: 700;
+  padding: 2vh 2vh;
+}
+
+.services{
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
+  border-radius: 8px;
+}
+
+.services .image{
+  flex: 40%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.services .image img{
+  width: 100%;
+  height: 100%;
+  transition: 0.4s;
+}
+
+.services .image:hover img{
+  transform: scale(1.4) rotate(15deg);
+}
+
+.btn-color{
+	background: linear-gradient(90deg, #000, #2572D9, #51E1FF);
+	background-size: 600% 50%;
+	animation: bggradient 10s linear infinite;
+	animation-direction: alternate; 
+  color: #fff;
+  font-weight: bold;
+	box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
+}
+.btn-color:hover{
+  color: #fff;
+}
+@keyframes bggradient {
+  0% {
+   background-position: 0%
+  }
+  100% {
+    background-position: 100%
+  }
+}
+
+/* ===== FIN SERVICES - SECTION ===== */
+=======
+>>>>>>> 379ec1d7e9a7a50502552738e92d1d8c2e927150
+
+/* ===== SECTION - CARDS ===== */
+.post{
+  box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
+  border-radius: 8px;
+  transition: 0.4s;
+}
+<<<<<<< HEAD
+.post:hover{
+  transform: rotate(-5deg);
+
+}
+.card .card-img-top{
+  max-width: 100%;
+}
+
+.card .card-img-top:hover{
+ 
+=======
+.post:hover{ transform: rotate(-5deg);}
+.card .card-img-top{ max-width: 100%; }
+
+.card .card-img-top:hover{
+>>>>>>> 379ec1d7e9a7a50502552738e92d1d8c2e927150
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.card-body .title a {
+  text-decoration: none;
+  color: #232323;
+  font-size: 28px;
+  font-family: 'nunito';
+  font-weight: bold;
+}
+
+<<<<<<< HEAD
+.card-body .title a:hover {
+  color: dodgerblue;
+}
+=======
+.card-body .title a:hover { color: dodgerblue; }
+>>>>>>> 379ec1d7e9a7a50502552738e92d1d8c2e927150
+
+.card-body .resumen p {
+  color: #555;
+  margin-top: 20px;
+  font-size: 17px;
+  overflow-wrap: break-word;
+  text-align: justify;
+  max-width: 100ch;
+}
+
+.card-body .continue a {
+  text-decoration: none;
+  color: dodgerblue;
+  font-size: 15px;
+}
+.card-body .continue a:hover {
+  text-decoration: underline;
+}
+<<<<<<< HEAD
+/*.fm-card {
+  position: relative;
+  margin: auto;
+  background: #fff;
+  box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.2);
+  border-radius: 8px;
+}
+.fm-card-header {
+  width: 100%;
+  height: 40%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  overflow: hidden;
+}
+.fm-card-header img {
+ 
+ 
+}
+.fm-card-header:hover img {
+  transform: scale(1.8) rotate(-15deg);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+
+
+.card-body .continue a {
+  text-decoration: none;
+  color: dodgerblue;
+  font-size: 15px;
+}
+.card-body .continue a:hover {
+  text-decoration: underline;
+}
+.fm-card-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  width: 100%;
+  height: 40px;
+  background-color: #f9f9f9;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.fm-card-footer .by {
+  padding-left: 20px;
+}
+.fm-card-footer .by a {
+  text-decoration: none;
+  color: #777;
+  font-size: 14px;
+}
+.fm-card-footer .by a:hover {
+  color: dodgerblue;
+}*/
+=======
+/*===== SECTION - TASKS =====*/
+
+.sticky-tasks{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 65px;
+}
+.top{
+  background: #4267B2;
+  font-family: 'nunito';
+  font-weight: 600;
+}
+
+.top #welcome{
+  font-size: 30px;
+  color: white;
+}
+
+.reloj{
+  font-size: 37px; 
+  margin-left: -20px;
+  color: white;
+}
+
+.reloj ul li {
+  display: inline;
+  text-align: center;
+}
+
+.reloj ul #sec{ font-size: 18px;}
+
+.tarea-body{position:relative;}
+>>>>>>> 379ec1d7e9a7a50502552738e92d1d8c2e927150
+
+.task-completed{
+  display: block;
+  height: 27px;
+  width: 54px;
+  color: #fff;
+  padding: 3px 0 0;
+  font-weight: bold;
+  font-family: 'nunito';
+  margin: 0 auto;
+  perspective: 50px;
+  -webkit-perspective: 50px;
+  -moz-perspective: 50px;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+}
+.task-yes{ background: #28a745;}
+<<<<<<< HEAD
+.task-no{ background: #dc3545; }
+=======
+.task-no{ background: #dc3545; }
+
+/*===== END SECTION - TASKS =====*/
+>>>>>>> 379ec1d7e9a7a50502552738e92d1d8c2e927150

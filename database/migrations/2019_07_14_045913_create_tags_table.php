@@ -1,0 +1,26 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateTagsTable extends Migration{
+<<<<<<< HEAD
+    
+=======
+     
+>>>>>>> 379ec1d7e9a7a50502552738e92d1d8c2e927150
+    public function up(){
+        Schema::create('tags', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 40);
+            $table->string('slug', 40)->unique();
+            $table->timestamps();
+        });
+    }
+
+   
+    public function down(){
+        Schema::dropIfExists('tags');
+    }
+}
