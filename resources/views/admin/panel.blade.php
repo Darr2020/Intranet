@@ -25,153 +25,15 @@
   <div id="wrapper">
       <!-- Sidebar -->
       <div class="sticky-top">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sticky-top" id="accordionSidebar">
+        <ul class="navbar-nav sidebar sidebar-dark accordion sticky-top" style="background: #4267B2" id="accordionSidebar">
           <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.panel')}}">
               <div class="sidebar-brand-text mx-3">MEUNET Admin</div>
             </a>
             <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
-                <a class="nav-link" href=" {{route('panel.view')}} ">
-                    <img src=" {{ asset('icons/dashboard.svg') }} ">
-                    <span>Panel</span>
-                </a>
-            </li>
-  
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-  
-            <!-- HeaderSideNav -->
-            <div class="sidebar-heading">
-            Gestión
-            </div>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <img src="{{ asset('icons/services.svg') }}">
-                <span>Servicios</span>
-              </a>
-            </li>
-  
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" 
-                data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                <img src="{{ asset('icons/roles.svg') }}">
-                <span>Roles</span>
-              </a>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                  @can('roles.index')
-                      <a class="collapse-item" href="{{ route('roles.index') }}">Gestionar Roles <span class="badge badge-info float-right"> {{$TRol}} </span></a>
-                  @endcan
-                  @can('roles.asignar')
-                      <a class="collapse-item" href="{{ route('listar.users') }}">Asignar Rol</a>
-                  @endcan
-                  @can('roles.create')
-                      <a class="collapse-item" href="{{ route('roles.create') }}">Crear Rol 
-                          <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
-                      </a>
-                  @endcan
-                </div>
-              </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" 
-                    data-target="#collapsePosts" aria-expanded="true" aria-controls="collapsePosts">
-                    <img src="{{ asset('icons/post.svg') }}">
-                    <span>Noticias</span>
-                </a>
-                <div id="collapsePosts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        @can('posts.index')
-                            <a class="collapse-item" href="{{ route('posts.index') }}">
-                                Gestionar Noticias 
-                                <span class="badge badge-info float-right"> {{$TPost}} </span>
-                            </a>
-                        @endcan
-                        @can('posts.create')
-                            <a class="collapse-item" href="{{ route('posts.create') }}">Crear Noticia 
-                                <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
-                            </a>
-                        @endcan
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" 
-                    data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
-                    <img src="{{ asset('icons/event.svg') }}">
-                    <span>Eventos</span>
-                </a>
-                <div id="collapseEvents" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        @can('events.index')
-                            <a class="collapse-item" href="{{ route('events.index') }}">
-                                Gestionar Eventos 
-                                <span class="badge badge-info float-right"> {{$TEvent}} </span>
-                            </a>
-                        @endcan
-                        @can('posts.create')
-                            <a class="collapse-item" href="{{ route('events.create') }}">Crear Evento 
-                                <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
-                            </a>
-                        @endcan
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" 
-                    data-target="#collapseTgas" aria-expanded="true" aria-controls="collapseTgas">
-                    <img src="{{ asset('icons/tag.svg') }}">
-                    <span>Etiquetas</span>
-                </a>
-                <div id="collapseTgas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        @can('tags.index')
-                            <a class="collapse-item" href="{{ route('tags.index') }}">
-                                Gestionar Etiquetas 
-                                <span class="badge badge-info float-right"> {{$TTag}} </span>
-                            </a>
-                        @endcan
-                        @can('posts.create')
-                            <a class="collapse-item" href="{{ route('tags.create') }}">Crear Etiqueta 
-                                <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
-                            </a>
-                        @endcan
-                    </div>
-                </div>
-            </li>
-             
-            <!-- Charts statistics-->
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">
-                  <img src=" {{asset('icons/chart.svg')}} ">
-                  <span>Gráficas estadisticas</span></a>
-              </a>
-              <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item" href=" {{route('charts.views')}} ">Todas las gráficas</a>
-                  <a class="collapse-item" href=" {{route('charts.area')}} ">
-                    Noticias
-                    <img src=" {{asset('icons/lineChart.svg')}} " class="float-right">
-                  </a>
-                  <a class="collapse-item" href=" {{route('charts.bar')}} ">
-                    Eventos
-                    <img src=" {{asset('icons/barChart.svg')}} " class="float-right">
-                  </a>
-                  <a class="collapse-item" href=" {{route('charts.pie')}} ">
-                    De Torta
-                    <img src=" {{asset('icons/pieChart.svg')}} " class="float-right">
-                  </a>
-                  
-                </div>
-              </div>
-            </li>
-  
-            <hr class="sidebar-divider">
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSesion" aria-expanded="true" aria-controls="collapseSesion">         
-                <img src="{{ asset('icons/person.svg') }}">
+                <img src="{{ asset('icons/personNav.svg') }}">
                 <span>Mi sesión</span>
               </a> 
               <div id="collapseSesion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -180,17 +42,161 @@
                     <span>{{ Auth::user()->name }} {{ Auth::user()->last_name }} </span>
                     <img src=" {{asset('icons/favorite-red.svg')}} " class="float-right">
                   </a>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <img src=" {{asset('icons/logout.svg')}} " class="float-right">
-                      Logout
-                  </a>                
+
+                  <a href="{{ route('logout') }}" class="dropdown-item text-danger" 
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Cerrar sesión
+                  </a>
+                  <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">@csrf</form>              
                 </div>
               </div>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            @can('services.index')
+              <li class="nav-item">
+                <a class="nav-link" href=" {{route('services.index')}} ">
+                  <img src="{{ asset('icons/services.svg') }}">
+                  <span>Servicios</span>
+                  <span class="float-right">{{$Tservice}}</span>
+                </a>
+              </li>     
+            @endcan                                      
+            @can('roles.index')
             <li class="nav-item">
-              <a href=" {{url('/')}} " class="nav-link ">
-                <img src=" {{asset('icons/back.svg')}} ">
-                Regresar al inicio
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" 
+                data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <img src="{{ asset('icons/roles.svg') }}">
+                <span>Roles</span>
+              </a>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item" href="{{ route('roles.index') }}">Gestionar Roles <span class="badge badge-info float-right"> {{$TRol}} </span></a>
+                  <a class="collapse-item" href="{{ route('listar.users') }}">Asignar Rol</a>   
+                  <a class="collapse-item" href="{{ route('roles.create') }}">Crear Rol 
+                    <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
+                  </a>                  
+                </div>
+              </div>
+            </li>
+            @endcan
+            @can('posts.index')
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" 
+                    data-target="#collapsePosts" aria-expanded="true" aria-controls="collapsePosts">
+                    <img src="{{ asset('icons/post.svg') }}">
+                    <span>Noticias</span>
+                </a>
+                <div id="collapsePosts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">   
+                      <a class="collapse-item" href="{{ route('posts.index') }}">
+                        Gestionar Noticias 
+                        <span class="badge badge-info float-right"> {{$TPost}} </span>
+                      </a>
+                        <a class="collapse-item" href="{{ route('posts.create') }}">Crear Noticia 
+                          <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
+                        </a>
+                    </div>
+                </div>
+            </li>
+            @endcan
+            @can('events.index')
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" 
+                    data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
+                    <img src="{{ asset('icons/event.svg') }}">
+                    <span>Eventos</span>
+                </a>
+                <div id="collapseEvents" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <a class="collapse-item" href="{{ route('events.index') }}">
+                          Gestionar Eventos 
+                          <span class="badge badge-info float-right"> {{$TEvent}} </span>
+                      </a>  
+                      <a class="collapse-item" href="{{ route('events.create') }}">Crear Evento 
+                          <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
+                      </a>
+                    </div>
+                </div>
+            </li> 
+            @endcan
+            @can('tags.index')
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" 
+                  data-target="#collapseTgas" aria-expanded="true" aria-controls="collapseTgas">
+                  <img src="{{ asset('icons/tag.svg') }}">
+                  <span>Etiquetas</span>
+                </a>
+                <div id="collapseTgas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <a class="collapse-item" href="{{ route('tags.index') }}">
+                          Gestionar Etiquetas 
+                          <span class="badge badge-info float-right"> {{$TTag}} </span>
+                      </a>
+                      <a class="collapse-item" href="{{ route('tags.create') }}">Crear Etiqueta 
+                          <img class="float-right" style="width: 20px;" src="{{ asset('icons/create.svg') }}">
+                      </a>
+                    </div>
+                </div>
+            </li>
+            @endcan
+            
+            <div class="sidebar-heading">
+              Auditoria
+            </div>
+
+            @can('trace.index')
+              <li class="nav-item">
+                <a class="nav-link" href=" {{route('trace.index')}} ">
+                  <img src=" {{asset('icons/audit.svg')}}">
+                  <span>Acciones</span>
+                </a>
+              </li>     
+            @endcan 
+
+            <!-- CHARTS STADISTICS-->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">
+                  <img src=" {{asset('icons/chart.svg')}} ">
+                  <span>Gráficas estadisticas</span></a>
+              </a>
+              <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item" href=" {{route('charts.area')}} ">
+                    Noticias <img src=" {{asset('icons/lineChart.svg')}} " class="float-right">
+                  </a>
+                  <a class="collapse-item" href=" {{route('charts.bar')}} ">
+                    Eventos <img src=" {{asset('icons/barChart.svg')}} " class="float-right">
+                  </a>
+                  <a class="collapse-item" href=" {{route('charts.pie')}} ">
+                    Publicado|Borrador <img src=" {{asset('icons/pieChart.svg')}} " class="float-right">
+                  </a>
+                  
+                </div>
+              </div>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true" aria-controls="collapseReport">
+                  <img src=" {{asset('icons/pdf.svg')}} ">
+                  <span>Reporte PDF</span></a>
+              </a>
+              <div id="collapseReport" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item" href=" {{route('report.view')}}"  target="_blank">
+                    Ver reporte <img src=" {{asset('icons/ver.svg')}} " class="float-right">
+                  </a>
+                  <a class="collapse-item" href=" {{route('report.down')}}"  target="_blank">
+                    Descargar reporte <img src=" {{asset('icons/down.svg')}} " class="float-right">
+                  </a>
+                </div>
+              </div>
+            </li>  
+            <hr class="sidebar-divider">            
+            <li class="nav-item">
+              <a href=" {{url('/')}} " class="nav-link">
+                <img src="{{asset('icons/back.svg')}}"> Regresar al inicio
               </a>
             </li>
             <!-- Divider -->
@@ -202,115 +208,43 @@
           </div>
         </ul>
       </div>
-     
 
-      <div id="content-wrapper" class="d-flex flex-column">
-  
+      <div id="content-wrapper" class="d-flex flex-column">  
         <!-- Main Content -->
         <div id="content"> 
-        
-        <br>
-          <!-- Sidebar ToggleButton(Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
-            <img src="{{asset('icons/bar.svg')}}">
-          </button>           
-            
-          <div class="container-fluid">                    
-           
-            <div class="row justify-content-center"> 
-              <!-- DATA FOR YEAR -->     
-              <!-- Posts Year -->          
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Noticias en {{$y}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Se han publicado <strong> {{$postY}} noticias</strong> en el año
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Events Year -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card  shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Eventos en {{$y}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Haz publicado <strong> {{$eventY}}  eventos</strong> en el año
-                    </div>
-                  </div>
-                </div>
-              </div>             
-              <!-- Tasks Year -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseYear" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-danger">Tareas en {{$y}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseYear">
-                    <div class="card-body">
-                      Los usuarios han creado <strong> <small>add tasks</small>  tareas</strong> en el año
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
+      
+        <!-- Sidebar ToggleButton(Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
+          <img src="{{asset('icons/bar.svg')}}">
+        </button> 
 
-            <hr>
+          @if (Request::path() == 'PanelAdmin')
+            @include('partials.admin.carusel')
+          @else 
+            <div class="container-fluid">  
             <div class="row justify-content-center">
-               <!-- DATA FOR MONTH -->
-               <!-- Posts Months -->
-               <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-primary">Noticias en {{$m}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Haz publicado <strong>{{$postM}}  noticias</strong> en el mes
-                    </div>
+              <div class="col-md-7">
+                @if (count($errors) > 0)
+                  <div class="alert alert-danger" role="alert">
+                    @foreach ($errors->all() as $e)
+                        <ul>
+                          <li> {{$e}} </li>
+                        </ul>
+                    @endforeach
                   </div>
-                </div>
-              </div>                
-              <!-- Events Months -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-primary">Eventos en {{$m}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Haz publicado <strong>{{$eventM}}  eventos</strong> en el mes  <img src=" {{asset('icons/calendar.svg')}} ">
-                    </div>
-                  </div>
-                </div>
-              </div>  
-              <!-- Tasks Months -->
-              <div class="col-xl-4 col-md-4">
-                <div class="card shadow">                
-                  <a href="#collapseMonths" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-black">Tareas en {{$m}}</h6>
-                  </a>
-                  <div class="collapse show" id="collapseMonths">
-                    <div class="card-body">
-                    Los usuarios han creado <strong> <small>add tasks</small>  tareas</strong> en el mes  <img src=" {{asset('icons/calendar.svg')}} ">
-                    </div>
-                  </div>
-                </div>
+                @endif
               </div>
-             
-            </div>               
+            </div>
       
             <main class="py-4">
               @yield('contentAdmin')
             </main>     
              
       </div>
+
+          @endif
+         
+           
     </div>
   
 

@@ -2,84 +2,96 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Service\ServiceStoreRequest;
+use App\Http\Requests\Service\ServiceUpdateRequest;
+use App\Service;
+use App\User;
+use App\Trace;
+use App\Notification;
 
-class ServiceController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+
+class ServiceController extends Controller{
+    
+    public function index(){
+        $titulo = 'servicios';
+        $services = Service::orderBy('id', 'DESC')->paginate(7);
+        return view('admin.services.index', compact('titulo', 'services'));
+    }
+   
+    public function create(){
+        $titulo = 'Agregar servicio';
+        return view('admin.services.create', compact('titulo'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function store(ServiceStoreRequest $request){   
+        
+        DB::beginTransaction();
+        try {
+            $service =  Service ::create([
+                'user_id'     => $request['user_id'],
+                'name'        => $request['name'],
+                'route'     => $request['route'],
+                'description' => $request['description'],
+                'state'       => $request['state']
+            ]);   
+            
+            $notification = Notification::create([
+                'who_id' => $request['user_id'],
+                'type' => Trace::SERVICE,
+                'title' => 'Servicio',
+                'description' => Notification::DESCRIPTION_S    
+            ]);  
+
+            $trace = Trace::create([
+                'user_id'=> $request['user_id'],
+                'type'=> Trace::SERVICE,
+                'description'=>'Ha agregado un servicio institucional'
+            ]);                
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();                     
+            throw $e;
+        }
+
+        alert()->success('El servicio ha sido agregado correctamente', '' . auth()->user()->name)->autoclose(4000);
+        return redirect()->route('services.index', $service->id);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function edit($id){
+        $titulo = 'Editar servicio';
+        $service = Service::find($id);
+
+        return view('admin.services.edit', compact('titulo', 'service'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    public function update(ServiceUpdateRequest $request, $id){
+        $service = Service::find($id);
+        
+        DB::beginTransaction();
+        try {
+            $service->update([
+                'user_id'     => $request->get('user_id'),
+                'name'        => $request->get('name'),
+                'route'     => $request->get('route'),
+                'description' => $request->get('description'),
+                'state'       => $request->get('state')
+            ]);        
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            $trace = Trace::create([
+                'user_id'=> $request->get('user_id'),
+                'type'=> Trace::SERVICE,
+                'description'=>'Ha editado un servicio institucional'
+            ]);                
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();                     
+            throw $e;
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        alert()->success('El servicio ha sido editado correctamente', '' . auth()->user()->name)->autoclose(4000);
+        return redirect()->route('services.index', $service->id);
     }
 }

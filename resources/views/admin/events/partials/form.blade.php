@@ -2,26 +2,23 @@
 @csrf
 
 <div class="form-row">
-	<div class="col">
+	<div class="col-md-6">
 		<div class="form-group">
 			{{ Form::label('title', 'Titulo:') }}
 			{{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title']) }}
 		</div>
 	</div>
-	<div class="col">
+	<div class="col-md-6">
 		<div class="form-group">
 			{{ Form::label('slug', 'Url:') }}
 			{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'readonly']) }}
 		</div>
 	</div>
-</div>
-	
+</div>	
 <div class="form-group">
 	{{ Form::label('color', 'Color:') }}
 	{{ Form::color('color', null, ['class' => 'form-control', 'id' => 'color']) }}
 </div>
-
-
 <div class="form-row">
 	<div class="col">
 		<div class="form-group">
@@ -52,14 +49,12 @@
     {{ Form::textarea('description', null, ['class' => 'form-control']) }}
 </div>
 
-
 <div class="form-group">
-	{{ Form::submit('Guardar evento', ['class' => 'btn btn-color btn-lg btn-block']) }}
+	{{ Form::submit('Guardar evento', ['class' => 'btn btn-primary btn-lg btn-block']) }}
+</div>
 
 @section('scripts')
-
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}" ></script>
-
 	<script>
 		$(document).ready(function(){
         	$("#title").keyup(function(){
@@ -92,7 +87,6 @@
 
 		CKEDITOR.replace('description');
 	</script>
-
 @endsection
 
 

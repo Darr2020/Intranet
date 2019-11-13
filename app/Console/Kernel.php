@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
    
 
     protected function schedule(Schedule $schedule){
-       $schedule->command('backup:run')->daily()->at('03:22');
+       $schedule->command('backup:run')->daily()->at('14:17');
     }
 
     /**

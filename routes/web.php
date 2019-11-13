@@ -1,56 +1,51 @@
 <?php
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function(){
 
 	Route::group(['namespace' => 'User'], function(){
-		Route::get('/',               'PostController@posts')->name('noticias');
-		Route::get('noticia/{slug}',  'PostController@post')->name('noticia');
-		Route::get('etiqueta/{slug}', 'PostController@tag')->name('etiqueta');
-		Route::get('eventos', 		  'EventController@index')->name('eventos');
-		Route::get('servicios', 	  'ServiceController@services')->name('services');
+		Route::get('/',               'PostController@posts')->name('noticias'); //PRINCIPAL
+		Route::get('noticia/{slug}',  'PostController@post')->name('noticia');   //POST
+		Route::get('etiqueta/{slug}', 'PostController@tag')->name('etiqueta');	 //TAG
+		Route::get('eventos', 		  'EventController@index')->name('eventos'); //EVENTS
+		Route::get('servicios', 	  'ServiceController@services')->name('services'); //SERVICES
+		Route::resource('tarea',      'TasksController', ['except' => 'show', 'create', 'edit']); //TASKS
 
-		Route::prefix('taks')->group( function(){
-
-			/*Route::get('', 'TaksController@index')->name('taks.index')
-				->middleware('permission:taks.index');*/
-
-			Route::get('create', 'TaksController@create')->name('taks.create')
-				->middleware('permission:taks.create');
-
-			Route::post('store', 'TaksController@store')->name('taks.store')
-				->middleware('permission:taks.create');
-
-			Route::get('{tarea}/edit', 'TaksController@edit')->name('taks.edit')
-				->middleware('permission:taks.edit');		
-
-			Route::put('{tarea}', 'TaksController@update')->name('taks.update')
-				->middleware('permission:taks.edit');
-
-			Route::delete('{tarea}', 'TaksController@destroy')->name('taks.destroy')
-				->middleware('permission:taks.destroy');
-		});	
+		Route::get('noticia/{post}/like', 'PostController@like')->name('post.like');//LIKE
+    	Route::get('noticia/{post}/unlike', 'PostController@unlike')->name('post.unlike');//UNLIKE
 	});
-			
+
+	Route::get('/tareas', function(){
+		$titulo = 'Mis tareas';
+		return view('users/tasks', compact('titulo'));
+	});
 
 	Route::group(['namespace' => 'Admin'], function (){
 
-		Route::get('PanelAdmin', 'PanelController@view')->name('panel.view')
-			->middleware('permission:panel.view');
-		
-		Route::get('dataEstadistica', 'PanelController@dataEstadistica');
+		Route::get('PanelAdmin', 'PanelController@view')->name('admin.panel') //PANELADMIN	
+			->middleware('permission:admin.panel');
 
-		Route::prefix('Graficas')->group(function (){
-			Route::get('', 'ChartsController@view')->name('charts.views');
-			Route::get('Area', 'ChartsController@area')->name('charts.area');
-			Route::get('Barra', 'ChartsController@bar')->name('charts.bar');
-			Route::get('Torta', 'ChartsController@pie')->name('charts.pie');
-		});
+		/*=====  SERVICES  =====*/	
+		Route::prefix('services')->group( function(){
+			Route::get('', 	          'ServiceController@index')->name('services.index')
+				->middleware('permission:services.index');
+
+			Route::get('create',      'ServiceController@create')->name('services.create')
+				->middleware('permission:services.create');
+
+			Route::post('store',      'ServiceController@store')->name('services.store')
+				->middleware('permission:services.create');
+
+			Route::get('{id}/edit',   'ServiceController@edit')->name('services.edit')
+				->middleware('permission:services.edit');
+
+			Route::put('upt/{id}', 	      'ServiceController@update')->name('services.update')
+				->middleware('permission:services.edit');
+		});	
 		
 		/*=====  POSTS  =====*/	
-		Route::prefix('posts')->group( function(){	
-
+		Route::prefix('posts')->group( function(){
 			Route::get('', 	          'PostController@index')->name('posts.index')
 				->middleware('permission:posts.index');
 
@@ -61,15 +56,15 @@ Route::middleware(['auth'])->group(function () {
 				->middleware('permission:posts.create');
 
 			Route::post('store',      'PostController@store')->name('posts.store')
-				->middleware('permission:posts.store');
+				->middleware('permission:posts.create');
 
 			Route::get('{id}/edit',   'PostController@edit')->name('posts.edit')
 				->middleware('permission:posts.edit');
 
-			Route::put('{id}', 	      'PostController@update')->name('posts.update')
-				->middleware('permission:posts.update');
+			Route::put('upt/{id}', 	      'PostController@update')->name('posts.update')
+				->middleware('permission:posts.edit');
 
-			Route::delete('posts/{id}','PostController@destroy')->name('posts.destroy')
+			Route::delete('del/{id}','PostController@destroy')->name('posts.destroy')
 				->middleware('permission:posts.index');
 		});
 
@@ -83,15 +78,15 @@ Route::middleware(['auth'])->group(function () {
 				->middleware('permission:tags.create');
 
 			Route::post('store',    'TagController@store')->name('tags.store')
-				->middleware('permission:tags.store');
+				->middleware('permission:tags.create');
 
 			Route::get('{id}/edit', 'TagController@edit')->name('tags.edit')
 				->middleware('permission:tags.edit');
 
-			Route::put('{id}',      'TagController@update')->name('tags.update')
-				->middleware('permission:tags.update');			
+			Route::put('upt/{id}',      'TagController@update')->name('tags.update')
+				->middleware('permission:tags.edit');			
 
-			Route::delete('{id}',   'TagController@destroy')->name('tags.destroy')
+			Route::delete('del/{id}',   'TagController@destroy')->name('tags.destroy')
 				->middleware('permission:tags.destroy');
 		});
 
@@ -105,15 +100,15 @@ Route::middleware(['auth'])->group(function () {
 				->middleware('permission:events.create');
 
 			Route::post('store', 	'EventController@store')->name('events.store')
-				->middleware('permission:events.store');
+				->middleware('permission:events.create');
 
 			Route::get('{id}/edit', 'EventController@edit')->name('events.edit')
 				->middleware('permission:events.edit');
 
-			Route::put('{id}', 		'EventController@update')->name('events.update')
-				->middleware('permission:events.update');
+			Route::put('upt/{id}', 		'EventController@update')->name('events.update')
+				->middleware('permission:events.edit');
 
-			Route::delete('{id}',   'EventController@destroy')->name('events.destroy')
+			Route::delete('del/{id}',   'EventController@destroy')->name('events.destroy')
 				->middleware('permission:events.destroy');
 		});
 
@@ -135,12 +130,29 @@ Route::middleware(['auth'])->group(function () {
 			Route::get('{role}/edit', 'RoleController@edit')->name('roles.edit')
 				->middleware('permission:roles.edit');		
 
-			Route::put('{role}', 'RoleController@update')->name('roles.update')
+			Route::put('upt/{role}', 'RoleController@update')->name('roles.update')
 				->middleware('permission:roles.edit');
 
-			Route::delete('{role}', 'RoleController@destroy')->name('roles.destroy')
+			Route::delete('del/{role}', 'RoleController@destroy')->name('roles.destroy')
 				->middleware('permission:roles.destroy');
-		});			
+		});
+		
+		/*=====  REPORTS  =====*/	
+		Route::prefix('Reportes')->group(function (){	
+			Route::get('dataEstadistica', 'PanelController@dataEstadistica');
+			Route::get('ver', 'ReportsController@viewReport')->name('report.view');
+			Route::get('descargar', 'ReportsController@downReport')->name('report.down');
+		});
+		Route::get('traza', 'TraceController@getTrace')->name('trace.index');
+
+		
+		/*=====  CHARTS  =====*/	
+		Route::prefix('Graficas')->group(function (){
+			Route::get('', 'ChartsController@view')->name('charts.views');
+			Route::get('Area', 'ChartsController@area')->name('charts.area');
+			Route::get('Barra', 'ChartsController@bar')->name('charts.bar');
+			Route::get('Torta', 'ChartsController@pie')->name('charts.pie');
+		});
 	    
 	});
 

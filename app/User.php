@@ -2,14 +2,15 @@
 
 namespace App;
 
+use Cog\Contracts\Love\Liker\Models\Liker as LikerContract;
+use Cog\Laravel\Love\Liker\Models\Traits\Liker;
 use Caffeinated\Shinobi\Traits\ShinobiTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable {
+class User extends Authenticatable implements LikerContract {    
     
-
-    use Notifiable, ShinobiTrait;
+    use Notifiable, ShinobiTrait, Liker; 
 
     protected $table = 'users';
 
@@ -18,6 +19,11 @@ class User extends Authenticatable {
     ];
 
     protected $hidden = [ 'password', 'remember_token', ];
+
+
+    public function traces(){
+        return $this->hasMany(Trace::class);
+    }
 
     public function posts(){
         return $this->hasMany(Post::class);
@@ -35,10 +41,10 @@ class User extends Authenticatable {
         return $this->hasMany(Service::class);
     }
 
-    //SCOPE
+    //SCOPE 
     public function scopeName($query, $name){
-        if($name){
-            return $query->where('name', 'LIKE', "%$name%");
+        if(trim($name) != ""){
+            return $query->where('name', 'LIKE', "%$name%")->orWhere('office', 'LIKE', "%$name%");
         }
     }
 }

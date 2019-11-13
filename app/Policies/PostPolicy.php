@@ -10,7 +10,6 @@ class PostPolicy{
 
     use HandlesAuthorization;
 
-
     public function __construct(){
         //
     }

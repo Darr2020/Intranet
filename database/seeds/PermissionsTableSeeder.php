@@ -1,5 +1,5 @@
 <?php
-
+ 
 use Illuminate\Database\Seeder;
 
 use Caffeinated\Shinobi\Models\Permission;
@@ -8,25 +8,19 @@ class PermissionsTableSeeder extends Seeder{
     
     public function run() {
 
-         //Users
-         Permission::create([
+         //ADMIN
+        Permission::create([
             'name'          => 'Admin panel',
             'slug'          => 'admin.panel',
             'description'   => 'Permiso para ingresar a el panel administrador del sistema',
         ]);
-        //Users
         Permission::create([
-            'name'          => 'Navegar usuarios',
-            'slug'          => 'users.index',
-            'description'   => 'Lista y navega todos los usuarios del sistema',
+            'name'          => 'Todas las acciones',
+            'slug'          => 'trace.index',
+            'description'   => 'Permiso para iver todas las acciones del sistemas',
         ]);
 
-        Permission::create([
-            'name'          => 'Ver detalle de usuario',
-            'slug'          => 'users.show',
-            'description'   => 'Ve en detalle cada usuario del sistema',            
-        ]);
-        
+        //USERS
         Permission::create([
             'name'          => 'Edición de usuarios',
             'slug'          => 'users.edit',
@@ -59,17 +53,30 @@ class PermissionsTableSeeder extends Seeder{
             'description'   => 'Podría eliminar cualquier rol del sistema',      
         ]);
 
-       //noticias
+        //SERVICES
+        Permission::create([
+            'name'          => 'Navega servicios',
+            'slug'          => 'services.index',
+            'description'   => 'Lista y navega todos los servicios del sistema',
+        ]);
+        
+        Permission::create([
+            'name'          => 'Creación de servicios',
+            'slug'          => 'services.create',
+            'description'   => 'Permiso para crear nuevas servicios',
+        ]);
+        
+        Permission::create([
+            'name'          => 'Edición de servicios',
+            'slug'          => 'services.edit',
+            'description'   => 'Permiso de editar cualquier dato de un  servicio    ',
+        ]);
+
+       //POSTS
         Permission::create([
             'name'          => 'Navegar noticias',
             'slug'          => 'posts.index',
             'description'   => 'Lista y navega todos los noticias del sistema',
-        ]);
-
-        Permission::create([
-            'name'          => 'Ver detalle de un noticia',
-            'slug'          => 'posts.show',
-            'description'   => 'Ve en detalle cada noticia',            
         ]);
         
         Permission::create([
@@ -83,19 +90,12 @@ class PermissionsTableSeeder extends Seeder{
             'slug'          => 'posts.edit',
             'description'   => 'Permiso de editar cualquier dato de un noticia',
         ]);
-        
+       
+        //EVENTS    
         Permission::create([
-            'name'          => 'Eliminar noticias',
-            'slug'          => 'posts.destroy',
-            'description'   => 'Permiso de eliminar noticias'      
-        ]);
-
-        //eventos
-    
-        Permission::create([
-            'name'          => 'Ver detalle de un evento',
-            'slug'          => 'events.show',
-            'description'   => 'Ve en detalle cada evento',            
+            'name'          => 'Navegar eventos',
+            'slug'          => 'events.index',
+            'description'   => 'Lista y navega todos los eventos',            
         ]);
         
         Permission::create([
@@ -116,38 +116,8 @@ class PermissionsTableSeeder extends Seeder{
             'description'   => 'Permiso de eliminar eventos'      
         ]);
 
-        //tasks
-        Permission::create([
-            'name'          => 'Navegar tareas',
-            'slug'          => 'tasks.index',
-            'description'   => 'Lista y navega todas las tareas',
-        ]);
-
-        Permission::create([
-            'name'          => 'Ver detalle de un tarea',
-            'slug'          => 'tasks.show',
-            'description'   => 'Ve en detalle cada tarea',            
-        ]);
-        
-        Permission::create([
-            'name'          => 'Creación de tareas',
-            'slug'          => 'tasks.create',
-            'description'   => 'Permiso para crear nuevas tareas',
-        ]);
-        
-        Permission::create([
-            'name'          => 'Edición de tareas',
-            'slug'          => 'tasks.edit',
-            'description'   => 'Permiso de editar algun dato de una tarea',
-        ]);
-        
-        Permission::create([
-            'name'          => 'Eliminar tareas',
-            'slug'          => 'tasks.destroy',
-            'description'   => 'Permiso de eliminar tareas'      
-        ]);
-
-        //tags
+       
+        //TAGS
         Permission::create([
             'name'          => 'Navegar etiquetas',
             'slug'          => 'tags.index',
@@ -171,7 +141,6 @@ class PermissionsTableSeeder extends Seeder{
             'slug'          => 'tags.destroy',
             'description'   => 'Permiso de eliminar etiquetas'      
         ]);
-
 
     }
 }

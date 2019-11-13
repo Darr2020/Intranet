@@ -17,10 +17,10 @@
 	{{ Form::textarea('description', null, ['class' => 'form-control', 'style' => 'height:100px;']) }}
 </div>
 <hr>
-<h3>Permiso especial</h3>
+<h4>Permiso especial</h4>
 <div class="form-group">
- 	<label>{{ Form::radio('special', 'all-access') }} Acceso total</label>
- 	<label>{{ Form::radio('special', 'no-access') }} Ningún acceso</label>
+	 {{ Form::radio('special', 'all-access') }} Acceso total
+	 {{ Form::radio('special', '', ['checked']) }} Acceso limitado
 </div>
 <hr>
 <h4 class="text-center">Lista de permisos</h4>
@@ -30,7 +30,7 @@
 	    <li class="list-group-item">
 	        <label>
 	        	{{ Form::checkbox('permissions[]', $permission->id, null) }}
-	        	{{ $permission->name }}
+	        	<strong>{{ $permission->name }}</strong>
 	        	<em>({{ $permission->description }})</em>
 	        </label>
 	    </li>

@@ -1,61 +1,62 @@
 {{ Form::hidden('user_id', auth()->user()->id) }}
+@csrf
 
 <div class="form-row">
-	<div class="col">
+	<div class="col-md-6">
 		<div class="form-group">
-			{{ Form::label('title', 'Titulo:') }}
+			<h5>{{ Form::label('title', 'Titulo:') }}</h5>
 			{{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title']) }}
 		</div>
 	</div>
-	<div class="col">
+	<div class="col-md-6">
 		<div class="form-group">
-			{{ Form::label('slug', 'URL:') }}
+			<h5>{{ Form::label('slug', 'URL:') }}</h5>
 			{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'readonly' ]) }}
 		</div>
 	</div>
 </div>
-<div class="custom-file">
-	<div class="form-group">
-		{{ Form::label('image', 'Archivo...', ['class' => 'custom-file-label']) }}
-		{{ Form::file('image', ['class' => 'custom-file-input', 'lang' => 'es']) }}
-	</div>
-</div>
-
-<div class="row mt-4">
-	<div class="col-md-8">
+<div class="form-row">
+	<div class="col-md-7">
+		<h5>Archivo: </h5>
+		<div class="custom-file">		
+			<div class="form-group">
+				{{ Form::label('image', 'Archivo...', ['class' => 'custom-file-label']) }}
+				{{ Form::file('image', ['class' => 'custom-file-input', 'lang' => 'es']) }}
+			</div>
+		</div>
+		<hr>
 		<div class="form-group">
-			{{ Form::label('slug', 'Estado:') }}
-			<label>
-				{{ Form::radio('state', 'PUBLISHED') }} Publicado  
-			</label>
-			<label>
-				{{ Form::radio('state', 'DRAFT') }} Borrador.
-			</label>
+			<h5>{{ Form::label('slug', 'Estado:') }}</h5>
+			<ul class="list-group">
+				<li class="list-group-item">
+					{{ Form::radio('state', 'PUBLISHED') }} <strong class="text-success">Publicar noticia </strong>
+				</li>
+				<li class="list-group-item">
+					{{ Form::radio('state', 'DRAFT') }} <strong class="text-danger">Guardar noticia como borrador</strong>
+				</li>
+			</ul>			
+		</div>
+		<div class="form-group">
+			<h5>{{ Form::label('summary', 'Resumen:') }}</h5>
+			{{ Form::textarea('summary', null, ['class' => 'form-control', 'rows' => '2']) }}
 		</div>
 	</div>
-	<div class="col-md-4">
-		<div class="btn-group">
-			<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-   			Etiquetas:
- 			</button>
-		   	<div class="dropdown-menu dropdown-menu-right">
-				@foreach($tags as $tag)
-					<a class="dropdown-item">{{ Form::checkbox('tags[]', $tag->id) }} {{ $tag->name }}</a>
-				@endforeach	
-		   	</div>
-		</div>
+
+	<div class="col-md-5">
+		<h5>Listado de etiquetas:</h5>
+		<ul class="list-group">
+			@foreach($tags as $tag)
+				<li class="list-group-item">
+					{{ Form::checkbox('tags[]', $tag->id) }} <strong>{{ $tag->name }}</strong> <em>({{$tag->description}} )</em>
+				</li>
+			@endforeach	
+		</ul>
 	</div>
 </div>
-	
-<div class="form-group">
-    {{ Form::label('summary', 'Resumen:') }}
-    {{ Form::textarea('summary', null, ['class' => 'form-control', 'rows' => '2']) }}
-</div>
-	
 
 <div class="form-group">
-    {{ Form::label('content', 'Contenido:') }}
-    {{ Form::textarea('content', null, ['class' => 'form-control']) }}
+    <h5>{{ Form::label('description', 'Contenido:') }}</h5>
+    {{ Form::textarea('description', null, ['class' => 'form-control']) }}
 </div>
 
 <div class="form-group">
@@ -92,9 +93,9 @@
            return $("#slug").val(str);
 		}
 
-	/*	CKEDITOR.config.heigth = 500;
+		CKEDITOR.config.heigth = 500;
 		CKEDITOR.config.width = 'auto';
 
-		CKEDITOR.replace('content');*/
+		CKEDITOR.replace('description');
 	</script>
 @endsection

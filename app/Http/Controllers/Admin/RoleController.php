@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
+use Illuminate\Support\Facades\Input; 
 use app\User;
 
 class RoleController extends Controller{
@@ -17,8 +18,11 @@ class RoleController extends Controller{
         return view('admin.roles.index', compact('roles', 'titulo'));
     }
 
-    public function listar(){
-        $users = User::orderBy('name','ASC')->get();
+    public function listar(Request $request){
+        $users = User::orderBy('name','ASC')
+            ->where('name', 'LIKE', '%'.Input::get('q').'%')    
+            ->orWhere('office', 'LIKE', '%'.Input::get('q').'%')
+            ->paginate();
         return view('admin.roles.listar', compact('users'));
     }
     
@@ -32,7 +36,7 @@ class RoleController extends Controller{
     public function store(Request $request){
 
         $role = Role::create($request->all());
-
+        
         $role->permissions()->sync($request->get('permissions'));
 
         alert()->success('El rol ha sido creado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
@@ -56,7 +60,6 @@ class RoleController extends Controller{
         $role->permissions()->sync($request->get('permissions'));
 
         alert()->info('El rol ha sido editado correctamente', '' . auth()->user()->name)->persistent('Cerrar');
-
 
         return redirect()->route('roles.index', $role->id);
     }

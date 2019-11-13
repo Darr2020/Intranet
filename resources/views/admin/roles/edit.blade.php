@@ -1,20 +1,15 @@
-@extends('admin.panel')
+    @extends('admin.panel')
 
 @section('contentAdmin')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="text-center">Editar Rol</h4>
-                </div>
-
+            <h2 class="text-center">Editar Rol</h2> 
+            <hr>
+            <div class="card">              
                 <div class="card-body">                    
-                    {!! Form::model($role, ['route' => ['roles.update', $role->id],
-                    'method' => 'PUT']) !!}
-
-                        @include('admin.roles.partials.form')
-                        
+                    {!! Form::model($role, ['route' => ['roles.update', $role->id],'method' => 'PUT']) !!}
+                        @include('admin.roles.partials.form')                        
                     {!! Form::close() !!}
                 </div>
             </div>

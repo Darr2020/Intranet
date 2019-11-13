@@ -12,7 +12,7 @@ $factory->define(App\Post::class, function(Faker $faker){
         'slug'      => str_slug($title),
         'summary'   => $faker->text(500),
         'image'    => $faker->imageUrl($width = 1820, $height = 1110),
-        'content' => $faker->text(1000),
+        'description' => $faker->text(1000),
         'state'    => $faker->randomElement(['DRAFT', 'PUBLISHED']),
         'created_at' => $faker->dateTimeBetween($startDate = '-10 years', $endDate = 'now', $timezone = null)
     ];

@@ -4,16 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
+            <h3 class="text-center">Crear Rol</h3>  
+            <hr>
             <div class="card">
-                <div class="card-header">
-                    <h4 class="text-center">Crear Rol</h4>  
-                </div>
-
                 <div class="card-body">                    
                     {{ Form::open(['route' => 'roles.store']) }}
-
-                        @include('admin.roles.partials.form')
-                        
+                        @include('admin.roles.partials.form')                        
                     {{ Form::close() }}
                 </div>
             </div>

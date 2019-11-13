@@ -11,9 +11,8 @@ class CreateTasksTable extends Migration{
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name', 50);
-            $table->string('slug', 50);
             $table->string('description', 200);
-            $table->boolean('completed')->default(false);            
+           // $table->boolean('completed')->nullable()->default(false);            
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')
@@ -25,3 +24,9 @@ class CreateTasksTable extends Migration{
         Schema::dropIfExists('tasks');
     }
 }
+
+
+/**
+ *  4) modificar los eventos.. colocar el almanaque a un lado y el evento tipo post
+ * 
+ * * */

@@ -13,11 +13,13 @@ class CreateUsersTable extends Migration{
             $table->increments('id');
             $table->string('name');
             $table->string('last_name');
-            $table->string('slug');
+            $table->string('slug');               
+            $table->enum('office', ['Tecnología', 'Gestión Humana', 'Gestión Comunicacional', 'Servicios Generales', 'Seguridad'])->nullable();
             $table->integer('cedula')->unique();
             $table->string('tlf_emergencia')->nullable();
             $table->integer('extension')->nullable();
             $table->string('email')->unique();
+            $table->string('departament')->nullable();
             $table->text('biography')->nullable();
             $table->rememberToken();
             $table->string('password');
