@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function(){
 			Route::get('{id}/edit',   'ServiceController@edit')->name('services.edit')
 				->middleware('permission:services.edit');
 
-			Route::put('upt/{id}', 	      'ServiceController@update')->name('services.update')
+			Route::put('up/{id}', 	      'ServiceController@update')->name('services.update')
 				->middleware('permission:services.edit');
 		});	
 		
@@ -61,7 +61,7 @@ Route::middleware(['auth'])->group(function(){
 			Route::get('{id}/edit',   'PostController@edit')->name('posts.edit')
 				->middleware('permission:posts.edit');
 
-			Route::put('upt/{id}', 	      'PostController@update')->name('posts.update')
+			Route::put('up/{id}', 	      'PostController@update')->name('posts.update')
 				->middleware('permission:posts.edit');
 
 			Route::delete('del/{id}','PostController@destroy')->name('posts.destroy')
@@ -83,7 +83,7 @@ Route::middleware(['auth'])->group(function(){
 			Route::get('{id}/edit', 'TagController@edit')->name('tags.edit')
 				->middleware('permission:tags.edit');
 
-			Route::put('upt/{id}',      'TagController@update')->name('tags.update')
+			Route::put('up/{id}',      'TagController@update')->name('tags.update')
 				->middleware('permission:tags.edit');			
 
 			Route::delete('del/{id}',   'TagController@destroy')->name('tags.destroy')
@@ -105,7 +105,7 @@ Route::middleware(['auth'])->group(function(){
 			Route::get('{id}/edit', 'EventController@edit')->name('events.edit')
 				->middleware('permission:events.edit');
 
-			Route::put('upt/{id}', 		'EventController@update')->name('events.update')
+			Route::put('up/{id}', 		'EventController@update')->name('events.update')
 				->middleware('permission:events.edit');
 
 			Route::delete('del/{id}',   'EventController@destroy')->name('events.destroy')
@@ -130,7 +130,7 @@ Route::middleware(['auth'])->group(function(){
 			Route::get('{role}/edit', 'RoleController@edit')->name('roles.edit')
 				->middleware('permission:roles.edit');		
 
-			Route::put('upt/{role}', 'RoleController@update')->name('roles.update')
+			Route::put('up/{role}', 'RoleController@update')->name('roles.update')
 				->middleware('permission:roles.edit');
 
 			Route::delete('del/{role}', 'RoleController@destroy')->name('roles.destroy')

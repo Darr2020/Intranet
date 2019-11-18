@@ -158,7 +158,7 @@
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">
                   <img src=" {{asset('icons/chart.svg')}} ">
-                  <span>Gráficas estadisticas</span></a>
+                  <span>Gráficas estadísticas</span></a>
               </a>
               <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
@@ -239,12 +239,8 @@
             <main class="py-4">
               @yield('contentAdmin')
             </main>     
-             
       </div>
-
-          @endif
-         
-           
+      @endif
     </div>
   
 

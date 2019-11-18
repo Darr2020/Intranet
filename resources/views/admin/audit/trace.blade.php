@@ -4,7 +4,7 @@
     <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-md-11 mt-4">
-                    <h2 class="text-center">Auditoria</h2>
+                    <h2 class="text-center">Auditoría</h2>
                     <h5 class="text-center">Acciones que realizan los usuarios con distintas permisologías</h5>
                     <hr>
                     <br>
@@ -27,7 +27,7 @@
                         <tr>
                             <td>{{ $loop->iteration	}}</td>
                             <td class="text-center">{{$user->user->name}} {{$user->user->last_name}}</td>
-                            <td class="text-center">{{$user->user->departament}}</td>
+                            <td class="text-center">{{$user->user->office}}</td>
                             <td class="text-center">{{$user->action}}</td>
                             <td class="text-center">
                                 @if($user->type_action == 'CREATE')

@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+@font-face {
+  font-family: "nunito";
+  src: url("public/fonts/Nunito/Nunito-Regular.ttf");
+}
 @import "~toastr/toastr.scss";
 
 // Bootstrap

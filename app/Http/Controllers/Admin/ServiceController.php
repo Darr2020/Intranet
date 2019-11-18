@@ -12,7 +12,6 @@ use App\User;
 use App\Trace;
 use App\Notification;
 
-
 class ServiceController extends Controller{
     
     public function index(){
@@ -46,10 +45,11 @@ class ServiceController extends Controller{
             ]);  
 
             $trace = Trace::create([
-                'user_id'=> $request['user_id'],
-                'type'=> Trace::SERVICE,
-                'description'=>'Ha agregado un servicio institucional'
-            ]);                
+                'user_id' => $request['user_id'],
+                'action' => Trace::SERVICE,
+                'type_action'=> 'CREATE',
+                'description'=>'Ha agreagado un servico[tucional'
+            ]);                     
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();                     
@@ -73,18 +73,19 @@ class ServiceController extends Controller{
         DB::beginTransaction();
         try {
             $service->update([
-                'user_id'     => $request->get('user_id'),
-                'name'        => $request->get('name'),
-                'route'     => $request->get('route'),
-                'description' => $request->get('description'),
-                'state'       => $request->get('state')
+                'user_id'     => $request['user_id'],
+                'name'        => $request['name'],
+                'route'     => $request['route'],
+                'description' => $request['description'],
+                'state'       => $request['state']
             ]);        
 
             $trace = Trace::create([
-                'user_id'=> $request->get('user_id'),
-                'type'=> Trace::SERVICE,
-                'description'=>'Ha editado un servicio institucional'
-            ]);                
+                'user_id' => $request['user_id'],
+                'action' => Trace::SERVICE,
+                'type_action'=> 'UPDATE',
+                'description'=>'Ha actualizado un servicio institucional'
+            ]);                 
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();                     

@@ -20,29 +20,35 @@
 	{{ Form::color('color', null, ['class' => 'form-control', 'id' => 'color']) }}
 </div>
 <div class="form-row">
-	<div class="col">
+	<div class="col-md-6">
 		<div class="form-group">
-			{{ Form::label('date_start', 'Fecha de inicio:') }}
-			{{ Form::date('date_start', null, ['class' => 'form-control date']) }}
+			<ul class="list-group">
+				<li class="list-group-item">
+					{{ Form::label('date_start', 'Fecha de inicio:') }}
+					{{ Form::date('date_start', null, ['class' => 'form-control date']) }}
+				</li>
+				<li class="list-group-item">
+					{{ Form::label('date_end', 'Fecha de fin:') }}
+					{{ Form::date('date_end', null, ['class' => 'form-control date']) }}
+				</li>
+			</ul>
 		</div>
 	</div>
-	<div class="col">
+	<div class="col-md-6">
 		<div class="form-group">
-			{{ Form::label('date_end', 'Fecha de fin:') }}
-			{{ Form::date('date_end', null, ['class' => 'form-control date']) }}
+			<h5>{{ Form::label('slug', 'Estado:') }}</h5>
+			<ul class="list-group">
+				<li class="list-group-item">
+					{{ Form::radio('state', 'PUBLISHED') }} <strong class="text-success">Publicar evento </strong>
+				</li>
+				<li class="list-group-item">
+					{{ Form::radio('state', 'DRAFT') }} <strong class="text-danger">Guardar evento como borrador</strong>
+				</li>
+			</ul>			
 		</div>
 	</div>
 </div>
 
-<div class="form-group">
-	{{ Form::label('slug', 'Estado:') }}
-	<label>
-		{{ Form::radio('state', 'PUBLISHED') }} Publicado |
-	</label>
-	<label>
-		{{ Form::radio('state', 'DRAFT') }} Borrador
-	</label>
-</div>
 
 <div class="form-group">
     {{ Form::label('description', 'Descripción:') }}

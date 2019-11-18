@@ -1,14 +1,12 @@
 @extends('admin.panel')
 
 @section('contentAdmin')
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-6">
-				<br>
+<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<h2 class="text-center">Agregar Etiqueta</h2>
+				<hr>
 				<div class="card">
-					<div class="card-header">
-						<h4 class="text-center">Crear Etiqueta</h4>
-					</div>
 					<div class="card-body">
 						{!! Form::open(['route' => 'tags.store']) !!}
 							@include('admin.tags.partials.form')

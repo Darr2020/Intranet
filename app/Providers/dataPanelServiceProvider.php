@@ -24,7 +24,6 @@ class dataPanelServiceProvider extends ServiceProvider{
         View::composer(['*'], function($view){
             $date = date('Y-m-d');        
             $dayNoti = DB::table('notifications')->where('created_at', $date)->get();
-            dd($dayNoti);
             $notifications = DB::table('notifications')->get();
             $view->with(compact('notifications', 'dayNoti'));
         });

@@ -14,7 +14,7 @@
 </div>
 
 <div class="form-group">
-	{{ Form::submit('Guardar etiqueta', ['class' => 'btn btn-color btn-lg btn-block']) }}
+	{{ Form::submit('Guardar noticia', ['class' => 'btn btn-primary btn-lg btn-block']) }}
 </div>
 
 @section('scripts')
