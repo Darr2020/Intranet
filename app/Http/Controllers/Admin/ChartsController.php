@@ -45,7 +45,7 @@ class ChartsController extends Controller{
         $servicesD = DB::table('services')->where('state', 'DEACTIVATED')->count();//Servicios guardados como borrador
 
         return view('admin.charts.pie', compact(
-            'titulo', 'eventsP', 'eventsD', 'postsP', 'postsD', 'servicesA', 'servicesD', 'eventsT'
+            'titulo', 'eventsP', 'eventsD', 'postsP', 'postsD', 'servicesA', 'servicesD'
         ));        
     }
 }

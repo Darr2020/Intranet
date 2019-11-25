@@ -2,15 +2,13 @@
 
 namespace App;
 
-use Cog\Contracts\Love\Liker\Models\Liker as LikerContract;
-use Cog\Laravel\Love\Liker\Models\Traits\Liker;
 use Caffeinated\Shinobi\Traits\ShinobiTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements LikerContract {    
+class User extends Authenticatable {    
     
-    use Notifiable, ShinobiTrait, Liker; 
+    use Notifiable, ShinobiTrait; 
 
     protected $table = 'users';
 

@@ -43,7 +43,7 @@
 							</div>								
 						</div>
 						<div class="card-body">
-							{{$e->description}}
+							{!!$e->description!!}
 						</div>
 					</div>
 				</div>

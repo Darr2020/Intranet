@@ -3,14 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Cog\Laravel\Love\Likeable\Models\Traits\Likeable;
-use Cog\Contracts\Love\Likeable\Models\Likeable as LikeableContract;
 
 
-class Post extends Model implements LikeableContract{
-
-    use Likeable; 
-
+class Post extends Model{
+ 
     const PUBLISHED = 1;
     const PENDING   = 2;
     const REJECTED  = 3;
