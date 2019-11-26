@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Task;
 use App\Tag;
+use App\User;
 use App\Notification;
 use Carbon\Carbon;
 use Alert;
@@ -34,9 +35,13 @@ class PostController extends Controller{
 			->take(5)
 			->get();
 
-			$notifications = Notification::all();
+		$notifications = Notification::all();
 
-		return view('inicio', compact('posts', 'tasks', 'titulo', 'notifications'));							
+		$birthday = User::whereMonth('birth', '=', Carbon::now()->format('m'))
+			->whereDay('birth', '=', Carbon::now()->format('d'))
+			->get();
+
+		return view('inicio', compact('posts', 'tasks', 'titulo', 'notifications', 'birthday'));							
 	}
 
 	public function tag($slug){

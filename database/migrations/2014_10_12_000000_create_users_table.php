@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration{
             $table->text('biography')->nullable();
             $table->rememberToken();
             $table->string('password');
+            $table->date('birth')->nullable();  
             $table->date('last_login')->nullable(); //ultima conexión
             $table->timestamps();
         });

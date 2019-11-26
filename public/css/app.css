@@ -11014,7 +11014,7 @@ header {
   padding: 20px;
   text-align: center;
   transition: all 0.5s ease;
-  background-color: #4285F4;
+  background-color: #4267B2;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   transform-style: preserve-3d;
@@ -11053,12 +11053,12 @@ header {
   background-color: #ffc000;
 }
 
-.orange {
-  background-color: #fc7f0c;
+.sismeu {
+  background-color: #0c0c0c;
 }
 
 .red {
-  background-color: #e84b3a;
+  background-color: #fff;
 }
 
 .grey {

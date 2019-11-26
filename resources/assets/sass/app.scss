@@ -126,7 +126,7 @@ header{	background-color: #4267B2 }
   padding: 20px;
   text-align: center;
   transition: all .5s ease;
-  background-color: #4285F4;
+  background-color: #4267B2;
   backface-visibility:hidden;
   transform-style: preserve-3d;
   -webkit-transform: translateY(110px) rotateX(-90deg);
@@ -165,8 +165,8 @@ header{	background-color: #4267B2 }
   margin:0;
 }
 .yellow{background-color: #ffc000;}
-.orange{background-color: #fc7f0c;}
-.red{background-color: #e84b3a;}
+.sismeu{background-color: rgb(12, 12, 12);}
+.red{background-color: #fff;}
 .grey{background-color: #474747;}
 .service-box:hover .service-icon{
   opacity: 0;
