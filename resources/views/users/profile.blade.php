@@ -12,7 +12,8 @@
             </div>
         </div>
         <div class="col-md-7"> 
-            <h1 class="name-profile">{{$user->name}} {{$user->last_name}}</h1>   
+            <h1 class="name-profile">{{$user->name}} {{$user->last_name}}         @if(isset($b)) <img src=" {{asset('img/2472.jpg')}} " width="200"> @endif
+            </h1>   
 
             <ul class="list-group list-group-flush mt-5">
                
@@ -26,7 +27,7 @@
                 </li>
             </ul>                
         </div>
-        
+
     </div>
 </div>
 

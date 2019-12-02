@@ -10891,6 +10891,8 @@ header {
 
 .navbar {
   height: 45px;
+  font-weight: 700;
+  margin-left: 30px;
 }
 
 .wrapper-drop {
@@ -11050,14 +11052,14 @@ header {
 }
 
 .yellow {
-  background-color: #ffc000;
+  background-color: #fff;
 }
 
 .sismeu {
   background-color: #0c0c0c;
 }
 
-.red {
+.calendar {
   background-color: #fff;
 }
 

@@ -29,7 +29,11 @@ class UserController extends Controller{
 
         $titulo = "Perfil";
         $user = User::where('slug', $slug)->first();
-        return view('users.profile', compact('user', 'titulo'));
+        $b = null;
+        if(substr($user->birth,5) == date("m-d")){
+            $b = true;
+        }
+        return view('users.profile', compact('user', 'titulo', 'b'));
     }
 
     

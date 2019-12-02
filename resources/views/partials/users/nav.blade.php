@@ -1,7 +1,7 @@
 <header class="sticky-top">
     <nav class="navbar navbar-expand-md navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('/') }}">MEUNET</a>                    
+            <a class="navbar-brand" href="{{ url('/') }}">Intranet MPPEU</a>                    
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,10 +21,7 @@
                         </li>
 
                         <div class="dropdown">
-                            <a href="#" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             <img src=" {{asset('icons/notifications.svg')}} " class="mt-2">
-                             <div class="badge badge-success">{{$dayNoti}}</div>
-                            </a>
+                            
                            
                             <div class="dropdown-menu" aria-labelledby="dropdownNotification">
                                 @foreach ($notifications as $n)
@@ -37,6 +34,9 @@
                         <li class="nav-item {{active('directorio')}}">
                             <a class="nav-link" href="{{url('directorio')}}">Directorio</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Correo</a>
+                        </li>
                         <li class="nav-item {{active('eventos')}}">
                             <a class="nav-link" href="{{url('eventos')}}">Eventos</a>
                         </li>
@@ -48,6 +48,10 @@
                                 <a class="nav-link" href="{{ route('admin.panel') }}">Panel Administrador</a>
                             </li>
                         @endcan  
+                        <a href="#" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src=" {{asset('icons/notifications.svg')}} " class="mt-2">
+                            <div class="badge badge-success">{{$dayNoti}}</div>
+                        </a>
 
                         <div class="wrapper-drop">
                             <label>

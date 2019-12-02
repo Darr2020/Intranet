@@ -18,11 +18,9 @@
     <div class="svg"></div>
     <div class="container">
         <div class="img">
-            <img src=" {{asset('img/portadaLogin.svg')}} ">
+            <img src=" {{asset('img/mppeu.jpg')}} ">
         </div>
-        <div class="login-continer">
-              
-                                            
+        <div class="login-continer">                                         
             <form method="POST" action="{{ route('login') }}">
                  @csrf
                 <img src=" {{asset('img/login.svg')}} " class="avatar">

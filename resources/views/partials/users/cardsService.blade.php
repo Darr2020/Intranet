@@ -11,27 +11,27 @@
                     </div>
                 </div>
                 <div class="service-content">
-                    <h3>Constancia y Recibos</h3>
-                    <p>Sistema de solicitud de Constancias de trabajo y Recibo de pago</p>
+                    <h3>SISMEU</h3>
+                    <p>Sistema de salud de trabajadores</p>
                 </div>
             </div>
 
             <div class="service-box">
-                    <div class="service-icon red">
+                    <div class="service-icon calendar">
                         <div class="front-content">
                             <img class="mt-5" src="{{asset('img/calendar.jpg')}}" width="100">
                         </div>
                     </div>
                     <div class="service-content">
-                        <h3>SIGEFIRRHH</h3>
-                        <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.</p>
+                        <h3>CALENDARIO</h3>
+                        <p>Agenda de eventos institucionales para los trabajadores</p>
                     </div>
                 </div>
           
             <div class="service-box">
                 <div class="service-icon yellow">
                     <div class="front-content">
-                        <h3>SVP</h3>
+                        <img class="mt-5" src="{{asset('img/evaluacion.jpg')}}" width="85">
                     </div>
                 </div>
                 <div class="service-content">

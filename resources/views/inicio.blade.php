@@ -39,8 +39,8 @@
                     </div>
                 </section>
             </div>
-            <div class="col-md-5">
-                <div class="card sticky-tasks ml-auto" style="width: 22rem">
+            <div class="col-md-5 ">
+                <div class="card sticky-tasks mx-auto" style="width: 22rem">
                     <div class="card-header top">
                         <div id="welcome" class="text-center">Hola {{ Auth::user()->name }}</div>
                         <div class="reloj">
@@ -83,8 +83,9 @@
                         @endif
                     </div>
                 </div>
-                <section class="birthdays">
-                    <table class="table">
+            <br>    
+                <section class="birthdays sticky-birthdays">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th class="text-center">Cumpleañeros del día</th>
@@ -93,7 +94,13 @@
                         <tbody>
                             @forelse ($birthday as $b)
                                 <tr>
-                                    <td> {{$b->name}} </td>
+                                    <td>
+
+                                        <a href="{{ route('users.show', $b->slug) }}"
+                                            class="text-decoration-none">
+                                            {{ $b->name }}
+                                        </a>
+                                    </td>
                                 </tr>
                             @empty
                                 No hay cumpleañeros
