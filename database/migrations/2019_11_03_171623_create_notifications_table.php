@@ -10,7 +10,7 @@ class CreateNotificationsTable extends Migration{
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('who_id');
+            $table->integer('who_id')->unsigned();
             $table->foreign('who_id')->references('id')->on('users');
             $table->string('type');
             $table->string('title');

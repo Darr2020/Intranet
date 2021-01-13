@@ -9,7 +9,7 @@ class CreateServicesTable extends Migration{
     public function up(){
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('description', 250)->nullable();
             $table->string('route');
